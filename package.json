@@ -1,0 +1,42 @@
+{
+  "name": "frontend-cookbook",
+  "description": "A frontend UI components cookbook powered by React and Storybook",
+  "author": {
+    "name": "Yes Lee",
+    "email": "joshuayes@gmail.com",
+    "url": "https://yeslee.me"
+  },
+  "version": "1.0.0",
+  "main": "stories/index.stories.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "start-storybook -p 6006",
+    "build": "build-storybook -c .storybook -o .build",
+    "test": "jest",
+    "test:watch": "jest --verbose --watch"
+  },
+  "dependencies": {
+    "@babel/preset-env": "^7.5.0",
+    "@babel/preset-react": "^7.0.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.18",
+    "@fortawesome/free-solid-svg-icons": "^5.8.2",
+    "@fortawesome/react-fontawesome": "^0.1.4",
+    "@testing-library/react": "^8.0.4",
+    "antd": "^3.19.1",
+    "babel-jest": "^24.8.0",
+    "decimal.js": "^10.2.0",
+    "jest": "^24.8.0",
+    "jest-dom": "^3.5.0",
+    "lodash": "^4.17.11",
+    "numeral": "^2.0.6",
+    "styled-components": "^4.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.0",
+    "@storybook/addon-actions": "^5.0.11",
+    "@storybook/addon-links": "^5.0.11",
+    "@storybook/addons": "^5.0.11",
+    "@storybook/react": "^5.0.11",
+    "babel-loader": "^8.0.6"
+  }
+}
