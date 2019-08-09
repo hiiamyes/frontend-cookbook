@@ -4,12 +4,14 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faCog,
   faAngleDown,
-  faCloudUploadAlt
+  faCloudUploadAlt,
+  faSearch
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(faCog);
 library.add(faAngleDown);
 library.add(faCloudUploadAlt);
+library.add(faSearch);
 
 const FAIcon = props => {
   const { icon } = props;

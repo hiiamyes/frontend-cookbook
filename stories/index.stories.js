@@ -12,6 +12,7 @@ import { MoneyInputDemo } from "../components/Input/MoneyInput";
 import LineChartDemo from "../components/Chart/LineChart/demo";
 import BarChartDemo from "../components/Chart/BarChart/demo";
 import BasicUploaderDemo from "../components/Uploader/demo";
+import SearchDemo from "../components/Input/Search/demo";
 
 import "../styles/global-style.css";
 
@@ -28,6 +29,11 @@ storiesOf("Input", module)
   .add("MoneyInput", () => (
     <Layout>
       <MoneyInputDemo />
+    </Layout>
+  ))
+  .add("SearchInput", () => (
+    <Layout>
+      <SearchDemo />
     </Layout>
   ));
 
