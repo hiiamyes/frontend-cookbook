@@ -8,18 +8,26 @@ import {
   colorBorderFocus
 } from "../../../styles/color";
 
-export default styled.input`
-  height: ${inputHeight};
-  padding: ${inputPadding};
-  font-size: ${inputFontSize};
-  text-align: right;
-  outline: none;
-  border-radius: ${borderRadius};
-  border: ${borderWidth} solid ${colorBorderDefault};
-  &:hover {
-    border-color: ${colorBorderHover};
-  }
-  &:focus {
-    border-color: ${colorBorderFocus};
+export default styled.div`
+  > input {
+    width: 200px;
+    height: ${inputHeight};
+    padding: ${inputPadding};
+    font-size: ${inputFontSize};
+    text-align: left;
+    outline: none;
+    border-radius: ${borderRadius};
+    border: ${borderWidth} solid ${colorBorderDefault};
+    &:hover {
+      border-color: ${colorBorderHover};
+    }
+    &:focus {
+      border-color: ${colorBorderFocus};
+    }
+    &[disabled] {
+      color: rgba(0, 0, 0, 0.25);
+      background-color: #f5f5f5;
+      cursor: not-allowed;
+    }
   }
 `;

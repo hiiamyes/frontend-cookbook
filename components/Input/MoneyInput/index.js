@@ -1,54 +1,24 @@
 import React, { useState, useLayoutEffect, useEffect } from "react";
-import { Decimal } from "decimal.js";
-import numeral from "numeral";
+import { InputNumber } from "antd";
 import Style from "./style";
-import useForceUpdate from "./use-force-update";
-
-const getFormattedValue = ({ value, minUnit }) => {
-  if (
-    value === null ||
-    value === undefined ||
-    value === "" ||
-    !numeral(value).value()
-  ) {
-    return "";
-  }
-  value = String(value);
-  if (value === "0") return 0;
-  if (minUnit >= 1) {
-    return numeral(
-      new Decimal(numeral(value).value())
-        .dividedBy(minUnit)
-        .round()
-        .times(minUnit)
-    ).format("0,0");
-  } else {
-    const fixed = minUnit.length - 2;
-    const decimalPoint = ".";
-    let numberPart;
-    let decimalPart = value.split(decimalPoint)[1];
-    if (decimalPart && decimalPart.length > fixed) {
-      value = new Decimal(numeral(value).value()).toFixed(fixed);
-    }
-    [numberPart, decimalPart = ""] = value.split(decimalPoint);
-    return (
-      String(numeral(numberPart).format("0,0")) +
-      (/\./.test(value) ? decimalPoint : "") +
-      decimalPart
-    );
-  }
-};
-
-let keyCode = null;
-let charBeforeCaret = "";
-let charAfterCaret = "";
-let caretPositionFromEnd = 0;
+import { onInputKeyDown, onInputKeyUp, onInputChange } from "./events";
+import { getFormattedValue } from "./utils";
 
 const MoneyInput = props => {
-  let { value, minUnit, onChange } = props;
+  let {
+    value,
+    max = 1e20,
+    minUnit = "1",
+    onChange,
+    disabled = false,
+    placeholder = "Input amount"
+  } = props;
   const inputRef = React.createRef();
   const [formattedValue, setFormattedValue] = useState("");
-  const forceUpdate = useForceUpdate();
+  const [key, setKey] = useState(null);
+  const [charBeforeCaret, setCharBeforeCaret] = useState("");
+  const [charAfterCaret, setCharAfterCaret] = useState("");
+  const [caretPositionFromEnd, setCaretPositionFromEnd] = useState(0);
 
   useEffect(() => {
     setFormattedValue(getFormattedValue({ value, minUnit }));
@@ -59,101 +29,36 @@ const MoneyInput = props => {
     let selectionStart = target.value.length - caretPositionFromEnd;
     if (selectionStart < 0) selectionStart = 0;
     target.setSelectionRange(selectionStart, selectionStart);
-  });
+  }, [formattedValue]);
 
   return (
-    <div>
-      <Style
+    <Style>
+      <input
+        disabled={disabled}
+        placeholder={placeholder}
         data-testid="money-input"
         type="tel"
         ref={inputRef}
         value={formattedValue}
-        placeholder="Input amount"
-        onKeyDown={e => {
-          const {
-            target: { value, selectionStart }
-          } = e;
-          if (
-            e.keyCode === 190 &&
-            (selectionStart !== value.length || /\./.test(value))
-          ) {
-            e.preventDefault();
-          }
-          // Get the chars before and after the caret before the change event.
-          charBeforeCaret = value.split("")[selectionStart - 1];
-          charAfterCaret = value.split("")[selectionStart];
-          // The change event doesn't have keyCode, so get the keyCode ffrom keydown event.
-          keyCode = e.keyCode;
-        }}
-        onChange={e => {
-          let {
-            target: { value: newValue, selectionStart }
-          } = e;
-          caretPositionFromEnd = newValue.length - selectionStart;
-          switch (keyCode) {
-            case 8:
-              // backspace
-              if (charBeforeCaret === ".") {
-                newValue =
-                  newValue.slice(0, selectionStart - 1) +
-                  "." +
-                  newValue.slice(selectionStart);
-              }
-              if (charBeforeCaret === ",") {
-                newValue =
-                  newValue.slice(0, selectionStart - 1) +
-                  newValue.slice(selectionStart);
-              }
-              break;
-            case 46:
-              // delete
-              if (charAfterCaret === ".") {
-                caretPositionFromEnd -= 1;
-                newValue =
-                  newValue.slice(0, selectionStart) +
-                  "." +
-                  newValue.slice(selectionStart + 1);
-              }
-              if (charAfterCaret === ",") {
-                caretPositionFromEnd -= 1;
-                newValue =
-                  newValue.slice(0, selectionStart) +
-                  newValue.slice(selectionStart + 1);
-              }
-              break;
-            default:
-              break;
-          }
-
-          if (minUnit > 1 && newValue !== "") {
-            if (value === null || value === undefined || value === "") {
-              caretPositionFromEnd = minUnit.length - 1;
-              newValue = String(numeral(newValue).value() * minUnit);
-            } else if (value === 0 && numeral(newValue).value() < minUnit) {
-              caretPositionFromEnd = minUnit.length - 1;
-              newValue = newValue.replace("0", "").split("")[0] * minUnit;
-            } else if (numeral(newValue).value() < minUnit) {
-              newValue = 0;
-            } else if (
-              keyCode !== 8 &&
-              keyCode !== 46 &&
-              caretPositionFromEnd < minUnit.length - 1
-            ) {
-              caretPositionFromEnd = minUnit.length - 1;
-              newValue = String(value);
-              forceUpdate();
-            }
-          }
-          newValue = getFormattedValue({ value: newValue, minUnit });
-          setFormattedValue(newValue);
-          if (numeral(newValue).value() !== value) {
-            onChange(numeral(newValue).value());
-          } else {
-            forceUpdate();
-          }
-        }}
+        onKeyDown={onInputKeyDown({
+          setKey,
+          setCharBeforeCaret,
+          setCharAfterCaret
+        })}
+        onKeyUp={onInputKeyUp}
+        onChange={onInputChange({
+          value,
+          max,
+          minUnit,
+          key,
+          charBeforeCaret,
+          charAfterCaret,
+          setCaretPositionFromEnd,
+          setFormattedValue,
+          onChange
+        })}
       />
-    </div>
+    </Style>
   );
 };
 
@@ -161,6 +66,8 @@ const MoneyInputDemo = () => {
   const [value, setValue] = useState(null);
   const [value2, setValue2] = useState(null);
   const [value3, setValue3] = useState(null);
+  const [value4, setValue4] = useState(null);
+
   return (
     <div>
       <div>Min unit = 100</div>
@@ -188,6 +95,15 @@ const MoneyInputDemo = () => {
         onChange={value => {
           setValue3(value);
         }}
+      />
+
+      <div>Antd</div>
+      <InputNumber
+        style={{ width: 200 }}
+        value={value4}
+        formatter={value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+        parser={value => value.replace(/\$\s?|(,*)/g, "")}
+        onChange={v => setValue4(v)}
       />
     </div>
   );
