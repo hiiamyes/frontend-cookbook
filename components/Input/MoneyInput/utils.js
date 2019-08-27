@@ -18,7 +18,7 @@ const getFormattedValue = ({ value, minUnit }) => {
     const decimalPoint = ".";
     let [numberPart, decimalPart = ""] = value.split(decimalPoint);
     if (decimalPart.length > fixedDigits) {
-      decimalPart = decimalPart.slice(0, 2);
+      decimalPart = decimalPart.replace(/,/, "").slice(0, 2);
     }
     formattedValue =
       numberPart.replace(/,/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",") +
