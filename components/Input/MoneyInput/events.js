@@ -54,7 +54,7 @@ const onInputKeyDown = ({
   ) {
     e.preventDefault();
   }
-  if (e.key === "." && /\./.test(value)) {
+  if (e.key === "." && (!value || /\./.test(value))) {
     e.preventDefault();
   }
   // Get the chars before and after the caret before the change event.
