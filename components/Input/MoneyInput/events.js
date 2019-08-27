@@ -19,7 +19,8 @@ const effectiveKeys = [
   "ArrowRight",
   "ArrowBottom",
   "Escape",
-  "Tab"
+  "Tab",
+  "Enter"
 ];
 
 const effectiveKeyPairs = [
