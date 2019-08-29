@@ -59,8 +59,8 @@ const onInputKeyDown = ({
     e.preventDefault();
   }
   // Get the chars before and after the caret before the change event.
-  setCharBeforeCaret(value.split("")[selectionStart - 1]);
-  setCharAfterCaret(value.split("")[selectionStart]);
+  setCharBeforeCaret(value[selectionStart - 1]);
+  setCharAfterCaret(value[selectionStart]);
   // The change event doesn't have key, so get the key ffrom keydown event.
   setKey(e.key);
 };
