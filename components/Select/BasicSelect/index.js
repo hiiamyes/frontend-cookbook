@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { throttle } from "lodash/fp";
 import FAIcon from "../../FAIcon";
 import timezoneNames from "./timezoneNames.json";
 import Style from "./style";
@@ -10,7 +9,6 @@ const BasicSelect = props => {
   const [optionsVisible, setOptionsVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [inputFocus, setInputFocus] = useState(false);
-  // const [hoveredOptionIndex, setHoveredOptionIndex] = useState(0);
   const [hoveredOptionValue, setHoveredOptionValue] = useState(
     props.options[0]
   );
@@ -83,9 +81,6 @@ const BasicSelect = props => {
           console.log("blur", optionsVisible);
           setOptionsVisible(false);
           setFocus(false);
-          // console.log(document.activeElement);
-          // if()
-          // e.target.focus();
         }}
       />
       <FAIcon icon="angle-down" />
@@ -94,7 +89,6 @@ const BasicSelect = props => {
           {options.map((name, optionIndex) => (
             <div
               className={`option ${
-                // optionIndex === hoveredOptionIndex ? "hover" : ""
                 name === hoveredOptionValue ? "hover" : ""
               } ${name === value ? "select" : ""}`}
               key={name}
@@ -107,9 +101,7 @@ const BasicSelect = props => {
               onMouseDown={e => {
                 console.log("mouse");
                 onChange(name);
-                // setOptionsVisible(false);
               }}
-              // onMouseOver={throttledOnMouseOver.bind(null, optionIndex)}
             >
               {name}
             </div>
