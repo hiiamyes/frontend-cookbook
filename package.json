@@ -24,6 +24,7 @@
     "@testing-library/react": "^8.0.4",
     "antd": "^3.19.1",
     "babel-jest": "^24.8.0",
+    "d3": "^5.11.0",
     "decimal.js": "^10.2.0",
     "jest": "^24.8.0",
     "jest-dom": "^3.5.0",
