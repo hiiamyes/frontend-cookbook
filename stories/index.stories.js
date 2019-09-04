@@ -10,6 +10,8 @@ import BasicSelect from "../components/Select/BasicSelect";
 import TimezoneNameSelect from "../components/Select/TimezoneNameSelect";
 import { MoneyInputDemo } from "../components/Input/MoneyInput";
 import LineChartDemo from "../components/Chart/LineChart/demo";
+import BarChartDemo from "../components/Chart/BarChart/demo";
+
 import "../styles/global-style.css";
 
 const Layout = styled.div`
@@ -45,8 +47,14 @@ storiesOf("Select", module)
   ));
 
 storiesOf("Icon", module).add("FontAwesomeIcon", () => <FAIcon icon="cog" />);
-storiesOf("Chart", module).add("LineChart", () => (
-  <Layout>
-    <LineChartDemo />
-  </Layout>
-));
+storiesOf("Chart", module)
+  .add("LineChart", () => (
+    <Layout>
+      <LineChartDemo />
+    </Layout>
+  ))
+  .add("BarChart", () => (
+    <Layout>
+      <BarChartDemo />
+    </Layout>
+  ));
