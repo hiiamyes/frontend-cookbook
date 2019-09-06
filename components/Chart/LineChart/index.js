@@ -1,32 +1,37 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
+import { debounce } from "lodash/fp";
 import Style from "./style";
 import * as d3 from "d3";
 
 const margin = { top: 50, right: 50, bottom: 100, left: 50 };
-const container = {
-  width: window.innerWidth,
-  height: 480
-};
-const chart = {
-  width: container.width - margin.left - margin.right,
-  height: container.height - margin.top - margin.bottom
-};
+let xScale;
+let yScale;
+let line;
+let svg;
 
 const draw = data => {
+  const container = {
+    width: window.innerWidth,
+    height: 480
+  };
+  const chart = {
+    width: container.width - margin.left - margin.right,
+    height: container.height - margin.top - margin.bottom
+  };
   const { width, height } = chart;
-  const xScale = d3
+  xScale = d3
     .scalePoint()
     .domain(data.map(({ x }) => x))
     .range([0, width]);
-  const yScale = d3
+  yScale = d3
     .scaleLinear()
     .domain([0, d3.max(data.map(({ y }) => +y))])
     .range([height, 0]);
-  const line = d3
+  line = d3
     .line()
     .x(({ x }) => xScale(x))
     .y(({ y }) => yScale(y));
-  const svg = d3
+  svg = d3
     .select(".chart")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -64,11 +69,47 @@ const draw = data => {
     .attr("r", 5);
 };
 
+const resize = debounce(150, () => {
+  const container = {
+    width: window.innerWidth,
+    height: 480
+  };
+  const chart = {
+    width: container.width - margin.left - margin.right,
+    height: container.height - margin.top - margin.bottom
+  };
+  const { width, height } = chart;
+  xScale.range([0, width]);
+  yScale.range([height, 0]);
+  svg
+    .select(".x.axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(xScale));
+  svg.select(".y.axis").call(d3.axisLeft(yScale));
+  svg.selectAll(".line").attr("d", line);
+  svg
+    .selectAll(".dot")
+    .attr("cx", ({ x }) => xScale(x))
+    .attr("cy", ({ y }) => yScale(y));
+});
+
 const LineChart = props => {
   const { data } = props;
   useEffect(() => {
     draw(data);
   }, []);
+
+  const onResize = useCallback(() => {
+    resize(data);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("resize", onResize);
+    return () => {
+      window.removeEventListener("resize", onResize);
+    };
+  });
+
   return <Style className="chart" />;
 };
 
