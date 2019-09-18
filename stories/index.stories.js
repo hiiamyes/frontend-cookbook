@@ -11,6 +11,7 @@ import TimezoneNameSelect from "../components/Select/TimezoneNameSelect";
 import { MoneyInputDemo } from "../components/Input/MoneyInput";
 import LineChartDemo from "../components/Chart/LineChart/demo";
 import BarChartDemo from "../components/Chart/BarChart/demo";
+import BasicUploaderDemo from "../components/Uploader/demo";
 
 import "../styles/global-style.css";
 
@@ -58,3 +59,9 @@ storiesOf("Chart", module)
       <BarChartDemo />
     </Layout>
   ));
+
+storiesOf("Uploader", module).add("BasicUploader", () => (
+  <Layout>
+    <BasicUploaderDemo />
+  </Layout>
+));
