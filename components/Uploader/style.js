@@ -1,21 +1,15 @@
 import styled from "styled-components";
-import { labelPadding } from "../../styles/dimension";
+import { labelPadding, gridGap } from "../../styles/dimension";
 import { borderWidth, borderRadius } from "../../styles/border";
 import { colorBorderDefault, colorBorderHover } from "../../styles/color";
 
+const width = "150px";
+
 export default styled.div`
-  width: 150px;
-  height: 150px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid: 1fr / repeat(3, ${width});
+  grid-gap: ${gridGap};
   position: relative;
-  border: ${borderWidth} solid ${colorBorderDefault};
-  border-radius: ${borderRadius};
-  cursor: pointer;
-  &:hover {
-    border-color: ${colorBorderHover};
-  }
   > input {
     display: block;
     width: 0;
@@ -25,16 +19,29 @@ export default styled.div`
     position: absolute;
     opacity: 0;
   }
-  > .label {
+  > .uploader {
     padding: ${labelPadding};
+    width: ${width};
+    height: ${width};
+    border: ${borderWidth} solid ${colorBorderDefault};
+    border-radius: ${borderRadius};
+    cursor: pointer;
+    &:hover {
+      border-color: ${colorBorderHover};
+    }
   }
   > .preview {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    object-fit: contain;
+    width: ${width};
+    height: ${width};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: ${borderWidth} solid ${colorBorderDefault};
+    border-radius: ${borderRadius};
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
   }
 `;
