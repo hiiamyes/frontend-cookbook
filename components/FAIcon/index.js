@@ -7,7 +7,8 @@ import {
   faCloudUploadAlt,
   faSearch,
   faChevronLeft,
-  faChevronRight
+  faChevronRight,
+  faSpinner
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(faCog);
@@ -16,6 +17,7 @@ library.add(faCloudUploadAlt);
 library.add(faSearch);
 library.add(faChevronLeft);
 library.add(faChevronRight);
+library.add(faSpinner);
 
 const FAIcon = props => {
   const { icon } = props;

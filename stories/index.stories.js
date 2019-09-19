@@ -14,6 +14,7 @@ import BarChartDemo from "../components/Chart/BarChart/demo";
 import BasicUploaderDemo from "../components/Uploader/demo";
 import SearchDemo from "../components/Input/Search/demo";
 import CarouselDemo from "../components/Carousel/demo";
+import LoaderDemo from "../components/Loader/demo";
 
 import "../styles/global-style.css";
 
@@ -76,5 +77,11 @@ storiesOf("Uploader", module).add("BasicUploader", () => (
 storiesOf("Carousel", module).add("Carousel", () => (
   <Layout>
     <CarouselDemo />
+  </Layout>
+));
+
+storiesOf("Loader", module).add("Loader", () => (
+  <Layout>
+    <LoaderDemo />
   </Layout>
 ));
