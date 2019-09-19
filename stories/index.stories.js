@@ -13,6 +13,7 @@ import LineChartDemo from "../components/Chart/LineChart/demo";
 import BarChartDemo from "../components/Chart/BarChart/demo";
 import BasicUploaderDemo from "../components/Uploader/demo";
 import SearchDemo from "../components/Input/Search/demo";
+import CarouselDemo from "../components/Carousel/demo";
 
 import "../styles/global-style.css";
 
@@ -69,5 +70,11 @@ storiesOf("Chart", module)
 storiesOf("Uploader", module).add("BasicUploader", () => (
   <Layout>
     <BasicUploaderDemo />
+  </Layout>
+));
+
+storiesOf("Carousel", module).add("Carousel", () => (
+  <Layout>
+    <CarouselDemo />
   </Layout>
 ));
