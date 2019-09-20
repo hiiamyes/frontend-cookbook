@@ -19,3 +19,9 @@ nvm use 12.4.0
 yarn
 yarn start
 ```
+
+# Publish
+
+```
+./node_modules/rollup/dist/bin/rollup -c
+```

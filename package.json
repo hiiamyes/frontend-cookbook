@@ -6,14 +6,16 @@
     "email": "joshuayes@gmail.com",
     "url": "https://yeslee.me"
   },
-  "version": "1.0.1",
-  "main": "index.js",
+  "version": "1.0.4",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
   "license": "MIT",
   "scripts": {
     "start": "start-storybook -p 6006",
     "build": "build-storybook -c .storybook -o .build",
     "test": "jest",
-    "test:watch": "jest --verbose --watch"
+    "test:watch": "jest --verbose --watch",
+    "gg": "rollup -c"
   },
   "dependencies": {
     "@babel/preset-env": "^7.5.0",
@@ -30,6 +32,11 @@
     "jest-dom": "^3.5.0",
     "lodash": "^4.17.11",
     "numeral": "^2.0.6",
+    "rollup": "^1.21.4",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-peer-deps-external": "^2.2.0",
     "styled-components": "^4.2.0"
   },
   "devDependencies": {
