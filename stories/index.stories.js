@@ -15,6 +15,7 @@ import BasicUploaderDemo from "../components/Uploader/demo";
 import SearchDemo from "../components/Input/Search/demo";
 import CarouselDemo from "../components/Carousel/demo";
 import LoaderDemo from "../components/Loader/demo";
+import TableDemo from "../components/Table/demo";
 
 import "../styles/global-style.css";
 
@@ -83,5 +84,11 @@ storiesOf("Carousel", module).add("Carousel", () => (
 storiesOf("Loader", module).add("Loader", () => (
   <Layout>
     <LoaderDemo />
+  </Layout>
+));
+
+storiesOf("Table", module).add("BasicTable", () => (
+  <Layout>
+    <TableDemo />
   </Layout>
 ));
