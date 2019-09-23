@@ -15,47 +15,36 @@ export default styled.div`
     width: 100vw;
     height: 100vh;
     background: ${colorBackgroundModal};
+    > .prev,
+    > .next,
     > .close {
       position: absolute;
-      right: 0;
-      width: 48px;
-      height: 48px;
-      top: 0;
+      display: ${props => (props.actionsVisible ? "block" : "none")};
       background: none;
       border: none;
       color: white;
       cursor: pointer;
       outline: none;
+      width: 48px;
+      height: 48px;
+    }
+    > .close {
+      right: 0;
+      top: 0;
     }
     > .prev {
-      width: 48px;
-      height: 48px;
-      position: absolute;
       left: 0;
       top: calc(50% - 48px / 2);
-      background: none;
-      border: none;
-      color: white;
-      cursor: pointer;
-      outline: none;
     }
     > .next {
-      position: absolute;
       right: 0;
-      width: 48px;
-      height: 48px;
       top: calc(50% - 48px / 2);
-      background: none;
-      border: none;
-      color: white;
-      cursor: pointer;
-      outline: none;
     }
-    > .cc {
+    > .items {
       display: flex;
       width: 100%;
       height: 100%;
-      > .ccc {
+      > .item {
         width: 100%;
         height: 100%;
         flex-shrink: 0;
@@ -71,7 +60,7 @@ export default styled.div`
       width: 100%;
       height: 48px;
       bottom: 0;
-      display: flex;
+      display: ${props => (props.actionsVisible ? "flex" : "none")};
       justify-content: center;
       align-items: center;
       > .indicator {

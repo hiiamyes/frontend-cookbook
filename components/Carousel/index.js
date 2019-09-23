@@ -27,10 +27,10 @@ const photos = [
 ];
 
 const Carousel = props => {
+  const [actionsVisible, setActionsVisible] = useState(true);
   const [visible, setVisible] = useState(true);
   const [activeIndex, setActiveIndex] = useState(0);
   const [w, setW] = useState(0);
-  const bb = createRef();
   const itemsRef = createRef();
   const open = () => {
     setVisible(true);
@@ -58,6 +58,9 @@ const Carousel = props => {
   const resize = debounce(150, () => {
     setW(itemsRef.current.getBoundingClientRect().width);
   });
+  const toggleActionsVisible = () => {
+    setActionsVisible(!actionsVisible);
+  };
 
   useEffect(() => {
     resize();
@@ -90,20 +93,21 @@ const Carousel = props => {
   }, [activeIndex]);
 
   return (
-    <Style>
+    <Style actionsVisible={actionsVisible}>
       <button onClick={open}>open</button>
       {visible && (
-        <div ref={bb} className="modal">
+        <div className="modal">
           <div
             ref={itemsRef}
-            className="cc"
+            className="items"
             style={{
               transform: `translateX(${-w * activeIndex}px)`
             }}
+            onClick={toggleActionsVisible}
           >
             {photos.map(photo => {
               return (
-                <div className="ccc">
+                <div className="item">
                   <img src={photo.url} />
                   <div>{photo.copyright}</div>
                 </div>

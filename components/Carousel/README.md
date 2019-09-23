@@ -1,11 +1,14 @@
 # Carousel
 
-- Open (Modal for mobile friendly)
-- Close
-- Indicator!
-- Next/Prev (Keyboard friendly)
+- Open / Close (Modal for mobile friendly)
+  - Provide HOC?
+  - Provide Hook?
+- Actions
+  - Indicator!
+  - Next/Prev (Keyboard friendly)
+  - Show / Hike Actions
 - Gesture? (mobile friendly)
-- Scale?
+- Zoom
 
 # Ref
 
