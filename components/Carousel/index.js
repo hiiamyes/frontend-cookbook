@@ -66,6 +66,29 @@ const Carousel = props => {
       window.removeEventListener("resize", resize);
     };
   }, []);
+
+  useEffect(() => {
+    const keydown = e => {
+      switch (e.key) {
+        case "ArrowLeft":
+          prev();
+          break;
+        case "ArrowRight":
+          next();
+          break;
+        case "Escape":
+          close();
+          break;
+        default:
+          break;
+      }
+    };
+    window.addEventListener("keydown", keydown);
+    return () => {
+      window.removeEventListener("keydown", keydown);
+    };
+  }, [activeIndex]);
+
   return (
     <Style>
       <button onClick={open}>open</button>
