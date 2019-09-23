@@ -42,11 +42,6 @@ export default styled.div`
         width: 100%;
         height: 100%;
         flex-shrink: 0;
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
-        }
       }
     }
     > .indicators {

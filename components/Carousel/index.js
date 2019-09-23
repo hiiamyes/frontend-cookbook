@@ -2,51 +2,22 @@ import React, { useState, createRef, useEffect } from "react";
 import { debounce } from "lodash/fp";
 import FAIcon from "../FAIcon";
 import Style from "./style";
-import photo1 from "./photos/benjamin-voros-phIFdC6lA4E-unsplash.jpg";
-import photo2 from "./photos/jerry-zhang-ePpaQC2c1xA-unsplash.jpg";
-import photo3 from "./photos/john-rodenn-castillo-eluzJSfkNCk-unsplash.jpg";
-import photo4 from "./photos/kalen-emsley-Bkci_8qcdvQ-unsplash.jpg";
-
-const photos = [
-  {
-    url: photo1,
-    copyright: "Photo by John Rodenn Castillo on Unsplash"
-  },
-  {
-    url: photo2,
-    copyright: "Photo by Benjamin Voros on Unsplash"
-  },
-  {
-    url: photo3,
-    copyright: "Photo by Kalen Emsley on Unsplash"
-  },
-  {
-    url: photo4,
-    copyright: "Photo by Jerry Zhang on Unsplashh"
-  }
-];
 
 const Carousel = props => {
+  const { visible, onClose, children } = props;
   const [actionsVisible, setActionsVisible] = useState(true);
-  const [visible, setVisible] = useState(true);
   const [activeIndex, setActiveIndex] = useState(0);
   const [w, setW] = useState(0);
   const itemsRef = createRef();
-  const open = () => {
-    setVisible(true);
-  };
-  const close = e => {
-    setVisible(false);
-  };
   const prev = () => {
     if (activeIndex === 0) {
-      setActiveIndex(photos.length - 1);
+      setActiveIndex(children.length - 1);
     } else {
       setActiveIndex(activeIndex - 1);
     }
   };
   const next = () => {
-    if (activeIndex === photos.length - 1) {
+    if (activeIndex === children.length - 1) {
       setActiveIndex(0);
     } else {
       setActiveIndex(activeIndex + 1);
@@ -56,7 +27,7 @@ const Carousel = props => {
     setActiveIndex(index);
   };
   const resize = debounce(150, () => {
-    setW(itemsRef.current.getBoundingClientRect().width);
+    if (itemsRef.current) setW(itemsRef.current.getBoundingClientRect().width);
   });
   const toggleActionsVisible = () => {
     setActionsVisible(!actionsVisible);
@@ -64,11 +35,11 @@ const Carousel = props => {
 
   useEffect(() => {
     resize();
-    window.addEventListener("resize", resize, {});
+    window.addEventListener("resize", resize);
     return () => {
       window.removeEventListener("resize", resize);
     };
-  }, []);
+  }, [itemsRef]);
 
   useEffect(() => {
     const keydown = e => {
@@ -80,7 +51,7 @@ const Carousel = props => {
           next();
           break;
         case "Escape":
-          close();
+          onClose();
           break;
         default:
           break;
@@ -91,10 +62,8 @@ const Carousel = props => {
       window.removeEventListener("keydown", keydown);
     };
   }, [activeIndex]);
-
   return (
     <Style actionsVisible={actionsVisible}>
-      <button onClick={open}>open</button>
       {visible && (
         <div className="modal">
           <div
@@ -105,16 +74,15 @@ const Carousel = props => {
             }}
             onClick={toggleActionsVisible}
           >
-            {photos.map(photo => {
+            {children.map((child, index) => {
               return (
-                <div className="item">
-                  <img src={photo.url} />
-                  <div>{photo.copyright}</div>
+                <div key={index} className="item">
+                  {child}
                 </div>
               );
             })}
           </div>
-          <button className="close" onClick={close}>
+          <button className="close" onClick={onClose}>
             <FAIcon icon="times"></FAIcon>
           </button>
           <button className="prev" onClick={prev}>
@@ -124,7 +92,7 @@ const Carousel = props => {
             <FAIcon icon="chevron-right"></FAIcon>
           </button>
           <div className="indicators">
-            {photos.map((photo, index) => {
+            {children.map((child, index) => {
               return (
                 <button
                   key={index}
