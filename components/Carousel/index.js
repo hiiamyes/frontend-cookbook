@@ -1,4 +1,5 @@
-import React, { useState, createRef } from "react";
+import React, { useState, createRef, useEffect } from "react";
+import { debounce } from "lodash/fp";
 import FAIcon from "../FAIcon";
 import Style from "./style";
 import photo1 from "./photos/benjamin-voros-phIFdC6lA4E-unsplash.jpg";
@@ -26,26 +27,57 @@ const photos = [
 ];
 
 const Carousel = props => {
-  // const [visible, setVisible] = useState(false);
   const [visible, setVisible] = useState(true);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [w, setW] = useState(0);
   const bb = createRef();
+  const itemsRef = createRef();
   const open = () => {
     setVisible(true);
   };
   const close = e => {
-    if (e.target === bb.current) {
-      setVisible(false);
+    setVisible(false);
+  };
+  const prev = () => {
+    if (activeIndex === 0) {
+      setActiveIndex(photos.length - 1);
+    } else {
+      setActiveIndex(activeIndex - 1);
     }
   };
+  const next = () => {
+    if (activeIndex === photos.length - 1) {
+      setActiveIndex(0);
+    } else {
+      setActiveIndex(activeIndex + 1);
+    }
+  };
+  const go = index => () => {
+    setActiveIndex(index);
+  };
+  const resize = debounce(150, () => {
+    setW(itemsRef.current.getBoundingClientRect().width);
+  });
+
+  useEffect(() => {
+    resize();
+    window.addEventListener("resize", resize, {});
+    return () => {
+      window.removeEventListener("resize", resize);
+    };
+  }, []);
   return (
     <Style>
       <button onClick={open}>open</button>
       {visible && (
-        <div ref={bb} className="bb" onClick={close}>
-          <button className="prev">
-            <FAIcon icon="chevron-left"></FAIcon>
-          </button>
-          <div className="cc">
+        <div ref={bb} className="modal">
+          <div
+            ref={itemsRef}
+            className="cc"
+            style={{
+              transform: `translateX(${-w * activeIndex}px)`
+            }}
+          >
             {photos.map(photo => {
               return (
                 <div className="ccc">
@@ -55,9 +87,28 @@ const Carousel = props => {
               );
             })}
           </div>
-          <button className="next">
+          <button className="close" onClick={close}>
+            <FAIcon icon="times"></FAIcon>
+          </button>
+          <button className="prev" onClick={prev}>
+            <FAIcon icon="chevron-left"></FAIcon>
+          </button>
+          <button className="next" onClick={next}>
             <FAIcon icon="chevron-right"></FAIcon>
           </button>
+          <div className="indicators">
+            {photos.map((photo, index) => {
+              return (
+                <button
+                  key={index}
+                  className={`indicator ${
+                    index === activeIndex ? "active" : ""
+                  }`}
+                  onClick={go(index)}
+                ></button>
+              );
+            })}
+          </div>
         </div>
       )}
     </Style>

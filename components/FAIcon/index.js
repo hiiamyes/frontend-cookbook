@@ -8,7 +8,8 @@ import {
   faSearch,
   faChevronLeft,
   faChevronRight,
-  faSpinner
+  faSpinner,
+  faTimes
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(faCog);
@@ -18,6 +19,7 @@ library.add(faSearch);
 library.add(faChevronLeft);
 library.add(faChevronRight);
 library.add(faSpinner);
+library.add(faTimes);
 
 const FAIcon = props => {
   const { icon } = props;

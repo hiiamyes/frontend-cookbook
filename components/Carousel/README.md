@@ -6,3 +6,7 @@
 - Next/Prev (Keyboard friendly)
 - Gesture? (mobile friendly)
 - Scale?
+
+# Ref
+
+- [slick](https://github.com/kenwheeler/slick)
