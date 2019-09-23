@@ -3,8 +3,7 @@ import theme from "./theme";
 
 addParameters({
   options: {
-    theme,
-    brandTitle: "Frontend Cookbook"
+    theme
   }
 });
 
