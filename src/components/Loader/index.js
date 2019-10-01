@@ -1,5 +1,5 @@
 import React from "react";
-import FAIcon from "../FAIcon";
+import FAIcon from "src/components/FAIcon";
 import Style from "./style";
 
 const Loader = props => {

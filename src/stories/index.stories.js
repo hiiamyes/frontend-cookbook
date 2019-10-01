@@ -4,20 +4,20 @@ import { storiesOf } from "@storybook/react";
 import styled from "styled-components";
 import "antd/dist/antd.css";
 
-import { BasicInputDemo } from "../components/Input/BasicInput";
-import FAIcon from "../components/FAIcon";
-import BasicSelect from "../components/Select/BasicSelect";
-import TimezoneNameSelect from "../components/Select/TimezoneNameSelect";
-import { MoneyInputDemo } from "../components/Input/MoneyInput";
-import LineChartDemo from "../components/Chart/LineChart/demo";
-import BarChartDemo from "../components/Chart/BarChart/demo";
-import BasicUploaderDemo from "../components/Uploader/demo";
-import SearchDemo from "../components/Input/Search/demo";
-import CarouselDemo from "../components/Carousel/demo";
-import LoaderDemo from "../components/Loader/demo";
-import TableDemo from "../components/Table/demo";
+import { BasicInputDemo } from "src/components/Input/BasicInput";
+import FAIcon from "src/components/FAIcon";
+import BasicSelect from "src/components/Select/BasicSelect";
+import TimezoneNameSelect from "src/components/Select/TimezoneNameSelect";
+import { MoneyInputDemo } from "src/components/Input/MoneyInput";
+import LineChartDemo from "src/components/Chart/LineChart/demo";
+import BarChartDemo from "src/components/Chart/BarChart/demo";
+import BasicUploaderDemo from "src/components/Uploader/demo";
+import SearchInputDemo from "src/components/Input/SearchInput/demo";
+import CarouselDemo from "src/components/Carousel/demo";
+import LoaderDemo from "src/components/Loader/demo";
+import TableDemo from "src/components/Table/demo";
 
-import "../styles/global-style.css";
+import "src/styles/global-style.css";
 
 const Layout = styled.div`
   padding: 15px;
@@ -36,7 +36,7 @@ storiesOf("Input", module)
   ))
   .add("SearchInput", () => (
     <Layout>
-      <SearchDemo />
+      <SearchInputDemo />
     </Layout>
   ));
 

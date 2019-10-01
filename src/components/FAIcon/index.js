@@ -11,6 +11,7 @@ import {
   faSpinner,
   faTimes
 } from "@fortawesome/free-solid-svg-icons";
+import Style from "./style";
 
 library.add(faCog);
 library.add(faAngleDown);
@@ -23,7 +24,11 @@ library.add(faTimes);
 
 const FAIcon = props => {
   const { icon } = props;
-  return <FontAwesomeIcon icon={icon} />;
+  return (
+    <Style>
+      <FontAwesomeIcon icon={icon} />
+    </Style>
+  );
 };
 
 export default FAIcon;
