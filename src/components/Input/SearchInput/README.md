@@ -7,7 +7,8 @@
   - Uncontrolled input
     - Use ref
 - Clearable
-  - Keep focus
+  - Keep input focused
+  - Hack on mouse down event
 - [IME handling guide](https://developer.mozilla.org/en-US/docs/Mozilla/IME_handling_guide)
 - Composition event for non-latin language input (Chinese, Japanese IME)
   - [compositionstart](https://developer.mozilla.org/en-US/docs/Web/API/Element/compositionstart_event)
