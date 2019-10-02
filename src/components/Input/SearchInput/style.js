@@ -10,7 +10,8 @@ import {
 
 export default styled.div`
   position: relative;
-  > .icon {
+  width: 240px;
+  > .search {
     position: absolute;
     left: 0;
     top: 0;
@@ -21,18 +22,30 @@ export default styled.div`
     align-items: center;
   }
   > input {
+    width: 100%;
     height: ${inputHeight};
     padding: ${inputPadding};
     font-size: ${inputFontSize};
     outline: none;
     border-radius: ${borderRadius};
     border: ${borderWidth} solid ${colorBorderDefault};
-    padding-left: 32px;
+    padding: 0 32px;
     &:hover {
       border-color: ${colorBorderHover};
     }
     &:focus {
       border-color: ${colorBorderFocus};
     }
+  }
+  .clear {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 32px;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    cursor: pointer;
   }
 `;

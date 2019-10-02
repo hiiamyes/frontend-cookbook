@@ -1,19 +1,33 @@
-import React, { useState } from "react";
+import React, { createRef } from "react";
 import FAIcon from "src/components/FAIcon";
+import { debounce } from "lodash/fp";
 import Style from "./style";
 
 const Search = props => {
-  let { value } = props;
-  const onChange = e => {
-    props.onChange(e.target.value);
+  let { defaultValue, onChange } = props;
+  const inputRef = createRef();
+
+  const deBouncedOnChange = debounce(150, value => {
+    onChange(value);
+  });
+
+  const _onChange = e => {
+    deBouncedOnChange(e.target.value);
+  };
+  const onClear = () => {
+    inputRef.current.value = "";
+    deBouncedOnChange("");
   };
 
   return (
     <Style>
-      <div className="icon">
+      <div className="search">
         <FAIcon icon="search" />
       </div>
-      <input value={value} onChange={onChange} />
+      <input defaultValue={defaultValue} ref={inputRef} onChange={_onChange} />
+      <div className="clear" onClick={onClear}>
+        <FAIcon icon="times" />
+      </div>
     </Style>
   );
 };

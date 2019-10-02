@@ -1,12 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
+import { action } from "@storybook/addon-actions";
 import SearchInput from "./index";
 
 const SearchInputDemo = () => {
-  const [value, setValue] = useState(null);
-  const onChange = value => {
-    setValue(value);
-  };
-  return <SearchInput value={value} onChange={onChange} />;
+  return <SearchInput onChange={action("onChange")} />;
 };
 
 export default SearchInputDemo;
