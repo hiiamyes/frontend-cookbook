@@ -18,7 +18,7 @@ const Search = props => {
   const onClear = e => {
     inputRef.current.value = "";
     e.preventDefault();
-    // inputRef.current.focus();
+    inputRef.current.focus();
     deBouncedOnChange("");
   };
 
@@ -28,9 +28,9 @@ const Search = props => {
         <FAIcon icon="search" />
       </div>
       <input defaultValue={defaultValue} ref={inputRef} onChange={_onChange} />
-      <div className="clear" onMouseDown={onClear}>
+      <button className="clear" onMouseDown={onClear} onKeyDown={onClear}>
         <FAIcon icon="times" />
-      </div>
+      </button>
     </Style>
   );
 };

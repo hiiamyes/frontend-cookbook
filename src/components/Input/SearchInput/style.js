@@ -47,5 +47,12 @@ export default styled.div`
     justify-items: center;
     align-items: center;
     cursor: pointer;
+    outline: none;
+    border: none;
+    background: none;
+    border-radius: ${borderRadius};
+    &:focus {
+      background: ${colorBorderHover};
+    }
   }
 `;
