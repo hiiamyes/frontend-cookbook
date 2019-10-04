@@ -16,6 +16,7 @@ import SearchInputDemo from "src/components/Input/SearchInput/demo";
 import CarouselDemo from "src/components/Carousel/demo";
 import LoaderDemo from "src/components/Loader/demo";
 import TableDemo from "src/components/Table/demo";
+import ModalDemo from "src/components/Modal/demo";
 
 import "src/styles/global-style.css";
 
@@ -90,5 +91,11 @@ storiesOf("Loader", module).add("Loader", () => (
 storiesOf("Table", module).add("BasicTable", () => (
   <Layout>
     <TableDemo />
+  </Layout>
+));
+
+storiesOf("Modal", module).add("Modal", () => (
+  <Layout>
+    <ModalDemo />
   </Layout>
 ));
