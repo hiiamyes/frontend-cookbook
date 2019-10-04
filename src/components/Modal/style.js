@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { modalMaskZIndex } from "src/styles/zIndex";
 
 const duration = "200ms";
 
@@ -10,6 +11,7 @@ export default styled.div`
     left: 0;
     width: 100vw;
     height: 100vh;
+    z-index: ${modalMaskZIndex};
   }
   &.modal-enter > .mask {
     background: rgba(0, 0, 0, 0);
@@ -30,6 +32,12 @@ export default styled.div`
   }
 
   /* content */
+  > .content {
+    background: white;
+    width: 640px;
+    border-radius: 4px;
+    padding: 5px;
+  }
   &.modal-enter > .content {
     opacity: 0;
   }

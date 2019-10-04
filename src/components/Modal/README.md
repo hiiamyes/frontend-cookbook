@@ -1,5 +1,10 @@
 # Modal
 
+- Modal structure
+  - modal
+    - mask
+    - content
+- Depth of modal mask
 - Show/hide vs mount/unmount
   - With animation
     - requestAnimationFrame
