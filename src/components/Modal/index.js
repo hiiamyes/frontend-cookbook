@@ -26,7 +26,10 @@ const Modal = props => {
       classNames="modal"
       unmountOnExit={true}
     >
-      <Style>{children}</Style>
+      <Style>
+        <div className="mask"></div>
+        <div className="content">{children}</div>
+      </Style>
     </CSSTransition>
   );
 };
