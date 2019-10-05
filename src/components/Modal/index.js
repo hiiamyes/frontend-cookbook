@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { CSSTransition } from "react-transition-group";
+import FAIcon from "src/components/FAIcon";
 import Style from "./style";
 
 const Modal = props => {
@@ -19,6 +20,9 @@ const Modal = props => {
       window.removeEventListener("keydown", keydown);
     };
   }, []);
+  const close = () => {
+    onClose();
+  };
   return (
     <CSSTransition
       in={visible}
@@ -28,6 +32,9 @@ const Modal = props => {
     >
       <Style>
         <div className="mask"></div>
+        <button className="close" onClick={close}>
+          <FAIcon icon="times"></FAIcon>
+        </button>
         <div className="content">{children}</div>
       </Style>
     </CSSTransition>

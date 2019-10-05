@@ -55,4 +55,17 @@ export default styled.div`
     opacity: 0;
     transition: opacity ${duration};
   }
+
+  > button.close {
+    position: fixed;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    width: 48px;
+    height: 48px;
+    right: 0;
+    top: 0;
+  }
 `;
