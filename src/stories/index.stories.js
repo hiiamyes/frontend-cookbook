@@ -13,6 +13,8 @@ import LineChartDemo from "src/components/Chart/LineChart/demo";
 import BarChartDemo from "src/components/Chart/BarChart/demo";
 import BasicUploaderDemo from "src/components/Uploader/demo";
 import SearchInputDemo from "src/components/Input/SearchInput/demo";
+import FormInputDemo from "src/components/Input/FormInput/demo";
+
 import CarouselDemo from "src/components/Carousel/demo";
 import LoaderDemo from "src/components/Loader/demo";
 import TableDemo from "src/components/Table/demo";
@@ -38,6 +40,11 @@ storiesOf("Input", module)
   .add("SearchInput", () => (
     <Layout>
       <SearchInputDemo />
+    </Layout>
+  ))
+  .add("FormInput", () => (
+    <Layout>
+      <FormInputDemo />
     </Layout>
   ));
 
