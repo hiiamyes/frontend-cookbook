@@ -6,8 +6,11 @@ import "antd/dist/antd.css";
 
 import { BasicInputDemo } from "src/components/Input/BasicInput";
 import FAIcon from "src/components/FAIcon";
-import BasicSelect from "src/components/Select/BasicSelect";
+
+import BasicSelectDemo from "src/components/Select/BasicSelect/demo";
 import TimezoneNameSelect from "src/components/Select/TimezoneNameSelect";
+import LanguagePickerDemo from "src/components/Select/LanguagePicker/demo";
+
 import { MoneyInputDemo } from "src/components/Input/MoneyInput";
 import LineChartDemo from "src/components/Chart/LineChart/demo";
 import BarChartDemo from "src/components/Chart/BarChart/demo";
@@ -54,13 +57,18 @@ storiesOf("Select", module)
   .add("BasicSelect", () => {
     return (
       <Layout>
-        <BasicSelect />
+        <BasicSelectDemo />
       </Layout>
     );
   })
   .add("TimezoneNameSelect", () => (
     <Layout>
       <TimezoneNameSelect />
+    </Layout>
+  ))
+  .add("LanguagePicker", () => (
+    <Layout>
+      <LanguagePickerDemo />
     </Layout>
   ));
 

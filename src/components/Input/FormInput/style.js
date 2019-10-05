@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { inputHeight, inputPadding } from "src/styles/dimension";
+import { inputPadding } from "src/styles/dimension";
 import { inputFontSize } from "src/styles/font";
 import { borderWidth, borderRadius } from "src/styles/border";
 import {

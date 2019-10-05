@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import FAIcon from "../../FAIcon";
-import timezoneNames from "./timezoneNames.json";
 import Style from "./style";
 
 const BasicSelect = props => {
@@ -112,19 +111,4 @@ const BasicSelect = props => {
   );
 };
 
-const BasicSelectDemo = () => {
-  const [value, setValue] = useState("");
-  return (
-    <div>
-      <BasicSelect
-        value={value}
-        options={timezoneNames}
-        onChange={value => {
-          setValue(value);
-        }}
-      />
-    </div>
-  );
-};
-
-export default BasicSelectDemo;
+export default BasicSelect;
