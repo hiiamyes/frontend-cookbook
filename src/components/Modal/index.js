@@ -26,7 +26,7 @@ const Modal = props => {
   return (
     <CSSTransition
       in={visible}
-      timeout={200}
+      timeout={300}
       classNames="modal"
       unmountOnExit={true}
     >

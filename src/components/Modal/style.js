@@ -4,60 +4,73 @@ import { modalMaskZIndex } from "src/styles/zIndex";
 const duration = "200ms";
 
 export default styled.div`
-  /* mask */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
   > .mask {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     z-index: ${modalMaskZIndex};
-  }
-  &.modal-enter > .mask {
-    background: rgba(0, 0, 0, 0);
-  }
-  &.modal-enter-active > .mask {
-    background: rgba(0, 0, 0, 0.7);
-    transition: background ${duration};
-  }
-  &.modal-enter-done > .mask {
-    background: rgba(0, 0, 0, 0.7);
-  }
-  &.modal-exit > .mask {
-    background: rgba(0, 0, 0, 0.7);
+    animation: fadeIn ${duration} ease-in-out forwards;
   }
   &.modal-exit-active > .mask {
-    background: rgba(0, 0, 0, 0);
-    transition: background ${duration};
+    animation: fadeOut ${duration} ease-in-out forwards;
+  }
+  @keyframes fadeIn {
+    0% {
+      background: rgba(0, 0, 0, 0);
+    }
+    100% {
+      background: rgba(0, 0, 0, 0.7);
+    }
+  }
+  @keyframes fadeOut {
+    0% {
+      background: rgba(0, 0, 0, 0.7);
+    }
+    100% {
+      background: rgba(0, 0, 0, 0);
+    }
   }
 
-  /* content */
   > .content {
     background: white;
-    width: 640px;
+    max-width: 640px;
+    width: calc(100% - 30px);
+    margin: 15px auto;
     border-radius: 4px;
     padding: 5px;
-  }
-  &.modal-enter > .content {
-    opacity: 0;
-  }
-  &.modal-enter-active > .content {
-    opacity: 1;
-    transition: opacity ${duration};
-  }
-  &.modal-enter-done > .content {
-    opacity: 1;
-  }
-  &.modal-exit > .content {
-    opacity: 1;
+    animation: fadeInOpacity ${duration} ease-in-out forwards;
   }
   &.modal-exit-active > .content {
-    opacity: 0;
-    transition: opacity ${duration};
+    animation: fadeOutOpacity ${duration} ease-in-out forwards;
+  }
+  @keyframes fadeInOpacity {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeOutOpacity {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
   }
 
   > button.close {
-    position: fixed;
+    position: absolute;
     background: none;
     border: none;
     color: white;
@@ -67,5 +80,8 @@ export default styled.div`
     height: 48px;
     right: 0;
     top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 `;
