@@ -11,7 +11,7 @@ jobs:
       - run: |
           yarn
           yarn test
-          yarn run build
+          MAPBOX_ACCESS_TOKEN=$MAPBOX_ACCESS_TOKEN yarn run build
           ssh-keyscan $LINODE_IP >> ~/.ssh/known_hosts
           ssh yes@$LINODE_IP 'mkdir -p ~/app/frontend-cookbook'
           scp -pr ./.build/* yes@$LINODE_IP:~/app/frontend-cookbook
