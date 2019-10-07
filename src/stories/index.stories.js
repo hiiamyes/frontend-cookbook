@@ -23,12 +23,19 @@ import LoaderDemo from "src/components/Loader/demo";
 import TableDemo from "src/components/Table/demo";
 import ModalDemo from "src/components/Modal/demo";
 import ButtonDemo from "src/components/Button/demo";
+import DrawerDemo from "src/components/Drawer/demo";
 
 import "src/styles/global-style.css";
 
 const Layout = styled.div`
   padding: 15px;
 `;
+
+storiesOf("Drawer", module).add("Drawer", () => (
+  <Layout>
+    <DrawerDemo />
+  </Layout>
+));
 
 storiesOf("Button", module).add("Button", () => (
   <Layout>
