@@ -22,12 +22,19 @@ import CarouselDemo from "src/components/Carousel/demo";
 import LoaderDemo from "src/components/Loader/demo";
 import TableDemo from "src/components/Table/demo";
 import ModalDemo from "src/components/Modal/demo";
+import ButtonDemo from "src/components/Button/demo";
 
 import "src/styles/global-style.css";
 
 const Layout = styled.div`
   padding: 15px;
 `;
+
+storiesOf("Button", module).add("Button", () => (
+  <Layout>
+    <ButtonDemo />
+  </Layout>
+));
 
 storiesOf("Input", module)
   .add("BasicInput", () => (
