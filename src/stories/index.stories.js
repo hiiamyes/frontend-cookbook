@@ -25,12 +25,19 @@ import ModalDemo from "src/components/Modal/demo";
 import ButtonDemo from "src/components/Button/demo";
 import DrawerDemo from "src/components/Drawer/demo";
 import MapDemo from "src/components/Map/demo";
+import TagDemo from "src/components/Tag/demo";
 
 import "src/styles/global-style.css";
 
 const Layout = styled.div`
   padding: 15px;
 `;
+
+storiesOf("Tag", module).add("Tag", () => (
+  <Layout>
+    <TagDemo />
+  </Layout>
+));
 
 storiesOf("Map", module).add("Map", () => (
   <Layout>

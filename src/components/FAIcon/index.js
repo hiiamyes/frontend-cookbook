@@ -23,9 +23,9 @@ library.add(faSpinner);
 library.add(faTimes);
 
 const FAIcon = props => {
-  const { icon } = props;
+  const { size, icon } = props;
   return (
-    <Style>
+    <Style size={size}>
       <FontAwesomeIcon icon={icon} />
     </Style>
   );
