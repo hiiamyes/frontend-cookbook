@@ -2,8 +2,12 @@ import React from "react";
 import Style from "./style";
 
 const Button = props => {
-  let { children, onClick } = props;
-  return <Style onClick={onClick}>{children}</Style>;
+  let { children, onClick, ...others } = props;
+  return (
+    <Style onClick={onClick} {...others}>
+      {children}
+    </Style>
+  );
 };
 
 export default Button;

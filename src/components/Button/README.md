@@ -22,3 +22,7 @@
 
 - Primary
 - Danger
+
+## Fine Tune
+
+- user-select: none
