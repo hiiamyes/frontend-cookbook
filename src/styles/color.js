@@ -1,7 +1,10 @@
-const teal500 = "#009688";
-const teal700 = "#00796b";
-const teal900 = "#004d40";
-const gray600 = "#757575";
+export const teal500 = "#009688";
+export const teal700 = "#00796b";
+export const teal900 = "#004d40";
+
+export const gray50 = "#fafafa";
+export const gray200 = "#eeeeee";
+export const gray600 = "#757575";
 
 export const colorPrimary = teal700;
 export const colorPrimaryHover = teal500;

@@ -27,12 +27,19 @@ import DrawerDemo from "src/components/Drawer/demo";
 import MapDemo from "src/components/Map/demo";
 import TagDemo from "src/components/Tag/demo";
 import CollapseDemo from "src/components/Collapse/demo";
+import ScrollbarDemo from "src/components/Scrollbar/demo";
 
 import "src/styles/global-style.css";
 
 const Layout = styled.div`
   padding: 15px;
 `;
+
+storiesOf("Scrollbar", module).add("Scrollbar", () => (
+  <Layout>
+    <ScrollbarDemo />
+  </Layout>
+));
 
 storiesOf("Collapse", module).add("Collapse", () => (
   <Layout>
