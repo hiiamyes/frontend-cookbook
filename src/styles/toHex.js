@@ -1,8 +1,6 @@
-export const colorPrimary = "rgb(204, 204, 204)";
-export const colorPrimaryHover = "rgb(204, 204, 204, .7)";
-export const colorPrimaryFocus = "rgb(204, 204, 204, .7)";
-
-export const colorBorderDefault = "rgb(204, 204, 204)";
-export const colorBorderHover = "rgb(179, 179, 179)";
-export const colorBorderFocus = "rgb(70, 146, 245)";
-export const colorBackgroundModal = "rgb(0,0,0,.7)";
+const rgb = "244 243 244".split(" ");
+const r = parseInt(hex.slice(0, 2), 16);
+const g = parseInt(hex.slice(2, 4), 16);
+const b = parseInt(hex.slice(4, 6), 16);
+const hex = `rgba(${r}, ${g}, ${b}, ${1})`;
+console.log(rgba);
