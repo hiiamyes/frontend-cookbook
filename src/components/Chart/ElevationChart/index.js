@@ -26,7 +26,7 @@ const draw = data => {
     .range([0, width]);
   yScale = d3
     .scaleLinear()
-    .domain([0, d3.max(data.map(({ y }) => +y))])
+    .domain([d3.min(data.map(({ y }) => y)), d3.max(data.map(({ y }) => y))])
     .range([height, 0]);
   line = d3
     .line()

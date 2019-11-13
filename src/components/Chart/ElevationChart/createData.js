@@ -1,7 +1,8 @@
-const t = require("./trail.json");
+const trail = require("./trail.json");
+const fs = require("fs");
 const path = require("path");
+const { TileSet } = require("node-hgt");
 const { getDistance } = require("geolib");
-const { Hgt, TileSet } = require("node-hgt");
 
 const tileset = new TileSet(path.resolve(__dirname, "hgt"));
 // osm node 5579557352
@@ -17,9 +18,10 @@ const getEle = ({ lat, lng }) =>
     });
   });
 
+// [lat, lng, ele, distance]
 (async () => {
-  const { coordinates } = t;
-  let d = 0;
+  const { coordinates } = trail;
+  let distance = 0;
   const result = [];
   for (let i = 0; i < coordinates.length; i++) {
     const coordinate = coordinates[i];
@@ -27,12 +29,17 @@ const getEle = ({ lat, lng }) =>
     const ele = await getEle({ lat, lng });
     if (i !== 0) {
       const [plng, plat] = coordinates[i - 1];
-      d += getDistance(
+      distance += getDistance(
         { latitude: plat, longitude: plng },
         { latitude: lat, longitude: lng }
       );
     }
-    result.push([lng, lat, ele, d]);
+    // result.push([lng, lat, ele, distance]);
+    result.push({ x: distance, y: ele });
   }
-  console.log(result[result.length - 1]);
+  console.log(result);
+  fs.writeFileSync(
+    path.resolve(__dirname, "./data.json"),
+    JSON.stringify(result)
+  );
 })();
