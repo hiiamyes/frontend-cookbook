@@ -14,6 +14,8 @@ import LanguagePickerDemo from "src/components/Select/LanguagePicker/demo";
 import { MoneyInputDemo } from "src/components/Input/MoneyInput";
 import LineChartDemo from "src/components/Chart/LineChart/demo";
 import BarChartDemo from "src/components/Chart/BarChart/demo";
+import ElevationChartDemo from "src/components/Chart/ElevationChart/demo";
+
 import BasicUploaderDemo from "src/components/Uploader/demo";
 import SearchInputDemo from "src/components/Input/SearchInput/demo";
 import FormInputDemo from "src/components/Input/FormInput/demo";
@@ -124,6 +126,11 @@ storiesOf("Chart", module)
   .add("BarChart", () => (
     <Layout>
       <BarChartDemo />
+    </Layout>
+  ))
+  .add("ElevationChartDemo", () => (
+    <Layout>
+      <ElevationChartDemo />
     </Layout>
   ));
 
