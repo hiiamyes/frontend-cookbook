@@ -21,8 +21,8 @@ const draw = data => {
   };
   const { width, height } = chart;
   xScale = d3
-    .scalePoint()
-    .domain(data.map(({ x }) => x))
+    .scaleLinear()
+    .domain([0, data[data.length - 1].x])
     .range([0, width]);
   yScale = d3
     .scaleLinear()
@@ -48,13 +48,13 @@ const draw = data => {
     .append("g")
     .attr("class", "x axis")
     .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(xScale))
-    .selectAll("text")
-    .attr("transform", "rotate(-90)")
-    .attr("y", "0")
-    .attr("dy", "0.2rem")
-    .style("text-anchor", "start")
-    .attr("x", "-4rem");
+    .call(
+      d3
+        .axisBottom(xScale)
+        .tickValues([0, data[data.length - 1].x])
+        .tickFormat(d => `${(d / 1000).toFixed(1)}k`)
+    )
+    .selectAll("text");
   svg
     .append("g")
     .attr("class", "y axis")
