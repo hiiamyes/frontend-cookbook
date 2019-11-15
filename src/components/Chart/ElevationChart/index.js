@@ -58,7 +58,15 @@ const draw = data => {
   svg
     .append("g")
     .attr("class", "y axis")
-    .call(d3.axisLeft(yScale));
+    .call(
+      d3
+        .axisLeft(yScale)
+        .tickValues([
+          d3.min(data.map(({ y }) => y)),
+          d3.max(data.map(({ y }) => y))
+        ])
+        .tickFormat(d => `${d.toFixed(0)}m`)
+    );
   svg
     .append("path")
     .datum(data)
