@@ -100,7 +100,15 @@ const resize = debounce(150, data => {
         .tickValues([0, data[data.length - 1].x])
         .tickFormat(d => `${(d / 1000).toFixed(1)}k`)
     );
-  svg.select(".y.axis").call(d3.axisLeft(yScale));
+  svg.select(".y.axis").call(
+    d3
+      .axisLeft(yScale)
+      .tickValues([
+        d3.min(data.map(({ y }) => y)),
+        d3.max(data.map(({ y }) => y))
+      ])
+      .tickFormat(d => `${d.toFixed(0)}m`)
+  );
   svg.selectAll(".line").attr("d", line);
   svg.selectAll(".area").attr("d", area);
 });

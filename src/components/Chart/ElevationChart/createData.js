@@ -30,22 +30,21 @@ const getEle = ({ lat, lng }) =>
   // Create data from trail
   const { coordinates } = trail;
   let distance = 0;
-  const result = [];
+  const data = [];
   for (let i = 0; i < coordinates.length; i++) {
-    const coordinate = coordinates[i];
-    const [lng, lat] = coordinate;
+    const [lng, lat] = coordinates[i];
     const ele = await getEle({ lat, lng });
     if (i !== 0) {
-      const [plng, plat] = coordinates[i - 1];
+      const [prelng, prelat] = coordinates[i - 1];
       distance += getDistance(
-        { latitude: plat, longitude: plng },
+        { latitude: prelat, longitude: prelng },
         { latitude: lat, longitude: lng }
       );
     }
-    result.push({ x: distance, y: ele });
+    data.push({ x: distance, y: ele });
   }
   fs.writeFileSync(
     path.resolve(__dirname, "./data.json"),
-    JSON.stringify(result)
+    JSON.stringify(data)
   );
 })();
