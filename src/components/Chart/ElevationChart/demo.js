@@ -3,7 +3,12 @@ import ElevationChart from "./index";
 import data from "./data.json";
 
 const ElevationChartDemo = () => {
-  return <ElevationChart data={data} />;
+  return (
+    <div>
+      <h1>Jiaming Lake</h1>
+      <ElevationChart data={data} />
+    </div>
+  );
 };
 
 export default ElevationChartDemo;

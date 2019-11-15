@@ -1,15 +1,16 @@
-const trail = require("./trail.json");
 const fs = require("fs");
 const path = require("path");
 const { TileSet } = require("node-hgt");
 const { getDistance } = require("geolib");
+const osmWaysToGeoJSON = require("./osmWaysToGeoJSON");
+const ways = require("./ways.json");
 
 const tileset = new TileSet(path.resolve(__dirname, "hgt"));
 // osm node 5579557352
 // https://www.openstreetmap.org/node/5579557352
-tileset.getElevation([24.3834039, 121.2317649], (err, ele) => {
-  console.log(ele); // 3873m
-});
+// tileset.getElevation([24.3834039, 121.2317649], (err, ele) => {
+//   console.log(ele); // 3873m
+// });
 
 const getEle = ({ lat, lng }) =>
   new Promise((resolve, reject) => {
@@ -18,8 +19,15 @@ const getEle = ({ lat, lng }) =>
     });
   });
 
-// [lat, lng, ele, distance]
 (async () => {
+  // Create trail from ways
+  const trail = await osmWaysToGeoJSON(ways);
+  fs.writeFileSync(
+    path.resolve(__dirname, "./trail.json"),
+    JSON.stringify(trail)
+  );
+
+  // Create data from trail
   const { coordinates } = trail;
   let distance = 0;
   const result = [];
@@ -34,10 +42,8 @@ const getEle = ({ lat, lng }) =>
         { latitude: lat, longitude: lng }
       );
     }
-    // result.push([lng, lat, ele, distance]);
     result.push({ x: distance, y: ele });
   }
-  console.log(result);
   fs.writeFileSync(
     path.resolve(__dirname, "./data.json"),
     JSON.stringify(result)
