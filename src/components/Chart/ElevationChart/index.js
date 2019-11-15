@@ -71,7 +71,7 @@ const draw = data => {
     .attr("d", area);
 };
 
-const resize = debounce(150, () => {
+const resize = debounce(150, data => {
   const container = {
     width: window.innerWidth,
     height: 480
@@ -86,9 +86,15 @@ const resize = debounce(150, () => {
   svg
     .select(".x.axis")
     .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(xScale));
+    .call(
+      d3
+        .axisBottom(xScale)
+        .tickValues([0, data[data.length - 1].x])
+        .tickFormat(d => `${(d / 1000).toFixed(1)}k`)
+    );
   svg.select(".y.axis").call(d3.axisLeft(yScale));
   svg.selectAll(".line").attr("d", line);
+  svg.selectAll(".area").attr("d", area);
 });
 
 const LineChart = props => {
