@@ -5,7 +5,8 @@ import data from "./data.json";
 const ElevationChartDemo = () => {
   return (
     <div>
-      <h1>Jiaming Lake</h1>
+      {/* <h1>Jiaming Lake</h1> */}
+      <h1>Hehuan West Peak</h1>
       <ElevationChart data={data} />
     </div>
   );
