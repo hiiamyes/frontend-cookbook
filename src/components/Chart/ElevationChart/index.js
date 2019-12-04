@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from "react";
+import React, {createRef, useEffect, useCallback } from "react";
 import { debounce } from "lodash/fp";
 import Style from "./style";
 import * as d3 from "d3";
@@ -10,10 +10,10 @@ let line;
 let area;
 let svg;
 
-const draw = data => {
+const draw = (chartRef, data) => {
   const container = {
     width: window.innerWidth,
-    height: 480
+    height: 400
   };
   const chart = {
     width: container.width - margin.left - margin.right,
@@ -38,7 +38,7 @@ const draw = data => {
     .y0(height)
     .y1(({ y }) => yScale(y));
   svg = d3
-    .select(".chart")
+    .select(chartRef.current)
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -115,8 +115,9 @@ const resize = debounce(150, data => {
 
 const LineChart = props => {
   const { data } = props;
+  const chartRef = createRef()
   useEffect(() => {
-    draw(data);
+    draw(chartRef, data);
   }, []);
 
   const onResize = useCallback(() => {
@@ -130,7 +131,7 @@ const LineChart = props => {
     };
   });
 
-  return <Style className="chart" />;
+  return <Style ref={chartRef} />;
 };
 
 export default LineChart;

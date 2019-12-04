@@ -9,7 +9,6 @@ const ElevationChartDemo = () => {
       {/* <h1>Jiaming Lake</h1> */}
       <h1>Mountain Bilu</h1>
       <ElevationChart data={bilu} />
-
       <h1>Hehuan West Peak</h1>
       <ElevationChart data={hehuanWest} />
     </div>
