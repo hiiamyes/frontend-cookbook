@@ -3,7 +3,8 @@ import theme from "./theme";
 
 addParameters({
   options: {
-    theme
+    theme,
+    showAddonPanel: false
   }
 });
 

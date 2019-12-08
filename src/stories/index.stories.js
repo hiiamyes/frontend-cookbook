@@ -15,7 +15,8 @@ import { MoneyInputDemo } from "src/components/Input/MoneyInput";
 import LineChartDemo from "src/components/Chart/LineChart/demo";
 import BarChartDemo from "src/components/Chart/BarChart/demo";
 import ElevationChartDemo from "src/components/Chart/ElevationChart/demo";
-import MultipleElevationChartDemo from 'src/components/Chart/MultipleElevationChart/demo'
+import ElevationChartV2Demo from "src/components/Chart/ElevationChartV2/demo";
+import MultipleElevationChartDemo from "src/components/Chart/MultipleElevationChart/demo";
 
 import BasicUploaderDemo from "src/components/Uploader/demo";
 import SearchInputDemo from "src/components/Input/SearchInput/demo";
@@ -132,6 +133,11 @@ storiesOf("Chart", module)
   .add("ElevationChartDemo", () => (
     <Layout>
       <ElevationChartDemo />
+    </Layout>
+  ))
+  .add("ElevationChartV2Demo", () => (
+    <Layout>
+      <ElevationChartV2Demo />
     </Layout>
   ))
   .add("MultipleElevationChartDemo", () => (
