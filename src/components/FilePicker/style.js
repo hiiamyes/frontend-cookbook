@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { labelPadding } from "../../styles/dimension";
 import { borderWidth, borderRadius } from "../../styles/border";
 import { colorBorderDefault, colorBorderHover } from "../../styles/color";
 
@@ -8,11 +7,13 @@ const height = width;
 
 export default styled.div`
   position: relative;
-  > .picker {
-    padding: ${labelPadding};
+  > .default-picker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: ${width};
     height: ${height};
-    border: ${borderWidth} solid ${colorBorderDefault};
+    border: ${borderWidth} dashed ${colorBorderDefault};
     border-radius: ${borderRadius};
     cursor: pointer;
     &:hover {

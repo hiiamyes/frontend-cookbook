@@ -26,7 +26,7 @@ export default FilePicker;
 const DefaultPicker = props => {
   const { onClick } = props;
   return (
-    <div className="picker" onClick={onClick}>
+    <div className="default-picker" onClick={onClick}>
       <FAIcon icon="cloud-upload-alt" />
     </div>
   );
