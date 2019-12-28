@@ -18,6 +18,7 @@ import ElevationChartDemo from "src/components/Chart/ElevationChart/demo";
 import ElevationChartV2Demo from "src/components/Chart/ElevationChartV2/demo";
 import MultipleElevationChartDemo from "src/components/Chart/MultipleElevationChart/demo";
 
+import FilePickerDemo from "src/components/FilePicker/demo";
 import BasicUploaderDemo from "src/components/Uploader/demo";
 import SearchInputDemo from "src/components/Input/SearchInput/demo";
 import FormInputDemo from "src/components/Input/FormInput/demo";
@@ -145,6 +146,12 @@ storiesOf("Chart", module)
       <MultipleElevationChartDemo />
     </Layout>
   ));
+
+storiesOf("FilePicker", module).add("FilePicker", () => (
+  <Layout>
+    <FilePickerDemo />
+  </Layout>
+));
 
 storiesOf("Uploader", module).add("BasicUploader", () => (
   <Layout>
