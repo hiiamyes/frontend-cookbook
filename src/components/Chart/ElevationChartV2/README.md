@@ -1,15 +1,5 @@
-# Check points
+# Elevation Chart V2
 
-- Responsive
-  - window resize
-  - debounce
+## New Features?
 
-# HGT file
-
-https://blog.nutsfactory.net/2016/09/14/taiwan-moi-20m-dtm/
-
-# Get Started
-
-```
-node createData.js
-```
+- Add POI

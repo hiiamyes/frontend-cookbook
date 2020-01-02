@@ -5,12 +5,17 @@ import "leaflet/dist/leaflet.css";
 
 const Map = props => {
   const [map, setMap] = useState(null);
-  const { children, tileLayerUrl } = props;
+  const {
+    children,
+    tileLayerUrl,
+    center = [24.3834142, 121.2317653],
+    zoom = 15
+  } = props;
   const mapRef = createRef();
   useEffect(() => {
     const map = Leaflet.map(mapRef.current, {
-      center: [24.3834142, 121.2317653],
-      zoom: 15,
+      center,
+      zoom,
       zoomControl: true
     });
     Leaflet.tileLayer(tileLayerUrl, {
