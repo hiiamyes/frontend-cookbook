@@ -8,6 +8,7 @@ const ElevationChartV2Demo = () => {
   return (
     <div>
       <h1>Chilai Main North Peaks</h1>
+      <h1>奇萊主北</h1>
       <ElevationChartV2 data={paths} nodes={nodes} />
 
       <h1>Tao Shan Kelaye</h1>

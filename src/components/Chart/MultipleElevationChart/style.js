@@ -13,6 +13,9 @@ export default styled.div`
   .line:nth-of-type(3) {
     stroke: #01579B;
   }
+  .line:nth-of-type(4) {
+    stroke: #76FF03;
+  }
   .area {
     fill: #e0f2f1;
   }
