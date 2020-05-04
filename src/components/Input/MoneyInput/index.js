@@ -4,14 +4,16 @@ import Style from "./style";
 import { onInputKeyDown, onInputKeyUp, onInputChange } from "./events";
 import { getFormattedValue } from "./utils";
 
-const MoneyInput = props => {
+const log = console.log;
+
+const MoneyInput = (props) => {
   let {
     value,
     max = 1e20,
     minUnit = "1",
     onChange,
     disabled = false,
-    placeholder = "Input amount"
+    placeholder = "Input amount",
   } = props;
   const inputRef = React.createRef();
   const [formattedValue, setFormattedValue] = useState("");
@@ -21,10 +23,12 @@ const MoneyInput = props => {
   const [caretPositionFromEnd, setCaretPositionFromEnd] = useState(0);
 
   useEffect(() => {
+    log("useEffect");
     setFormattedValue(getFormattedValue({ value, minUnit }));
   }, []);
 
   useLayoutEffect(() => {
+    log("useLayoutEffort");
     const target = inputRef.current;
     let selectionStart = target.value.length - caretPositionFromEnd;
     if (selectionStart < 0) selectionStart = 0;
@@ -43,7 +47,7 @@ const MoneyInput = props => {
         onKeyDown={onInputKeyDown({
           setKey,
           setCharBeforeCaret,
-          setCharAfterCaret
+          setCharAfterCaret,
         })}
         onKeyUp={onInputKeyUp}
         onChange={onInputChange({
@@ -55,7 +59,7 @@ const MoneyInput = props => {
           charAfterCaret,
           setCaretPositionFromEnd,
           setFormattedValue,
-          onChange
+          onChange,
         })}
       />
     </Style>
@@ -74,7 +78,7 @@ const MoneyInputDemo = () => {
       <MoneyInput
         value={value}
         minUnit="100"
-        onChange={value => {
+        onChange={(value) => {
           setValue(value);
         }}
       />
@@ -83,7 +87,7 @@ const MoneyInputDemo = () => {
       <MoneyInput
         value={value2}
         minUnit="1"
-        onChange={value => {
+        onChange={(value) => {
           setValue2(value);
         }}
       />
@@ -92,7 +96,7 @@ const MoneyInputDemo = () => {
       <MoneyInput
         value={value3}
         minUnit="0.01"
-        onChange={value => {
+        onChange={(value) => {
           setValue3(value);
         }}
       />
@@ -101,9 +105,11 @@ const MoneyInputDemo = () => {
       <InputNumber
         style={{ width: 200 }}
         value={value4}
-        formatter={value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-        parser={value => value.replace(/\$\s?|(,*)/g, "")}
-        onChange={v => setValue4(v)}
+        formatter={(value) =>
+          `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+        }
+        parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
+        onChange={(v) => setValue4(v)}
       />
     </div>
   );
