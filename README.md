@@ -4,7 +4,7 @@
 
 [Live Demo](https://frontend-cookbook.yeslee.me)
 
-# Prerequisite
+## Prerequisite
 
 Install `nvm`
 
@@ -13,15 +13,23 @@ nvm install 12.4.0
 nvm use 12.4.0
 ```
 
-# Getting started
+## Getting started
 
 ```
 yarn
 yarn start
 ```
 
-# Publish
+## Publish
 
 ```
 yarn run rollup
+TBD...
+```
+
+## Usage
+
+```
+yarn add git@github.com:hiiamyes/frontend-cookbook.git#dist
+yarn add https://github.com/hiiamyes/frontend-cookbook.git#dist
 ```
