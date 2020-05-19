@@ -23,5 +23,5 @@ yarn start
 # Publish
 
 ```
-./node_modules/rollup/dist/bin/rollup -c
+yarn run rollup
 ```

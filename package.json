@@ -8,14 +8,13 @@
   },
   "version": "1.0.4",
   "main": "dist/index.js",
-  "module": "dist/index.es.js",
   "license": "MIT",
   "scripts": {
     "start": "start-storybook -p 6006",
     "build": "build-storybook -c .storybook -o .build",
     "test": "jest",
     "test:watch": "jest --verbose --watch",
-    "gg": "rollup -c"
+    "rollup": "rollup -c"
   },
   "dependencies": {
     "@babel/preset-env": "^7.5.0",
