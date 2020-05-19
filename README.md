@@ -31,5 +31,4 @@ TBD...
 
 ```
 yarn add git@github.com:hiiamyes/frontend-cookbook.git#dist
-yarn add https://github.com/hiiamyes/frontend-cookbook.git
 ```
