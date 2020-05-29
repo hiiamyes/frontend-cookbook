@@ -31,18 +31,19 @@ export default styled.button`
     /* border: 1px solid ${colorPrimaryHover}; */
     background: ${colorPrimaryHover};
   }
-  /* trigger by tag */
-  &:focus {
-    /* border: 1px solid red; */
-    background: ${colorPrimaryFocus};
-  }
   /* 
     https://developer.mozilla.org/en-US/docs/Web/CSS/:active
     When using a mouse, "activation" typically starts when the user presses down the primary mouse button.
   */
-  &:active {
+ &:active {
     background: ${colorPrimaryActive};
   }
+    /* trigger by tag */
+  &:focus {
+    /* border: 1px solid red; */
+    background: ${colorPrimaryFocus};
+  }
+
   &:disabled {
     background: ${colorPrimaryDisabled};
     cursor: not-allowed;
