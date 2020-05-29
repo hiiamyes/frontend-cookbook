@@ -1,0 +1,62 @@
+{
+  "name": "frontend-cookbook",
+  "description": "A frontend UI components cookbook powered by React and Storybook",
+  "author": {
+    "name": "Yes Lee",
+    "email": "joshuayes@gmail.com",
+    "url": "https://yeslee.me"
+  },
+  "version": "1.0.4",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "start-storybook -p 6006",
+    "build": "build-storybook -c .storybook -o .build",
+    "test": "jest",
+    "test:watch": "jest --verbose --watch",
+    "rollup": "rollup -c"
+  },
+  "peerDependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.18",
+    "@fortawesome/free-solid-svg-icons": "^5.8.2",
+    "@fortawesome/react-fontawesome": "^0.1.4"
+  },
+  "dependencies": {
+    "decimal.js": "^10.2.0",
+    "geolib": "^3.1.0",
+    "lodash": "^4.17.11",
+    "node-hgt": "^1.2.3",
+    "numeral": "^2.0.6",
+    "querystring": "^0.2.0"
+  },
+  "devDependencies": {
+    "react-docgen-typescript-loader": "^3.3.0",
+    "react-transition-group": "^4.3.0",
+    "antd": "^3.19.1",
+    "typescript": "^3.6.3",
+    "rollup": "^1.21.4",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-peer-deps-external": "^2.2.0",
+    "styled-components": "^4.2.0",
+    "leaflet": "^1.5.1",
+    "awesome-typescript-loader": "^5.2.1",
+    "d3": "^5.11.0",
+    "@storybook/addon-info": "^5.2.3",
+    "@testing-library/react": "^8.0.4",
+    "@types/jest": "^24.0.18",
+    "@babel/preset-env": "^7.5.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-jest": "^24.8.0",
+    "jest": "^24.9.0",
+    "jest-dom": "^3.5.0",
+    "ts-jest": "^24.1.0",
+    "@babel/core": "^7.5.0",
+    "@storybook/addon-actions": "^5.2.1",
+    "@storybook/addon-links": "^5.2.1",
+    "@storybook/addons": "^5.2.1",
+    "@storybook/react": "^5.2.1",
+    "babel-loader": "^8.0.6"
+  }
+}
