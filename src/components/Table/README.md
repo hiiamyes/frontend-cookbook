@@ -1,5 +1,16 @@
 # Table
 
 - Column base
-- Auto sizing table container
-- Column width strategy?
+
+- grid base
+
+  - Auto sizing table container
+  - RWD
+  - Column width strategy?
+    - fr and fixed px columns
+
+- column spec
+  - id
+  - dataKey
+  - width
+  - render
