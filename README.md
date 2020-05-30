@@ -20,16 +20,15 @@ yarn
 yarn start
 ```
 
-## Publish
+## Release
 
 ```
-yarn run rollup
-TBD...
+yarn release
 ```
 
 ## Usage
 
 ```
-yarn add git@github.com:hiiamyes/frontend-cookbook.git#dist
-yarn add https://github.com/hiiamyes/frontend-cookbook.git#dist
+yarn add https://github.com/hiiamyes/frontend-cookbook.git#release
 ```
+
