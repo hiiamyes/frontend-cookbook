@@ -1,8 +1,9 @@
 import React from "react";
 import FAIcon from "src/components/FAIcon";
+// import FAIcon from "../FAIcon";
 import Style from "./style";
 
-const Loader = props => {
+const Loader = (props) => {
   return (
     <Style>
       <FAIcon icon="spinner"></FAIcon>
