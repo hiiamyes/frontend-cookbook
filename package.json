@@ -15,7 +15,7 @@
     "test": "jest",
     "test:watch": "jest --verbose --watch",
     "rollup": "rollup -c",
-    "release": "yarn rollup && yes | cp rf dist/ release dist/ && cd release && git add ."
+    "release": "yarn rollup && yes | cp -rf dist/ release/dist/ && cd release && git add . && git commit -m 'update' && git push"
   },
   "peerDependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.18",
