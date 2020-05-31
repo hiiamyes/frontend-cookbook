@@ -20,7 +20,10 @@
   "peerDependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.18",
     "@fortawesome/free-solid-svg-icons": "^5.8.2",
-    "@fortawesome/react-fontawesome": "^0.1.4"
+    "@fortawesome/react-fontawesome": "^0.1.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.1.1"
   },
   "dependencies": {
     "decimal.js": "^10.2.0",
@@ -35,6 +38,9 @@
     "@babel/preset-env": "^7.5.0",
     "@babel/preset-react": "^7.0.0",
     "@rollup/plugin-alias": "^3.1.0",
+    "@rollup/plugin-babel": "^5.0.2",
+    "@rollup/plugin-commonjs": "^12.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
     "@storybook/addon-actions": "^5.2.1",
     "@storybook/addon-info": "^5.2.3",
     "@storybook/addon-links": "^5.2.1",
@@ -50,14 +56,11 @@
     "jest": "^24.9.0",
     "jest-dom": "^3.5.0",
     "leaflet": "^1.5.1",
+    "react": "^16.13.1",
     "react-docgen-typescript-loader": "^3.3.0",
+    "react-dom": "^16.13.1",
     "react-transition-group": "^4.3.0",
-    "rollup": "^1.21.4",
-    "rollup-plugin-babel": "^4.3.3",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-peer-deps-external": "^2.2.0",
-    "styled-components": "^4.2.0",
+    "rollup": "2.11.2",
     "ts-jest": "^24.1.0",
     "typescript": "^3.6.3"
   }
