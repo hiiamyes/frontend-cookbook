@@ -1,8 +1,8 @@
 import React, { useState, createRef } from "react";
 import Style from "./style";
 
-const Table = props => {
-  const { data: rows, columns } = props;
+const Table = (props) => {
+  const { rows, columns } = props;
   return (
     <Style className="table">
       {rows.map((row, rowIndex) => {
