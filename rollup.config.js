@@ -6,7 +6,7 @@ import alias from "@rollup/plugin-alias";
 import pkg from "./package.json";
 
 export default {
-  input: "index.js",
+  input: "src/index.js",
   output: [
     {
       file: pkg.main,
