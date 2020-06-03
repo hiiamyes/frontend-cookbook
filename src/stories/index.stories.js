@@ -3,6 +3,7 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import styled from "styled-components";
 import "antd/dist/antd.css";
+import "leaflet/dist/leaflet.css";
 
 import { BasicInputDemo } from "src/components/Input/BasicInput";
 import FAIcon from "src/components/FAIcon";

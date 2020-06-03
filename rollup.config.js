@@ -14,7 +14,7 @@ export default {
       sourcemap: true,
     },
   ],
-  external: ["react", "styled-components"],
+  external: ["react", "styled-components", "leaflet"],
   plugins: [
     resolve(),
     commonjs({

@@ -19,3 +19,11 @@
 ## Ref
 
 - [react-leaflet](https://github.com/PaulLeCam/react-leaflet)
+
+## Usage
+
+Remember to import leaflet css manually
+
+```
+import "leaflet/dist/leaflet.css";
+```

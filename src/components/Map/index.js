@@ -1,27 +1,26 @@
 import React, { useState, useEffect, createRef } from "react";
 import Leaflet from "leaflet";
 import Style from "./style";
-import "leaflet/dist/leaflet.css";
 
-const Map = props => {
+const Map = (props) => {
   const [map, setMap] = useState(null);
   const {
     children,
     tileLayerUrl,
     center = [24.3834142, 121.2317653],
-    zoom = 15
+    zoom = 15,
   } = props;
   const mapRef = createRef();
   useEffect(() => {
     const map = Leaflet.map(mapRef.current, {
       center,
       zoom,
-      zoomControl: true
+      zoomControl: true,
     });
     Leaflet.tileLayer(tileLayerUrl, {
       maxZoom: 19,
       attribution:
-        '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     }).addTo(map);
     setMap(map);
   }, []);
@@ -29,8 +28,8 @@ const Map = props => {
   return (
     <Style ref={mapRef}>
       {map &&
-        React.Children.map(children, child =>
-          React.cloneElement(child, { map })
+        React.Children.map(children, (child) =>
+          React.cloneElement(child, { map }),
         )}
     </Style>
   );
