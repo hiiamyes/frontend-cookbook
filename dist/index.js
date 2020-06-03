@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, createRef, useEffect } from 'react';
 import styled from 'styled-components';
+import Leaflet from 'leaflet';
 
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -2745,5 +2746,66 @@ const Loader = props => {
   }));
 };
 
-export { FAIcon, Loader };
+var Style$2 = styled.div`
+  width: 100%;
+  height: 100%;
+  .marker {
+    border: 1px solid #1976d2;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.8);
+  }
+`;
+
+const Map = props => {
+  const [map, setMap] = useState(null);
+  const {
+    children,
+    tileLayerUrl,
+    center = [24.3834142, 121.2317653],
+    zoom = 15
+  } = props;
+  const mapRef = createRef();
+  useEffect(() => {
+    const map = Leaflet.map(mapRef.current, {
+      center,
+      zoom,
+      zoomControl: true
+    });
+    Leaflet.tileLayer(tileLayerUrl, {
+      maxZoom: 19,
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+    setMap(map);
+  }, []);
+  return React.createElement(Style$2, {
+    ref: mapRef
+  }, map && React.Children.map(children, child => React.cloneElement(child, {
+    map
+  })));
+};
+
+const Trail = props => {
+  const {
+    map,
+    paths
+  } = props;
+  useEffect(() => {
+    const qq = paths.map(({
+      lat,
+      lng
+    }) => [lng, lat]);
+    const leafletPath = Leaflet.geoJSON([{
+      type: "LineString",
+      coordinates: qq
+    }], {
+      style: () => ({
+        className: "trail"
+      })
+    });
+    leafletPath.addTo(map);
+  }, []);
+  return null;
+};
+
+export { FAIcon, Loader, Map, Trail };
 //# sourceMappingURL=index.js.map
