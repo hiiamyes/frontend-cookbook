@@ -7,9 +7,13 @@ const ElevationChartDemo = () => {
   return (
     <div>
       <h1>Mountain Bilu</h1>
-      <ElevationChart data={bilu} />
+      <div style={{ width: "100vw", height: 480 }}>
+        <ElevationChart data={bilu} />
+      </div>
       <h1>Hehuan West Peak</h1>
-      <ElevationChart data={hehuanWest} />
+      <div style={{ width: 640, height: 480 }}>
+        <ElevationChart data={hehuanWest} />
+      </div>
     </div>
   );
 };
