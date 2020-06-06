@@ -9632,8 +9632,8 @@ const margin = {
 
 const refresh = (chartRef, data) => {
   const container = {
-    width: window.innerWidth,
-    height: 400
+    width: chartRef.current.parentNode.offsetWidth,
+    height: chartRef.current.parentNode.offsetHeight
   };
   const chart = {
     width: container.width - margin.left - margin.right,
