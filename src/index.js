@@ -3,4 +3,7 @@ import Loader from "src/components/Loader";
 import Map from "src/components/Map";
 import Trail from "src/components/Map/Trail";
 import ElevationChart from "src/components/Chart/ElevationChart";
-export { FAIcon, Loader, Map, Trail, ElevationChart };
+import Modal from "src/components/Modal";
+import useModal from "src/components/Modal/useModal";
+
+export { FAIcon, Loader, Map, Trail, ElevationChart, Modal, useModal };

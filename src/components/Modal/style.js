@@ -40,12 +40,6 @@ export default styled.div`
   }
 
   > .content {
-    background: white;
-    max-width: 640px;
-    width: calc(100% - 30px);
-    margin: 64px auto 15px auto;
-    border-radius: 4px;
-    padding: 5px;
     animation: fadeInOpacity ${duration} ease-in-out forwards;
   }
   &.modal-exit-active > .content {

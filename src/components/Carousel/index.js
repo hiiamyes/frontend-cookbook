@@ -1,9 +1,10 @@
 import React, { useState, createRef, useEffect } from "react";
 import { debounce } from "lodash/fp";
-import FAIcon from "../FAIcon";
+import Modal from "src/components/Modal";
+import FAIcon from "src/components/FAIcon";
 import Style from "./style";
 
-const Carousel = props => {
+const Carousel = (props) => {
   const { visible, onClose, children } = props;
   const [actionsVisible, setActionsVisible] = useState(true);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -23,7 +24,7 @@ const Carousel = props => {
       setActiveIndex(activeIndex + 1);
     }
   };
-  const go = index => () => {
+  const go = (index) => () => {
     setActiveIndex(index);
   };
   const resize = debounce(150, () => {
@@ -42,7 +43,7 @@ const Carousel = props => {
   }, [itemsRef]);
 
   useEffect(() => {
-    const keydown = e => {
+    const keydown = (e) => {
       switch (e.key) {
         case "ArrowLeft":
           prev();
@@ -62,51 +63,45 @@ const Carousel = props => {
       window.removeEventListener("keydown", keydown);
     };
   }, [activeIndex]);
+
   return (
-    <Style actionsVisible={actionsVisible}>
-      {visible && (
-        <div className="modal">
-          <div
-            ref={itemsRef}
-            className="items"
-            style={{
-              transform: `translateX(${-w * activeIndex}px)`
-            }}
-            onClick={toggleActionsVisible}
-          >
-            {children.map((child, index) => {
-              return (
-                <div key={index} className="item">
-                  {child}
-                </div>
-              );
-            })}
-          </div>
-          <button className="close" onClick={onClose}>
-            <FAIcon icon="times"></FAIcon>
-          </button>
-          <button className="prev" onClick={prev}>
-            <FAIcon icon="chevron-left"></FAIcon>
-          </button>
-          <button className="next" onClick={next}>
-            <FAIcon icon="chevron-right"></FAIcon>
-          </button>
-          <div className="indicators">
-            {children.map((child, index) => {
-              return (
-                <button
-                  key={index}
-                  className={`indicator ${
-                    index === activeIndex ? "active" : ""
-                  }`}
-                  onClick={go(index)}
-                ></button>
-              );
-            })}
-          </div>
+    <Modal visible={visible} onClose={onClose}>
+      <Style actionsVisible={actionsVisible}>
+        <div
+          ref={itemsRef}
+          className="items"
+          style={{
+            transform: `translateX(${-w * activeIndex}px)`,
+          }}
+          onClick={toggleActionsVisible}
+        >
+          {children.map((child, index) => {
+            return (
+              <div key={index} className="item">
+                {child}
+              </div>
+            );
+          })}
         </div>
-      )}
-    </Style>
+        <button className="prev" onClick={prev}>
+          <FAIcon icon="chevron-left"></FAIcon>
+        </button>
+        <button className="next" onClick={next}>
+          <FAIcon icon="chevron-right"></FAIcon>
+        </button>
+        <div className="indicators">
+          {children.map((child, index) => {
+            return (
+              <button
+                key={index}
+                className={`indicator ${index === activeIndex ? "active" : ""}`}
+                onClick={go(index)}
+              ></button>
+            );
+          })}
+        </div>
+      </Style>
+    </Modal>
   );
 };
 

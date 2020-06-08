@@ -8,7 +8,7 @@ import {
   colorPrimaryDisabled,
   colorBorderDefault,
   colorBorderHover,
-  colorBorderFocus
+  colorBorderFocus,
 } from "src/styles/color";
 
 export default styled.button`
