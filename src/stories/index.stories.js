@@ -34,12 +34,19 @@ import MapDemo from "src/components/Map/demo";
 import TagDemo from "src/components/Tag/demo";
 import CollapseDemo from "src/components/Collapse/demo";
 import ScrollbarDemo from "src/components/Scrollbar/demo";
+import FormDemo from "src/components/Form/demo";
 
 import "src/styles/global-style.css";
 
 const Layout = styled.div`
   padding: 15px;
 `;
+
+storiesOf("Form", module).add("Form", () => (
+  <Layout>
+    <FormDemo />
+  </Layout>
+));
 
 storiesOf("Scrollbar", module).add("Scrollbar", () => (
   <Layout>
