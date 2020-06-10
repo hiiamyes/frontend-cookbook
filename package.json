@@ -35,7 +35,8 @@
     "lodash": "^4.17.11",
     "node-hgt": "^1.2.3",
     "numeral": "^2.0.6",
-    "querystring": "^0.2.0"
+    "querystring": "^0.2.0",
+    "yup": "^0.29.1"
   },
   "devDependencies": {
     "@babel/core": "^7.5.0",

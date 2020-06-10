@@ -1,8 +1,14 @@
 import React, { useState } from "react";
+import * as yup from "yup";
 import Form from "src/components/Form/Form";
 import Field from "src/components/Form/Field";
 import BasicInput from "src/components/Input/BasicInput";
 import Button from "src/components/Button";
+
+const validationSchema = yup.object().shape({
+  firstName: yup.string().required(),
+  lastName: yup.string().required(),
+});
 
 const FormDemo = () => {
   const submit = (values) => {
@@ -16,15 +22,16 @@ const FormDemo = () => {
           firstName: "Yes",
           lastName: "Lee",
         }}
+        validationSchema={validationSchema}
         onSubmit={submit}
       >
-        <Field>
+        <Field name="firstName">
           <BasicInput />
         </Field>
-        <Field>
+        <Field name="lastName">
           <BasicInput />
         </Field>
-        <Button>Submit</Button>
+        <Button type="submit">Submit</Button>
       </Form>
     </div>
   );

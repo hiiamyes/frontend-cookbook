@@ -5,7 +5,7 @@ import { borderWidth, borderRadius } from "../../../styles/border";
 import {
   colorBorderDefault,
   colorBorderHover,
-  colorBorderFocus
+  colorBorderFocus,
 } from "../../../styles/color";
 
 export default styled.input`
@@ -20,5 +20,8 @@ export default styled.input`
   }
   &:focus {
     border-color: ${colorBorderFocus};
+  }
+  &.error {
+    border-color: ${(props) => props.theme.colorRed};
   }
 `;

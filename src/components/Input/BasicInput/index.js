@@ -1,18 +1,22 @@
 import React, { useState } from "react";
 import Style from "./style";
 
-const BasicInput = props => {
-  let { value } = props;
-  const onChange = e => {
-    props.onChange(e.target.value);
-  };
-  return <Style value={value} onChange={onChange} />;
+const BasicInput = (props) => {
+  let { value, error, onChange, ...rest } = props;
+  return (
+    <Style
+      className={`${error ? "error" : ""}`}
+      value={value}
+      onChange={onChange}
+      {...rest}
+    />
+  );
 };
 
 const BasicInputDemo = () => {
   const [value, setValue] = useState(null);
-  const onChange = value => {
-    setValue(value);
+  const onChange = (e) => {
+    setValue(e.target.value);
   };
   return <BasicInput value={value} onChange={onChange} />;
 };
