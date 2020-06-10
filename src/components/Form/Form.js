@@ -1,8 +1,19 @@
-import React, { useState } from "react";
-import { getOr, compose, cloneDeep, set, has } from "lodash/fp";
+import React from "react";
+import { useFormik } from "formik";
 
-const Form = () => {
-  return <div>Form</div>;
+const Form = (props) => {
+  const { initialValues, onSubmit, children } = props;
+  const formik = useFormik({
+    initialValues,
+    onSubmit,
+  });
+  return (
+    <form onSubmit={formik.handleSubmit}>
+      {React.Children.map(children, (child) =>
+        React.cloneElement(child, { formik }),
+      )}
+    </form>
+  );
 };
 
 export default Form;
