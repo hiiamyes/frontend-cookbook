@@ -1,14 +1,16 @@
 import React from "react";
-import { useFormik } from "formik";
+import { useFormik, Formik, Form } from "formik";
 import Style from "./style";
 
-const Form = (props) => {
-  const { initialValues,validationSchema, onSubmit, children } = props;
+const Form2 = (props) => {
+  const { initialValues, validationSchema, onSubmit, children } = props;
   const formik = useFormik({
     initialValues,
     validationSchema,
     onSubmit,
   });
+  console.log(formik.submitCount);
+  console.log(formik.errors);
   return (
     <Style onSubmit={formik.handleSubmit}>
       {React.Children.map(children, (child) =>
@@ -16,6 +18,13 @@ const Form = (props) => {
       )}
     </Style>
   );
+  // return (
+  //   <Formik>
+  //     {(form) => {
+  //       return <Form>{children}</Form>;
+  //     }}
+  //   </Formik>
+  // );
 };
 
-export default Form;
+export default Form2;

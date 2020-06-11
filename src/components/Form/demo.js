@@ -18,6 +18,20 @@ const FormDemo = () => {
   return (
     <div>
       <Form
+        initialValues={{}}
+        validationSchema={validationSchema}
+        onSubmit={submit}
+      >
+        <Field name="firstName" label="First Name">
+          <BasicInput />
+        </Field>
+        <Field name="lastName" label="Last Name">
+          <BasicInput />
+        </Field>
+        <Button type="submit">Submit</Button>
+      </Form>
+      <br></br>
+      <Form
         initialValues={{
           firstName: "Yes",
           lastName: "Lee",
