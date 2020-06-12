@@ -1,39 +1,26 @@
 import React, { useState } from "react";
 import { Field } from "formik";
 import { getOr } from "lodash/fp";
+import Style from "./style";
 
 const Field2 = (props) => {
   const { name, label, input, children, formik } = props;
-  // const [q, setQ] = useState(false);
-  // const onChange = (e) => {
-  //   if (!q) setQ(true);
-  //   formik.handleChange(e);
-  // };
+  const error =
+    formik.submitCount > 0 ? getOr(undefined, name, formik.errors) : undefined;
   return (
-    <div>
-      <div>{label}</div>
+    <Style>
+      <div className="label">{label}</div>
       {React.cloneElement(children, {
         name,
         touched: getOr(undefined, name, formik.touched),
-        // error: q ? getOr(undefined, name, formik.errors) : undefined,
-        error:
-          formik.submitCount > 0
-            ? getOr(undefined, name, formik.errors)
-            : undefined,
+        error,
         value: getOr(undefined, name, formik.values),
-        // onChange,
         onChange: formik.handleChange,
         onBlur: formik.handleBlur,
       })}
-    </div>
+      <div className="error">{error}</div>
+    </Style>
   );
-  // return (
-  //   <Field>
-  //     {() => {
-  //       return children;
-  //     }}
-  //   </Field>
-  // );
 };
 
 export default Field2;

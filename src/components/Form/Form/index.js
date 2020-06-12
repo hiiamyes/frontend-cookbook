@@ -9,8 +9,6 @@ const Form2 = (props) => {
     validationSchema,
     onSubmit,
   });
-  console.log(formik.submitCount);
-  console.log(formik.errors);
   return (
     <Style onSubmit={formik.handleSubmit}>
       {React.Children.map(children, (child) =>
@@ -18,13 +16,6 @@ const Form2 = (props) => {
       )}
     </Style>
   );
-  // return (
-  //   <Formik>
-  //     {(form) => {
-  //       return <Form>{children}</Form>;
-  //     }}
-  //   </Formik>
-  // );
 };
 
 export default Form2;
