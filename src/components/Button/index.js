@@ -2,10 +2,11 @@ import React from "react";
 import Style from "./style";
 
 const Button = (props) => {
-  let { children, onClick, ...rest } = props;
+  let { children, onClick, loading, ...rest } = props;
   return (
     <Style onClick={onClick} {...rest}>
-      {children}
+      {loading && <div>Loading...</div>}
+      {!loading && children}
     </Style>
   );
 };
