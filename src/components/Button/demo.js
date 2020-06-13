@@ -1,24 +1,36 @@
 import React, { useState } from "react";
-import { action } from "@storybook/addon-actions";
 import Button from "./index";
 
 const ButtonDemo = () => {
-  // const [state, setState] = useState("default");
+  const [disabled, setDisabled] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   return (
     <div>
-      {/* <div>{`State: ${state}`}</div> */}
+      <div>
+        <Button onClick={() => setDisabled(false)}>Enable</Button>
+        <br />
+        <Button onClick={() => setDisabled(true)}>Disable</Button>
+        <br />
+        <Button onClick={() => setLoading(true)}>Load</Button>
+        <br />
+        <Button onClick={() => setLoading(false)}>Stop</Button>
+        <br />
+      </div>
+      <br />
       <Button
-        title="I'm a button!"
-        // onMouseEnter={() => setState("hover")}
-        // onMouseLeave={() => setState("default")}
-        // onFocus={() => setState("focus")}
-        // onBlur={() => setState("default")}
-        // onClick={action("onClick")}
+        loading={loading}
+        disabled={disabled}
+        onClick={(e) => console.log("click")}
       >
-        Buttonnn
+        Click me!
       </Button>
       <br />
-      <Button disabled>Button</Button>
+      <br />
+      <Button loading={true}>Click me!</Button>
+      <br />
+      <br />
+      <Button disabled>Click me!</Button>
     </div>
   );
 };

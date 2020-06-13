@@ -3,7 +3,7 @@ import { borderRadius } from "../../../styles/border";
 import {
   colorBorderDefault,
   colorBorderHover,
-  colorBorderFocus
+  colorBorderFocus,
 } from "../../../styles/color";
 
 const selectInputHeight = "32px";
@@ -32,12 +32,14 @@ export default styled.div`
   .options {
     position: absolute;
     overflow-y: scroll;
+    width: 100%;
     height: calc(10 * ${selectOptionHeight});
     left: 0;
     top: calc(5px + ${selectOptionHeight});
     border-radius: ${borderRadius};
     border: 1px solid ${colorBorderDefault};
     background: white;
+    z-index: 100;
 
     .option {
       overflow-x: hidden;

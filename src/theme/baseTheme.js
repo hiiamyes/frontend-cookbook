@@ -1,4 +1,20 @@
+const teal500 = "#009688";
+const teal700 = "#00796b";
+const teal900 = "#004d40";
+const gray600 = "#757575";
+
 const baseTheme = {
+  height: "36px",
+  borderRadius: "4px",
+  padding: "0 16px",
+  colorText: "white",
+  colorEnable: teal700,
+  colorHover: teal500,
+  colorPressed: teal900,
+  colorFocused: teal500,
+  colorDisabled: gray600,
+
+  //
   colorMainBlue: "#4357ef",
   colorPrimary: "#07072d",
   colorSecondary: "#545b64",

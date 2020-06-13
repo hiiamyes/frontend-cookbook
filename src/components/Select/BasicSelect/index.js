@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
-import FAIcon from "../../FAIcon";
+import FAIcon from "src/components/FAIcon";
 import Style from "./style";
 
-const BasicSelect = props => {
+const BasicSelect = (props) => {
   const textInput = React.createRef();
   const [focus, setFocus] = useState(false);
   const [optionsVisible, setOptionsVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [inputFocus, setInputFocus] = useState(false);
   const [hoveredOptionValue, setHoveredOptionValue] = useState(
-    props.options[0]
+    props.options[0],
   );
 
   const { value, options, onChange } = props;
@@ -18,9 +18,9 @@ const BasicSelect = props => {
   }, [value]);
 
   useEffect(() => {
-    const eee = e => {
-      const os = options.filter(option =>
-        new RegExp(inputValue, "gi").test(option)
+    const keyDownListener = (e) => {
+      const os = options.filter((option) =>
+        new RegExp(inputValue, "gi").test(option),
       );
       const index = os.indexOf(hoveredOptionValue);
       switch (e.keyCode) {
@@ -50,16 +50,16 @@ const BasicSelect = props => {
           break;
       }
     };
-    window.addEventListener("keydown", eee);
+    window.addEventListener("keydown", keyDownListener);
     return () => {
-      window.removeEventListener("keydown", eee);
+      window.removeEventListener("keydown", keyDownListener);
     };
   }, [hoveredOptionValue, optionsVisible]);
 
   return (
     <Style
       className={`select ${focus ? "focus" : ""}`}
-      onClick={e => {
+      onClick={(e) => {
         setFocus(true);
         setOptionsVisible(true);
         setInputFocus(true);
@@ -67,17 +67,15 @@ const BasicSelect = props => {
       }}
     >
       <input
-        placeholder={value}
         value={inputValue}
         placeholder="Select"
-        onChange={e => setInputValue(e.target.value)}
-        onFocus={e => {
+        onChange={(e) => setInputValue(e.target.value)}
+        onFocus={(e) => {
           setOptionsVisible(true);
           setFocus(true);
           setInputValue("");
         }}
-        onBlur={e => {
-          console.log("blur", optionsVisible);
+        onBlur={(e) => {
           setOptionsVisible(false);
           setFocus(false);
         }}
@@ -95,10 +93,9 @@ const BasicSelect = props => {
               style={{
                 display: new RegExp(inputValue, "gi").test(name)
                   ? "block"
-                  : "none"
+                  : "none",
               }}
-              onMouseDown={e => {
-                console.log("mouse");
+              onMouseDown={(e) => {
                 onChange(name);
               }}
             >
