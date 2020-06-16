@@ -9,7 +9,9 @@ import {
   faChevronLeft,
   faChevronRight,
   faSpinner,
-  faTimes
+  faTimes,
+  faSquare,
+  faCheckSquare,
 } from "@fortawesome/free-solid-svg-icons";
 import Style from "./style";
 
@@ -21,8 +23,10 @@ library.add(faChevronLeft);
 library.add(faChevronRight);
 library.add(faSpinner);
 library.add(faTimes);
+library.add(faSquare);
+library.add(faCheckSquare);
 
-const FAIcon = props => {
+const FAIcon = (props) => {
   const { size, icon } = props;
   return (
     <Style size={size}>
