@@ -2,7 +2,8 @@ import React, { createRef } from "react";
 import FAIcon from "src/components/FAIcon";
 import Style from "./style";
 
-const Checkbox = ({ checked = false, onChange }) => {
+const Checkbox = () => {
+  const { checked = false, onChange, ...rest } = props;
   const inputRef = createRef();
 
   const onClick = () => {
@@ -10,8 +11,17 @@ const Checkbox = ({ checked = false, onChange }) => {
   };
 
   return (
-    <Style className={`${checked ? "checked" : ""}`} onClick={onClick}>
-      <input ref={inputRef} type="checkbox" onChange={onChange}></input>
+    <Style
+      type="checkbox"
+      className={`${checked ? "checked" : ""}`}
+      onClick={onClick}
+    >
+      <input
+        ref={inputRef}
+        type="checkbox"
+        onChange={onChange}
+        {...rest}
+      ></input>
       <FAIcon size="large" icon={checked ? "square" : "check-square"} />
     </Style>
   );
