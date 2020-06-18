@@ -1,19 +1,27 @@
-import React, { useState, createRef, useEffect } from "react";
+import React, { useState, useCallback } from "react";
 import Style from "./style";
 
 const Collapse = (props) => {
   const { visible, children } = props;
-  const childrenRef = createRef();
   const [height, setHeight] = useState();
 
-  useEffect(() => {
-    setHeight(childrenRef.current.getBoundingClientRect().height);
+  // https://reactjs.org/docs/hooks-faq.html#how-can-i-measure-a-dom-node
+  const measuredRef = useCallback((node) => {
+    if (node !== null) {
+      const resizeObserver = new ResizeObserver(() => {
+        setHeight(node.getBoundingClientRect().height);
+      });
+      resizeObserver.observe(node);
+    }
   }, []);
 
   return (
-    <Style height={height}>
-      <div className={`children ${visible ? "visible" : ""}`}>
-        <div ref={childrenRef}>{children}</div>
+    <Style>
+      <div
+        className={`children ${visible ? "visible" : ""}`}
+        style={{ height: visible ? `${height}px` : 0 }}
+      >
+        <div ref={measuredRef}>{children}</div>
       </div>
     </Style>
   );
