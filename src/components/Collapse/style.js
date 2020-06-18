@@ -1,15 +1,12 @@
 import styled from "styled-components";
 
 export default styled.div`
-  > .toggle {
-    display: inline-block;
-  }
-  > .detail {
+  > .children {
     overflow: hidden;
     height: 0;
-    transition: height 0.35s ease;
+    transition: height 0.3s ease;
     &.visible {
-      height: ${props => `${props.height}px`};
+      height: ${(props) => `${props.height}px`};
     }
   }
 `;

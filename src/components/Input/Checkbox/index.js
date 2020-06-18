@@ -2,7 +2,7 @@ import React, { createRef } from "react";
 import FAIcon from "src/components/FAIcon";
 import Style from "./style";
 
-const Checkbox = () => {
+const Checkbox = (props) => {
   const { checked = false, onChange, ...rest } = props;
   const inputRef = createRef();
 
