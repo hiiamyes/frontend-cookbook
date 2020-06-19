@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from "react";
+import { CSSTransition } from "react-transition-group";
 import Style from "./style";
 
 const Collapse = (props) => {
@@ -16,14 +17,11 @@ const Collapse = (props) => {
   }, []);
 
   return (
-    <Style>
-      <div
-        className={`children ${visible ? "visible" : ""}`}
-        style={{ height: visible ? `${height}px` : 0 }}
-      >
+    <CSSTransition in={visible} timeout={300} classNames="collapse">
+      <Style className={visible ? "visible" : ""} height={height}>
         <div ref={measuredRef}>{children}</div>
-      </div>
-    </Style>
+      </Style>
+    </CSSTransition>
   );
 };
 
