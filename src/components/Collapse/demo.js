@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import Table from "src/components/Table";
+import BasicSelect from "src/components/Select/BasicSelect";
 import Button from "src/components/Button";
 import useCollapse from "src/components/Collapse/useCollapse";
 import Collapse from "./index";
+import timezoneNames from "./timezoneNames.json";
 
 const columns = () => {
   return ["name", "brand", "product"];
@@ -43,6 +45,7 @@ const CollapseDemo = () => {
         </Button>
       </div>
       <Collapse visible={visible}>
+        <BasicSelect options={timezoneNames} />
         <Table rows={rows} columns={columns()} />
       </Collapse>
     </div>

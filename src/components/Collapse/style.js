@@ -5,6 +5,7 @@ export default styled.div`
   height: 0;
   &.visible {
     height: ${(props) => `${props.height}px`};
+    overflow: unset;
   }
   &.collapse-enter {
     height: 0;
