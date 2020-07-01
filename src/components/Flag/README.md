@@ -1,10 +1,15 @@
 # Flag
 
-## Source
+## Source - https://hjnilsson.github.io/country-flags/
+
+
+## Source - world-countries
 
 https://github.com/mledoze/countries
 https://www.npmjs.com/package/world-countries
 https://mledoze.github.io/countries/
+
+- No europe lollll
 
 ```json
 // country
