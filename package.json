@@ -21,7 +21,9 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
-  "dependencies": {},
+  "dependencies": {
+    "svg-country-flags": "^1.2.7"
+  },
   "devDependencies": {
     "@babel/core": "^7.10.2",
     "@babel/preset-env": "^7.10.2",
