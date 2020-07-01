@@ -32,7 +32,9 @@ https://mledoze.github.io/countries/
   "ccn3": "040",
   "cca3": "AUT",
   "cioc": "AUT",
-  "currency": ["EUR"],
+  "currencies": {
+    "EUR": { "name": "Euro", "symbol": "€" }
+  },
   "callingCode": ["43"],
   "capital": "Vienna",
   "altSpellings": ["AT", "Osterreich", "Oesterreich"],
