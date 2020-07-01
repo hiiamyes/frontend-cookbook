@@ -16,6 +16,7 @@ const FlagDemo = () => {
           >
             <Flag countryCodeCCA3={country.cca3}></Flag>
             <span>{country.name.common}</span>
+            <span>{country.cca3}</span>
           </div>
         );
       })}
