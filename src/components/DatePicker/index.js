@@ -1,5 +1,6 @@
 import React from "react";
 import dayjs from "dayjs";
+import classnames from "classnames";
 import Modal from "src/components/Modal";
 import useModal from "src/components/Modal/useModal";
 import Style from "./style";
@@ -27,17 +28,19 @@ const DatePicker = (props) => {
                     <div></div>
                   ))}
                   {[...new Array(thisMonth.daysInMonth())].map((_, day) => {
+                    const date = dayjs()
+                      .year(thisMonth.year())
+                      .month(thisMonth.month())
+                      .date(day + 1)
+                      .format("YYYY-MM-DD");
+                    const className = classnames("day", {
+                      today: dayjs().format("YYYY-MM-DD") === date,
+                    });
                     return (
                       <div
-                        className="day"
+                        className={className}
                         onClick={() => {
-                          onChange(
-                            dayjs()
-                              .year(thisMonth.year())
-                              .month(thisMonth.month())
-                              .date(day + 1)
-                              .format("YYYY-MM-DD"),
-                          );
+                          onChange(date);
                           closeModal();
                         }}
                       >
