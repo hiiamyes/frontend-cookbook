@@ -1,5 +1,11 @@
 # Flag
 
+## Getting started
+
+```
+node createFlags.js
+```
+
 ## Source - https://hjnilsson.github.io/country-flags/
 
 The source files were taken from Wikipedia and are not under copyright protection since flags are effectively in public domain (there may be other restrictions on how the flag can be used though).

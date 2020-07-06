@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
-export default styled.div`
-  width: 30px;
-  > img {
-    width: 100%;
-  }
+export default styled.img`
+  width: ${props => props.theme.width + "px"};
+  height: ${props => props.theme.height + "px"};
 `;
