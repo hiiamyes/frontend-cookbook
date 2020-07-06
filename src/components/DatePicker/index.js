@@ -1,14 +1,18 @@
 import React from "react";
 import dayjs from "dayjs";
 import Modal from "src/components/Modal";
+import useModal from "src/components/Modal/useModal";
 import Style from "./style";
 
 const DatePicker = (props) => {
   const { value = "", onChange } = props;
+
+  const { visible, openModal, closeModal } = useModal();
+
   return (
     <Style>
-      <input value={value}></input>
-      <Modal visible={true}>
+      <input value={value} onClick={openModal}></input>
+      <Modal visible={visible} onClose={closeModal}>
         <div className="years">
           {[...new Array(12)].map((_, i) => {
             const thisMonth = dayjs().startOf("year").add(i, "month");
@@ -25,6 +29,7 @@ const DatePicker = (props) => {
                   {[...new Array(thisMonth.daysInMonth())].map((_, day) => {
                     return (
                       <div
+                        className="day"
                         onClick={() => {
                           onChange(
                             dayjs()
@@ -33,6 +38,7 @@ const DatePicker = (props) => {
                               .date(day + 1)
                               .format("YYYY-MM-DD"),
                           );
+                          closeModal();
                         }}
                       >
                         {day + 1}
