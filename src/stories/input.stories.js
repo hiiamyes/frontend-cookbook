@@ -4,6 +4,7 @@ import SearchInputDemo from "src/components/Input/SearchInput/demo";
 import FormInputDemo from "src/components/Input/FormInput/demo";
 import { BasicInputDemo } from "src/components/Input/BasicInput";
 import { MoneyInputDemo } from "src/components/Input/MoneyInput";
+import { TwoFAInputDemo } from "src/components/Input/TwoFAInput";
 
 export default {
   title: "Input",
@@ -19,6 +20,10 @@ export const checkbox = () => {
 
 export const BasicInput = () => {
   return <BasicInputDemo />;
+};
+
+export const TwoFAInput = () => {
+  return <TwoFAInputDemo />;
 };
 
 export const MoneyInput = () => {
