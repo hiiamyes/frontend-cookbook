@@ -5,6 +5,7 @@ import FormInputDemo from "src/components/Input/FormInput/demo";
 import { BasicInputDemo } from "src/components/Input/BasicInput";
 import { MoneyInputDemo } from "src/components/Input/MoneyInput";
 import { TwoFAInputDemo } from "src/components/Input/TwoFAInput";
+import NumberInputDemo from "src/components/Input/NumberInput/demo";
 
 export default {
   title: "Input",
@@ -36,4 +37,8 @@ export const SearchInput = () => {
 
 export const FormInput = () => {
   return <FormInputDemo />;
+};
+
+export const NumberInput = () => {
+  return <NumberInputDemo />;
 };
