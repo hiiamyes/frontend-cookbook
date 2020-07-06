@@ -1,15 +1,42 @@
 import React, { useState } from "react";
+import classnames from "classnames";
 import Style from "./style";
 
 const BasicInput = (props) => {
-  let { value, error, onChange, ...rest } = props;
+  const { disabled, loading, error, ...rest } = props;
+
+  const [hover, setHover] = useState(false);
+  const [focused, setFocused] = useState(false);
+
+  const className = classnames({
+    disabled,
+    loading,
+    hover,
+    focused,
+    error,
+  });
+
   return (
     <Style
-      className={`${error ? "error" : ""}`}
-      value={value}
-      onChange={onChange}
+      className={className}
+      onMouseEnter={() => {
+        setHover(true);
+      }}
+      onMouseLeave={() => {
+        setHover(false);
+      }}
       {...rest}
-    />
+    >
+      <input
+        {...rest}
+        onFocus={(e) => {
+          setFocused(true);
+        }}
+        onBlur={(e) => {
+          setFocused(false);
+        }}
+      />
+    </Style>
   );
 };
 
@@ -18,7 +45,15 @@ const BasicInputDemo = () => {
   const onChange = (e) => {
     setValue(e.target.value);
   };
-  return <BasicInput value={value} onChange={onChange} />;
+  return (
+    <div>
+      <BasicInput value={value} onChange={onChange} />
+      <br />
+      <BasicInput disabled />
+      <br />
+      <BasicInput loading />
+    </div>
+  );
 };
 
 export default BasicInput;
