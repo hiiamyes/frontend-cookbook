@@ -6,7 +6,6 @@
     "email": "joshuayes@gmail.com",
     "url": "https://yeslee.me"
   },
-  "version": "1.0.4",
   "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
@@ -14,7 +13,6 @@
     "build": "build-storybook -c .storybook -o .build",
     "test": "jest",
     "test:watch": "jest --verbose --watch",
-    "rollup": "rollup -c",
     "release": "./scripts/release.sh"
   },
   "peerDependencies": {

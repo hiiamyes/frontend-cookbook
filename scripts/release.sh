@@ -1,9 +1,10 @@
 #!/bin/sh
-yarn rollup
-cp package.json release/package.json
-cp README.MD release/README.MD
+rollup -c
+rm -rf release/
+git clone --branch release https://github.com/hiiamyes/frontend-cookbook.git release
+cp README.md release/README.md
 yes | cp -rf dist/ release/dist/
 cd release
 git add .
-git commit -m 'update'
-git push
+yarn version --patch
+git push --follow-tags
