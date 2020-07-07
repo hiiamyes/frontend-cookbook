@@ -1,15 +1,15 @@
-# Carousel
+# Collapse / Accordion?
 
-- Open / Close (Modal for mobile friendly)
-  - Provide HOC?
-  - Provide Hook?
-- Actions
-  - Indicator!
-  - Next/Prev (Keyboard friendly)
-  - Show / Hike Actions
-- Gesture? (mobile friendly)
-- Zoom
+## Memo
 
-# Ref
+- Dynamic children height (like form error) may break fixed height solution.
+- Doest `height: auto` work?
 
-- [slick](https://github.com/kenwheeler/slick)
+  - Nope, it won't have height animation
+
+- Delete item may have no effect if we remove item before applying transition
+
+  - Give up, makes no animaiton for updating content height
+
+- `overflow: hidden` may not work well with selection's pop-up options
+  - `overflow: unset` when visible!

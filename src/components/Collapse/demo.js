@@ -1,30 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
+import Table from "src/components/Table";
+import BasicSelect from "src/components/Select/BasicSelect";
 import Button from "src/components/Button";
+import useCollapse from "src/components/Collapse/useCollapse";
 import Collapse from "./index";
+import timezoneNames from "./timezoneNames.json";
+
+const columns = () => {
+  return ["name", "brand", "product"];
+};
 
 const CollapseDemo = () => {
+  const [rows, setRows] = useState(
+    [...new Array(10)].map((x, i) => ({
+      name: `name${i}`,
+      brand: `brand${i}`,
+      product: `product${i}`,
+    })),
+  );
+  const { visible, toggleCollapse } = useCollapse();
   return (
-    <Collapse
-      toggle={<Button>toggle</Button>}
-      detail={
-        <div>
-          <div>test</div>
-          <div>test</div>
-          <div>test</div>
-          <div>test</div>
-          <div>test</div>
-          <div>test</div>
-          <div>test</div>
-          <div>test</div>
-          <div>test</div>
-          <div>test</div>
-          <div>test</div>
-          <div>test</div>
-          <div>test</div>
-          <div>test</div>
-        </div>
-      }
-    ></Collapse>
+    <div>
+      <div style={{ display: "flex" }}>
+        <Button onClick={toggleCollapse}>toggle</Button>
+        <div style={{ width: "5px" }}></div>
+        <Button
+          onClick={() =>
+            setRows(
+              rows.concat(
+                [...new Array(3)].map((x, i) => ({
+                  name: `name${i + rows.length}`,
+                  brand: `brand${i + rows.length}`,
+                  product: `product${i + rows.length}`,
+                })),
+              ),
+            )
+          }
+        >
+          Add 3 row
+        </Button>
+        <div style={{ width: "5px" }}></div>
+        <Button onClick={() => setRows(rows.slice(0, rows.length - 3))}>
+          Delete 3 row
+        </Button>
+      </div>
+      <Collapse visible={visible}>
+        <BasicSelect options={timezoneNames} />
+        <Table rows={rows} columns={columns()} />
+      </Collapse>
+    </div>
   );
 };
 

@@ -9,7 +9,7 @@ const rows = [...new Array(100)].map((x, i) => ({
 }));
 
 const TableDemo = () => {
-  return <Table rows={rows} columns={columns} />;
+  return <Table rows={rows} columns={columns()} />;
 };
 
 export default TableDemo;

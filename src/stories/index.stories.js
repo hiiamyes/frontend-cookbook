@@ -2,17 +2,13 @@ import React from "react";
 
 import { storiesOf } from "@storybook/react";
 import styled from "styled-components";
-import "antd/dist/antd.css";
-import "leaflet/dist/leaflet.css";
 
-import { BasicInputDemo } from "src/components/Input/BasicInput";
 import FAIcon from "src/components/FAIcon";
 
 import BasicSelectDemo from "src/components/Select/BasicSelect/demo";
 import TimezoneNameSelect from "src/components/Select/TimezoneNameSelect";
 import LanguagePickerDemo from "src/components/Select/LanguagePicker/demo";
 
-import { MoneyInputDemo } from "src/components/Input/MoneyInput";
 import LineChartDemo from "src/components/Chart/LineChart/demo";
 import BarChartDemo from "src/components/Chart/BarChart/demo";
 import ElevationChartDemo from "src/components/Chart/ElevationChart/demo";
@@ -21,8 +17,6 @@ import MultipleElevationChartDemo from "src/components/Chart/MultipleElevationCh
 
 import FilePickerDemo from "src/components/FilePicker/demo";
 import BasicUploaderDemo from "src/components/Uploader/demo";
-import SearchInputDemo from "src/components/Input/SearchInput/demo";
-import FormInputDemo from "src/components/Input/FormInput/demo";
 
 import CarouselDemo from "src/components/Carousel/demo";
 import LoaderDemo from "src/components/Loader/demo";
@@ -35,8 +29,6 @@ import TagDemo from "src/components/Tag/demo";
 import CollapseDemo from "src/components/Collapse/demo";
 import ScrollbarDemo from "src/components/Scrollbar/demo";
 import FormDemo from "src/components/Form/demo";
-
-import "src/styles/global-style.css";
 
 const Layout = styled.div`
   padding: 15px;
@@ -83,28 +75,6 @@ storiesOf("Button", module).add("Button", () => (
     <ButtonDemo />
   </Layout>
 ));
-
-storiesOf("Input", module)
-  .add("BasicInput", () => (
-    <Layout>
-      <BasicInputDemo />
-    </Layout>
-  ))
-  .add("MoneyInput", () => (
-    <Layout>
-      <MoneyInputDemo />
-    </Layout>
-  ))
-  .add("SearchInput", () => (
-    <Layout>
-      <SearchInputDemo />
-    </Layout>
-  ))
-  .add("FormInput", () => (
-    <Layout>
-      <FormInputDemo />
-    </Layout>
-  ));
 
 storiesOf("Icon", module).add("FontAwesomeIcon", () => <FAIcon icon="cog" />);
 

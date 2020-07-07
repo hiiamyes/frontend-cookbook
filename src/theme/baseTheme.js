@@ -67,6 +67,7 @@ const baseTheme = {
   zIndexToast: 101,
   zIndexNavBar: 100,
   zIndexModal: 99,
+  zIndexModalCloseIndex: 100,
 };
 
 export default baseTheme;

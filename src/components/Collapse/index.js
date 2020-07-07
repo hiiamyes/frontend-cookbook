@@ -1,27 +1,28 @@
-import React, { useState, createRef, useEffect } from "react";
+import React, { useState, useCallback } from "react";
+import { CSSTransition } from "react-transition-group";
 import Style from "./style";
 
-const Carousel = props => {
-  const { toggle, detail } = props;
-  const detailH = createRef();
-
-  const [visible, setVisible] = useState(false);
+const Collapse = (props) => {
+  const { visible, children } = props;
   const [height, setHeight] = useState();
 
-  useEffect(() => {
-    setHeight(detailH.current.getBoundingClientRect().height);
+  // https://reactjs.org/docs/hooks-faq.html#how-can-i-measure-a-dom-node
+  const measuredRef = useCallback((node) => {
+    if (node !== null) {
+      const resizeObserver = new ResizeObserver(() => {
+        setHeight(node.getBoundingClientRect().height);
+      });
+      resizeObserver.observe(node);
+    }
   }, []);
 
   return (
-    <Style height={height}>
-      <div className="toggle" onClick={() => setVisible(!visible)}>
-        {toggle}
-      </div>
-      <div className={`detail ${visible ? "visible" : ""}`}>
-        <div ref={detailH}>{detail}</div>
-      </div>
-    </Style>
+    <CSSTransition in={visible} timeout={300} classNames="collapse">
+      <Style className={visible ? "visible" : ""} height={height}>
+        <div ref={measuredRef}>{children}</div>
+      </Style>
+    </CSSTransition>
   );
 };
 
-export default Carousel;
+export default Collapse;

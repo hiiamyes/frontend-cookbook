@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { modalMaskZIndex } from "src/styles/zIndex";
 
 const duration = "200ms";
 
@@ -9,6 +8,7 @@ export default styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
+  overflow-y: auto;
 
   > .mask {
     position: absolute;
@@ -16,7 +16,7 @@ export default styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: ${modalMaskZIndex};
+    z-index: -1;
     animation: fadeIn ${duration} ease-in-out forwards;
   }
   &.modal-exit-active > .mask {
@@ -77,5 +77,6 @@ export default styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: ${(props) => props.theme.zIndexModalCloseIndex};
   }
 `;
