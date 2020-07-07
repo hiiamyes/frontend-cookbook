@@ -1,8 +1,0 @@
-[submodule "dist"]
-	path = dist
-	url = https://github.com/hiiamyes/frontend-cookbook.git
-	branch = dist
-[submodule "release"]
-	path = release
-	url = git@github.com:hiiamyes/frontend-cookbook.git
-	branch = release
