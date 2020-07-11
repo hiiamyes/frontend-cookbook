@@ -4,23 +4,23 @@ import Style from "./style";
 import refresh from "./refresh";
 
 const TrailChart = (props) => {
-  const { data, trail, showPOI } = props;
+  const { trails, showPOI, showAxis, colors } = props;
   const chartRef = createRef();
   const debouncedRefresh = debounce(300, refresh);
 
   useEffect(() => {
-    debouncedRefresh({ chartRef, data, trail, showPOI });
-  }, [chartRef, data, trail]);
+    debouncedRefresh({ chartRef, trails, showPOI, showAxis, colors });
+  }, [chartRef, trails]);
 
   useEffect(() => {
     const onResize = () => {
-      debouncedRefresh({ chartRef, data, trail, showPOI });
+      debouncedRefresh({ chartRef, trails, showPOI, showAxis, colors });
     };
     window.addEventListener("resize", onResize);
     return () => {
       window.removeEventListener("resize", onResize);
     };
-  }, [chartRef, data, trail]);
+  }, [chartRef, trails]);
 
   return <Style className="chart" ref={chartRef} />;
 };

@@ -11,9 +11,6 @@ import LanguagePickerDemo from "src/components/Select/LanguagePicker/demo";
 
 import LineChartDemo from "src/components/Chart/LineChart/demo";
 import BarChartDemo from "src/components/Chart/BarChart/demo";
-import ElevationChartDemo from "src/components/Chart/ElevationChart/demo";
-import ElevationChartV2Demo from "src/components/Chart/ElevationChartV2/demo";
-import MultipleElevationChartDemo from "src/components/Chart/MultipleElevationChart/demo";
 
 import FilePickerDemo from "src/components/FilePicker/demo";
 import BasicUploaderDemo from "src/components/Uploader/demo";
@@ -107,21 +104,6 @@ storiesOf("Chart", module)
   .add("BarChart", () => (
     <Layout>
       <BarChartDemo />
-    </Layout>
-  ))
-  .add("ElevationChartDemo", () => (
-    <Layout>
-      <ElevationChartDemo />
-    </Layout>
-  ))
-  .add("ElevationChartV2Demo", () => (
-    <Layout>
-      <ElevationChartV2Demo />
-    </Layout>
-  ))
-  .add("MultipleElevationChartDemo", () => (
-    <Layout>
-      <MultipleElevationChartDemo />
     </Layout>
   ));
 
