@@ -4,7 +4,7 @@ import Flag from "src/components/Flag";
 import currencies from "src/components/Flag/currencies";
 
 export default {
-  title: "UI-kit | Flag",
+  title: "Flag",
   component: Flag,
 };
 

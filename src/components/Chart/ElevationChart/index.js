@@ -3,7 +3,7 @@ import { debounce } from "lodash/fp";
 import Style from "./style";
 import refresh from "./refresh";
 
-const LineChart = (props) => {
+const TrailChart = (props) => {
   const { data } = props;
   const chartRef = createRef();
   const debouncedRefresh = debounce(300, refresh);
@@ -22,7 +22,7 @@ const LineChart = (props) => {
     };
   }, [chartRef, data]);
 
-  return <Style ref={chartRef} />;
+  return <Style className="chart" ref={chartRef} />;
 };
 
-export default LineChart;
+export default TrailChart;
