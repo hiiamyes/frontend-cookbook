@@ -5,9 +5,16 @@ import drawArea from "./drawArea";
 import drawPOIs from "./drawPOIs";
 import createGradient from "./createGradient";
 
-const margin = { top: 50, right: 50, bottom: 100, left: 50 };
+const defaultMargin = { top: 50, right: 50, bottom: 100, left: 50 };
 
-const refresh = ({ chartRef, trails, showPOI, showAxis, colors }) => {
+const refresh = ({
+  chartRef,
+  trails,
+  showPOI,
+  showAxis,
+  colors,
+  margin = defaultMargin,
+}) => {
   const container = {
     width: chartRef.current.parentNode.offsetWidth,
     height: chartRef.current.parentNode.offsetHeight,

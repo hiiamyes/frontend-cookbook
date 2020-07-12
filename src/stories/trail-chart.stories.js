@@ -39,11 +39,13 @@ export const TrailWithoutAxis = () => {
 
 export const TrailChartWithoutPOI = () => {
   return (
-    <Layout>
-      <div style={{ width: "100vw", height: 480 }}>
-        <TrailChart trails={[taoShanKelaye]} colors={colors} />
-      </div>
-    </Layout>
+    <div style={{ width: "100vw", height: 480 }}>
+      <TrailChart
+        trails={[taoShanKelaye]}
+        colors={colors}
+        margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+      />
+    </div>
   );
 };
 
