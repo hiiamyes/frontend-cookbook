@@ -12,6 +12,7 @@ const refresh = ({
   trails,
   showPOI,
   showAxis,
+  showArea,
   colors,
   margin = defaultMargin,
 }) => {
@@ -58,7 +59,7 @@ const refresh = ({
     const color = colors[i];
     const gradientId = createGradient({ svg, color, index: i });
     drawLine({ svg, xScale, yScale, trail, color });
-    drawArea({ svg, xScale, height, yScale, trail, gradientId });
+    showArea && drawArea({ svg, xScale, height, yScale, trail, gradientId });
     showPOI && drawPOIs({ svg, xScale, yScale, trail });
   }
 };

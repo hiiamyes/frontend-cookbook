@@ -21,7 +21,13 @@ export const TrailChartBasic = () => {
   return (
     <Layout>
       <div style={{ width: "100vw", height: 480 }}>
-        <TrailChart showPOI showAxis trails={[taoShanKelaye]} colors={colors} />
+        <TrailChart
+          showPOI
+          showAxis
+          showArea
+          trails={[taoShanKelaye]}
+          colors={colors}
+        />
       </div>
     </Layout>
   );
@@ -31,7 +37,7 @@ export const TrailWithoutAxis = () => {
   return (
     <Layout>
       <div style={{ width: "100vw", height: 480 }}>
-        <TrailChart showPOI trails={[taoShanKelaye]} colors={colors} />
+        <TrailChart showPOI showArea trails={[taoShanKelaye]} colors={colors} />
       </div>
     </Layout>
   );
@@ -41,6 +47,7 @@ export const TrailChartWithoutPOI = () => {
   return (
     <div style={{ width: "100vw", height: 480 }}>
       <TrailChart
+        showArea
         trails={[taoShanKelaye]}
         colors={colors}
         margin={{ top: 0, right: 0, bottom: 0, left: 0 }}

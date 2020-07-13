@@ -4,17 +4,33 @@ import Style from "./style";
 import refresh from "./refresh";
 
 const TrailChart = (props) => {
-  const { trails, showPOI, showAxis, colors, margin } = props;
+  const { trails, showPOI, showAxis, showArea, colors, margin } = props;
   const chartRef = createRef();
   const debouncedRefresh = debounce(300, refresh);
 
   useEffect(() => {
-    debouncedRefresh({ chartRef, trails, showPOI, showAxis, colors, margin });
+    debouncedRefresh({
+      chartRef,
+      trails,
+      showPOI,
+      showAxis,
+      showArea,
+      colors,
+      margin,
+    });
   }, [chartRef, trails]);
 
   useEffect(() => {
     const onResize = () => {
-      debouncedRefresh({ chartRef, trails, showPOI, showAxis, colors, margin });
+      debouncedRefresh({
+        chartRef,
+        trails,
+        showPOI,
+        showAxis,
+        showArea,
+        colors,
+        margin,
+      });
     };
     window.addEventListener("resize", onResize);
     return () => {
