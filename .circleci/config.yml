@@ -15,6 +15,7 @@ jobs:
             ssh-keyscan $LINODE_IP >> ~/.ssh/known_hosts
             ssh yes@$LINODE_IP 'mkdir -p ~/app/frontend-cookbook'
             scp -pr ./.build/* yes@$LINODE_IP:~/app/frontend-cookbook
+      - slack/status
 workflows:
   version: 2
   release:
