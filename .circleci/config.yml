@@ -1,17 +1,24 @@
-version: 2
+version: 2.1
+orbs:
+  slack: circleci/slack@3.4.2
 jobs:
   build:
-    branches:
-      only:
-        - master
-    docker:
-      - image: circleci/node:10.16.0
+    machine: true # uses default image circleci/classic:latest
     steps:
       - checkout
-      - run: |
-          yarn
-          yarn test
-          MAPBOX_ACCESS_TOKEN=$MAPBOX_ACCESS_TOKEN yarn run build
-          ssh-keyscan $LINODE_IP >> ~/.ssh/known_hosts
-          ssh yes@$LINODE_IP 'mkdir -p ~/app/frontend-cookbook'
-          scp -pr ./.build/* yes@$LINODE_IP:~/app/frontend-cookbook
+      - run:
+          command: |
+            yarn
+            yarn test
+            MAPBOX_ACCESS_TOKEN=$MAPBOX_ACCESS_TOKEN yarn run build
+            ssh-keyscan $LINODE_IP >> ~/.ssh/known_hosts
+            ssh yes@$LINODE_IP 'mkdir -p ~/app/frontend-cookbook'
+            scp -pr ./.build/* yes@$LINODE_IP:~/app/frontend-cookbook
+workflows:
+  version: 2
+  release:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only: master
