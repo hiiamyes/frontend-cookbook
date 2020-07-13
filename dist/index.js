@@ -3832,7 +3832,6 @@ var fp = _baseConvert(_, _);
 var Style$3 = styled.div`
   .line {
     fill: none;
-    stroke-width: 4;
   }
 `;
 
@@ -7721,14 +7720,15 @@ const drawLine = ({
   xScale,
   yScale,
   trail,
-  color
+  color,
+  strokeWidth
 }) => {
   const line$1 = line().x(({
     x
   }) => xScale(x)).y(({
     y
   }) => yScale(y));
-  svg.append("path").datum(trail.paths).attr("class", "line").attr("d", line$1).attr("stroke", color);
+  svg.append("path").datum(trail.paths).attr("class", "line").attr("d", line$1).attr("stroke", color).attr("stroke-width", strokeWidth);
 };
 
 const drawArea = ({
@@ -7786,7 +7786,8 @@ const refresh = ({
   showAxis,
   showArea,
   colors,
-  margin = defaultMargin
+  margin = defaultMargin,
+  strokeWidth = 2
 }) => {
   const container = {
     width: chartRef.current.parentNode.offsetWidth,
@@ -7839,7 +7840,8 @@ const refresh = ({
       xScale,
       yScale,
       trail,
-      color
+      color,
+      strokeWidth
     });
     showArea && drawArea({
       svg,
@@ -7865,7 +7867,8 @@ const TrailChart = props => {
     showAxis,
     showArea,
     colors,
-    margin
+    margin,
+    strokeWidth
   } = props;
   const chartRef = /*#__PURE__*/createRef();
   const debouncedRefresh = fp.debounce(300, refresh);
@@ -7877,7 +7880,8 @@ const TrailChart = props => {
       showAxis,
       showArea,
       colors,
-      margin
+      margin,
+      strokeWidth
     });
   }, [chartRef, trails]);
   useEffect(() => {
@@ -7889,7 +7893,8 @@ const TrailChart = props => {
         showAxis,
         showArea,
         colors,
-        margin
+        margin,
+        strokeWidth
       });
     };
 
