@@ -1,6 +1,6 @@
 import React from "react";
 import { render, cleanup, fireEvent } from "@testing-library/react";
-import "jest-dom/extend-expect";
+import "@testing-library/jest-dom/extend-expect";
 import MoneyInput from "./index";
 
 afterEach(cleanup);
@@ -11,7 +11,7 @@ describe("MoneyInput", () => {
     const value = null;
     const onChange = jest.fn(() => {});
     const { getByTestId } = render(
-      <MoneyInput value={value} minUnit={minUnit} onChange={onChange} />
+      <MoneyInput value={value} minUnit={minUnit} onChange={onChange} />,
     );
     const moneyInput = getByTestId("money-input");
     expect(moneyInput.placeholder).toBe("Input amount");
@@ -22,7 +22,7 @@ describe("MoneyInput", () => {
     const value = null;
     const onChange = jest.fn(() => {});
     const { getByTestId } = render(
-      <MoneyInput value={value} minUnit={minUnit} onChange={onChange} />
+      <MoneyInput value={value} minUnit={minUnit} onChange={onChange} />,
     );
     const moneyInput = getByTestId("money-input");
     fireEvent.change(moneyInput, { target: { value: "1" } });
@@ -34,7 +34,7 @@ describe("MoneyInput", () => {
     const value = null;
     const onChange = jest.fn(() => {});
     const { getByTestId } = render(
-      <MoneyInput value={value} minUnit={minUnit} onChange={onChange} />
+      <MoneyInput value={value} minUnit={minUnit} onChange={onChange} />,
     );
     const moneyInput = getByTestId("money-input");
     fireEvent.change(moneyInput, { target: { value: "1.233" } });
