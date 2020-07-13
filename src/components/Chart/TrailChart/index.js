@@ -4,7 +4,15 @@ import Style from "./style";
 import refresh from "./refresh";
 
 const TrailChart = (props) => {
-  const { trails, showPOI, showAxis, showArea, colors, margin } = props;
+  const {
+    trails,
+    showPOI,
+    showAxis,
+    showArea,
+    colors,
+    margin,
+    strokeWidth,
+  } = props;
   const chartRef = createRef();
   const debouncedRefresh = debounce(300, refresh);
 
@@ -17,6 +25,7 @@ const TrailChart = (props) => {
       showArea,
       colors,
       margin,
+      strokeWidth,
     });
   }, [chartRef, trails]);
 
@@ -30,6 +39,7 @@ const TrailChart = (props) => {
         showArea,
         colors,
         margin,
+        strokeWidth,
       });
     };
     window.addEventListener("resize", onResize);
