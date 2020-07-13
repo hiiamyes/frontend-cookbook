@@ -30,5 +30,6 @@ yarn release
 
 ```
 yarn add https://github.com/hiiamyes/frontend-cookbook.git#release
+yarn add https://github.com/hiiamyes/frontend-cookbook.git#1.0.5
 ```
 

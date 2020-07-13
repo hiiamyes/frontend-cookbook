@@ -3832,11 +3832,7 @@ var fp = _baseConvert(_, _);
 var Style$3 = styled.div`
   .line {
     fill: none;
-    stroke: #00796b;
     stroke-width: 4;
-  }
-  .area {
-    fill: url(#gradient);
   }
 `;
 
@@ -3929,76 +3925,6 @@ function tickStep(start, stop, count) {
   else if (error >= e5) step1 *= 5;
   else if (error >= e2) step1 *= 2;
   return stop < start ? -step1 : step1;
-}
-
-function max(values, valueof) {
-  var n = values.length,
-      i = -1,
-      value,
-      max;
-
-  if (valueof == null) {
-    while (++i < n) { // Find the first comparable value.
-      if ((value = values[i]) != null && value >= value) {
-        max = value;
-        while (++i < n) { // Compare the remaining values.
-          if ((value = values[i]) != null && value > max) {
-            max = value;
-          }
-        }
-      }
-    }
-  }
-
-  else {
-    while (++i < n) { // Find the first comparable value.
-      if ((value = valueof(values[i], i, values)) != null && value >= value) {
-        max = value;
-        while (++i < n) { // Compare the remaining values.
-          if ((value = valueof(values[i], i, values)) != null && value > max) {
-            max = value;
-          }
-        }
-      }
-    }
-  }
-
-  return max;
-}
-
-function min(values, valueof) {
-  var n = values.length,
-      i = -1,
-      value,
-      min;
-
-  if (valueof == null) {
-    while (++i < n) { // Find the first comparable value.
-      if ((value = values[i]) != null && value >= value) {
-        min = value;
-        while (++i < n) { // Compare the remaining values.
-          if ((value = values[i]) != null && min > value) {
-            min = value;
-          }
-        }
-      }
-    }
-  }
-
-  else {
-    while (++i < n) { // Find the first comparable value.
-      if ((value = valueof(values[i], i, values)) != null && value >= value) {
-        min = value;
-        while (++i < n) { // Compare the remaining values.
-          if ((value = valueof(values[i], i, values)) != null && min > value) {
-            min = value;
-          }
-        }
-      }
-    }
-  }
-
-  return min;
 }
 
 var slice = Array.prototype.slice;
@@ -7777,86 +7703,6 @@ function area() {
   return area;
 }
 
-const margin = {
-  top: 50,
-  right: 50,
-  bottom: 100,
-  left: 50
-};
-
-const refresh = ({
-  chartRef,
-  trail,
-  showPOI,
-  showAxis
-}) => {
-  const data = trail.paths;
-  const container = {
-    width: chartRef.current.parentNode.offsetWidth,
-    height: chartRef.current.parentNode.offsetHeight
-  };
-  const chart = {
-    width: container.width - margin.left - margin.right,
-    height: container.height - margin.top - margin.bottom
-  };
-  const {
-    width,
-    height
-  } = chart;
-  const xMin = 0;
-  const xMax = data[data.length - 1].x;
-  const yMin = min(data.map(({
-    y
-  }) => y));
-  const yMax = max(data.map(({
-    y
-  }) => y));
-  const xScale = linear$1().domain([xMin, xMax]).range([0, width]);
-  const yScale = linear$1().domain([yMin, yMax]).range([height, 0]);
-  select(chartRef.current).select("svg").remove();
-  const svg = select(chartRef.current).append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-  showAxis && drawAxis({
-    svg,
-    xScale,
-    yScale,
-    height,
-    xMax,
-    yMin,
-    yMax
-  });
-  createGradient({
-    svg
-  });
-  drawLine({
-    svg,
-    xScale,
-    yScale,
-    data
-  });
-  drawArea({
-    svg,
-    xScale,
-    height,
-    yScale,
-    data
-  });
-  showPOI && drawPOIs({
-    svg,
-    xScale,
-    yScale,
-    trail
-  });
-};
-
-const createGradient = ({
-  svg
-}) => {
-  // https://developer.mozilla.org/en-US/docs/Web/SVG/Element/linearGradient
-  const gradient = svg.append("linearGradient").attr("id", "gradient").attr("gradientTransform", "rotate(90)");
-  gradient.append("stop").attr("offset", "0").attr("stop-color", "rgba(0, 121, 107, 0.2)");
-  gradient.append("stop").attr("offset", "1").attr("stop-color", "rgba(0, 121, 107, 0)");
-};
-
 const drawAxis = ({
   svg,
   xScale,
@@ -7874,14 +7720,15 @@ const drawLine = ({
   svg,
   xScale,
   yScale,
-  data
+  trail,
+  color
 }) => {
   const line$1 = line().x(({
     x
   }) => xScale(x)).y(({
     y
   }) => yScale(y));
-  svg.append("path").datum(data).attr("class", "line").attr("d", line$1);
+  svg.append("path").datum(trail.paths).attr("class", "line").attr("d", line$1).attr("stroke", color);
 };
 
 const drawArea = ({
@@ -7889,14 +7736,15 @@ const drawArea = ({
   xScale,
   height,
   yScale,
-  data
+  trail,
+  gradientId
 }) => {
   const area$1 = area().x(({
     x
   }) => xScale(x)).y0(height).y1(({
     y
   }) => yScale(y));
-  svg.append("path").datum(data).attr("class", "area").attr("d", area$1);
+  svg.append("path").datum(trail.paths).attr("class", "area").attr("d", area$1).attr("fill", `url(#${gradientId})`);
 };
 
 const drawPOIs = ({
@@ -7911,29 +7759,137 @@ const drawPOIs = ({
   svg.append("g").attr("class", "poilines").selectAll("line").data(trail.nodes).enter().append("line").attr("x1", poi => xScale(poi.distance)).attr("y1", 10).attr("x2", poi => xScale(poi.distance)).attr("y2", poi => yScale(poi.ele)).attr("stroke-width", 1).attr("stroke", "black");
 };
 
+// https://developer.mozilla.org/en-US/docs/Web/SVG/Element/linearGradient
+const createGradient = ({
+  svg,
+  color,
+  index
+}) => {
+  const gradientId = `gradient-${index}`;
+  const gradient = svg.append("linearGradient").attr("id", gradientId).attr("gradientTransform", "rotate(90)");
+  gradient.append("stop").attr("offset", "0").attr("stop-color", color).attr("stop-opacity", "0.2");
+  gradient.append("stop").attr("offset", "1").attr("stop-color", color).attr("stop-opacity", "0");
+  return gradientId;
+};
+
+const defaultMargin = {
+  top: 50,
+  right: 50,
+  bottom: 100,
+  left: 50
+};
+
+const refresh = ({
+  chartRef,
+  trails,
+  showPOI,
+  showAxis,
+  showArea,
+  colors,
+  margin = defaultMargin
+}) => {
+  const container = {
+    width: chartRef.current.parentNode.offsetWidth,
+    height: chartRef.current.parentNode.offsetHeight
+  };
+  const chart = {
+    width: container.width - margin.left - margin.right,
+    height: container.height - margin.top - margin.bottom
+  };
+  const {
+    width,
+    height
+  } = chart;
+  const xMin = 0;
+  const xMax = Math.max(...trails.map(trail => trail.paths[trail.paths.length - 1].x));
+  const yMin = Math.min(...trails.map(({
+    paths
+  }) => paths).reduce((a, b) => a.concat(b), []).map(({
+    y
+  }) => y));
+  const yMax = Math.max(...trails.map(({
+    paths
+  }) => paths).reduce((a, b) => a.concat(b), []).map(({
+    y
+  }) => y));
+  const xScale = linear$1().domain([xMin, xMax]).range([0, width]);
+  const yScale = linear$1().domain([yMin, yMax]).range([height, 0]);
+  select(chartRef.current).select("svg").remove();
+  const svg = select(chartRef.current).append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+  showAxis && drawAxis({
+    svg,
+    xScale,
+    yScale,
+    height,
+    xMax,
+    yMin,
+    yMax
+  });
+
+  for (let i = 0; i < trails.length; i++) {
+    const trail = trails[i];
+    const color = colors[i];
+    const gradientId = createGradient({
+      svg,
+      color,
+      index: i
+    });
+    drawLine({
+      svg,
+      xScale,
+      yScale,
+      trail,
+      color
+    });
+    showArea && drawArea({
+      svg,
+      xScale,
+      height,
+      yScale,
+      trail,
+      gradientId
+    });
+    showPOI && drawPOIs({
+      svg,
+      xScale,
+      yScale,
+      trail
+    });
+  }
+};
+
 const TrailChart = props => {
   const {
-    data,
-    trail,
-    showPOI
+    trails,
+    showPOI,
+    showAxis,
+    showArea,
+    colors,
+    margin
   } = props;
   const chartRef = /*#__PURE__*/createRef();
   const debouncedRefresh = fp.debounce(300, refresh);
   useEffect(() => {
     debouncedRefresh({
       chartRef,
-      data,
-      trail,
-      showPOI
+      trails,
+      showPOI,
+      showAxis,
+      showArea,
+      colors,
+      margin
     });
-  }, [chartRef, data, trail]);
+  }, [chartRef, trails]);
   useEffect(() => {
     const onResize = () => {
       debouncedRefresh({
         chartRef,
-        data,
-        trail,
-        showPOI
+        trails,
+        showPOI,
+        showAxis,
+        showArea,
+        colors,
+        margin
       });
     };
 
@@ -7941,7 +7897,7 @@ const TrailChart = props => {
     return () => {
       window.removeEventListener("resize", onResize);
     };
-  }, [chartRef, data, trail]);
+  }, [chartRef, trails]);
   return /*#__PURE__*/React.createElement(Style$3, {
     className: "chart",
     ref: chartRef
@@ -35939,5 +35895,5 @@ const Carousel = props => {
   }))));
 };
 
-export { Carousel, TrailChart as ElevationChart, FAIcon, Loader, Map$1 as Map, Modal, Trail, useModal };
+export { Carousel, FAIcon, Loader, Map$1 as Map, Modal, Trail, TrailChart, useModal };
 //# sourceMappingURL=index.js.map
