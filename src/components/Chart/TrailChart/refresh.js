@@ -15,6 +15,7 @@ const refresh = ({
   showArea,
   colors,
   margin = defaultMargin,
+  strokeWidth = 2,
 }) => {
   const container = {
     width: chartRef.current.parentNode.offsetWidth,
@@ -58,7 +59,7 @@ const refresh = ({
     const trail = trails[i];
     const color = colors[i];
     const gradientId = createGradient({ svg, color, index: i });
-    drawLine({ svg, xScale, yScale, trail, color });
+    drawLine({ svg, xScale, yScale, trail, color, strokeWidth });
     showArea && drawArea({ svg, xScale, height, yScale, trail, gradientId });
     showPOI && drawPOIs({ svg, xScale, yScale, trail });
   }

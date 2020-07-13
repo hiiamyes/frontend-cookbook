@@ -33,6 +33,23 @@ export const TrailChartBasic = () => {
   );
 };
 
+export const TrailChartCustomStrokeWidth = () => {
+  return (
+    <Layout>
+      <div style={{ width: "100vw", height: 480 }}>
+        <TrailChart
+          showPOI
+          showAxis
+          showArea
+          trails={[taoShanKelaye]}
+          colors={colors}
+          strokeWidth={10}
+        />
+      </div>
+    </Layout>
+  );
+};
+
 export const TrailWithoutAxis = () => {
   return (
     <Layout>
