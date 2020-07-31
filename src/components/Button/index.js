@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
+import classnames from "classnames";
 import Style from "./style";
 
 const Button = (props) => {
@@ -7,14 +8,15 @@ const Button = (props) => {
   const [pressed, setPressed] = useState(false);
   const [focused, setFocused] = useState(false);
 
-  const className = disabled
-    ? "disabled"
-    : loading
-    ? "loading"
-    : `${hover && "hover"} ${pressed && "pressed"} ${focused && "focused"}`;
+  const className = classnames({
+    disabled,
+    loading,
+    hover,
+    pressed,
+    focused,
+  });
 
   const windowMouseUp = useCallback(() => {
-    // console.log("window mouse up");
     setPressed(false);
   }, []);
 
@@ -29,35 +31,27 @@ const Button = (props) => {
     <Style
       className={className}
       onFocus={(e) => {
-        // console.log("focus");
         setFocused(true);
       }}
       onBlur={(e) => {
-        // console.log("blur");
         setFocused(false);
       }}
       onMouseEnter={() => {
-        // console.log("mouse enter");
         setHover(true);
       }}
       onMouseLeave={() => {
-        // console.log("mouse leave");
         setHover(false);
       }}
       onMouseDown={() => {
-        // console.log("mouse down");
         setPressed(true);
       }}
       onMouseUp={() => {
-        // console.log("mouse up");
         setPressed(false);
       }}
       onTouchStart={(e) => {
-        // console.log("touch start");
         setPressed(true);
       }}
       onTouchEnd={(e) => {
-        // console.log("touch end");
         e.preventDefault();
         setPressed(false);
       }}
