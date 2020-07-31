@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createRef } from 'react';
+import React, { useState, useCallback, useEffect, createRef } from 'react';
 import styled from 'styled-components';
 import Leaflet from 'leaflet';
 
@@ -2671,7 +2671,160 @@ const FAIcon = props => {
   }));
 };
 
-var Style$1 = styled.div`
+var classnames = createCommonjsModule(function (module) {
+/*!
+  Copyright (c) 2017 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+/* global define */
+
+(function () {
+
+	var hasOwn = {}.hasOwnProperty;
+
+	function classNames () {
+		var classes = [];
+
+		for (var i = 0; i < arguments.length; i++) {
+			var arg = arguments[i];
+			if (!arg) continue;
+
+			var argType = typeof arg;
+
+			if (argType === 'string' || argType === 'number') {
+				classes.push(arg);
+			} else if (Array.isArray(arg) && arg.length) {
+				var inner = classNames.apply(null, arg);
+				if (inner) {
+					classes.push(inner);
+				}
+			} else if (argType === 'object') {
+				for (var key in arg) {
+					if (hasOwn.call(arg, key) && arg[key]) {
+						classes.push(key);
+					}
+				}
+			}
+		}
+
+		return classes.join(' ');
+	}
+
+	if ( module.exports) {
+		classNames.default = classNames;
+		module.exports = classNames;
+	} else {
+		window.classNames = classNames;
+	}
+}());
+});
+
+var Style$1 = styled.button`
+  /* normalize */
+  outline: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: none;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  padding: ${props => props.theme.padding};
+
+  /* enable */
+  height: ${props => props.theme.height};
+  border-radius: ${props => props.theme.borderRadius};
+  color: ${props => props.theme.colorText};
+  background: ${props => props.theme.colorEnable};
+
+  /* focused */
+  &.focused {
+    background: ${props => props.theme.colorFocused};
+  }
+
+  /* hover  */
+  &.hover {
+    background: ${props => props.theme.colorHover};
+  }
+
+  /* pressed */
+  &.pressed {
+    background: ${props => props.theme.colorPressed};
+  }
+
+  /* loading */
+  &.loading {
+    cursor: not-allowed;
+  }
+
+  /* disabled */
+  &.disabled {
+    background: ${props => props.theme.colorDisabled};
+    cursor: not-allowed;
+  }
+`;
+
+const Button = props => {
+  const {
+    children,
+    loading,
+    disabled,
+    onClick
+  } = props;
+  const [hover, setHover] = useState(false);
+  const [pressed, setPressed] = useState(false);
+  const [focused, setFocused] = useState(false);
+  const className = classnames({
+    disabled,
+    loading,
+    hover,
+    pressed,
+    focused
+  });
+  const windowMouseUp = useCallback(() => {
+    setPressed(false);
+  }, []);
+  useEffect(() => {
+    window.addEventListener("mouseup", windowMouseUp);
+    return () => {
+      window.removeEventListener("mouseup", windowMouseUp);
+    };
+  }, [windowMouseUp]);
+  return /*#__PURE__*/React.createElement(Style$1, {
+    className: className,
+    onFocus: e => {
+      setFocused(true);
+    },
+    onBlur: e => {
+      setFocused(false);
+    },
+    onMouseEnter: () => {
+      setHover(true);
+    },
+    onMouseLeave: () => {
+      setHover(false);
+    },
+    onMouseDown: () => {
+      setPressed(true);
+    },
+    onMouseUp: () => {
+      setPressed(false);
+    },
+    onTouchStart: e => {
+      setPressed(true);
+    },
+    onTouchEnd: e => {
+      e.preventDefault();
+      setPressed(false);
+    },
+    onClick: e => {
+      !disabled && !loading && onClick && onClick(e);
+    }
+  }, loading ? "loading..." : children);
+};
+
+var Style$2 = styled.div`
   width: 16px;
   height: 16px;
   display: flex;
@@ -2689,12 +2842,12 @@ var Style$1 = styled.div`
 `;
 
 const Loader = props => {
-  return /*#__PURE__*/React.createElement(Style$1, null, /*#__PURE__*/React.createElement(FAIcon, {
+  return /*#__PURE__*/React.createElement(Style$2, null, /*#__PURE__*/React.createElement(FAIcon, {
     icon: "spinner"
   }));
 };
 
-var Style$2 = styled.div`
+var Style$3 = styled.div`
   width: 100%;
   height: 100%;
   .marker {
@@ -2725,7 +2878,7 @@ const Map$1 = props => {
     }).addTo(map);
     setMap(map);
   }, []);
-  return /*#__PURE__*/React.createElement(Style$2, {
+  return /*#__PURE__*/React.createElement(Style$3, {
     ref: mapRef
   }, map && React.Children.map(children, child => /*#__PURE__*/React.cloneElement(child, {
     map
@@ -3829,7 +3982,7 @@ var _baseConvert = baseConvert;
 var _ = lodash_min.runInContext();
 var fp = _baseConvert(_, _);
 
-var Style$3 = styled.div`
+var Style$4 = styled.div`
   .line {
     fill: none;
   }
@@ -7903,7 +8056,7 @@ const TrailChart = props => {
       window.removeEventListener("resize", onResize);
     };
   }, [chartRef, trails]);
-  return /*#__PURE__*/React.createElement(Style$3, {
+  return /*#__PURE__*/React.createElement(Style$4, {
     className: "chart",
     ref: chartRef
   });
@@ -35588,7 +35741,7 @@ CSSTransition.propTypes = process.env.NODE_ENV !== "production" ? _extends({}, T
 }) : {};
 
 const duration = "200ms";
-var Style$4 = styled.div`
+var Style$5 = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -35697,7 +35850,7 @@ const Modal = props => {
     timeout: 300,
     classNames: "modal",
     unmountOnExit: true
-  }, /*#__PURE__*/React.createElement(Style$4, null, /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement(Style$5, null, /*#__PURE__*/React.createElement("div", {
     className: "mask"
   }), /*#__PURE__*/React.createElement("button", {
     className: "close",
@@ -35727,7 +35880,7 @@ const useModal = () => {
   };
 };
 
-var Style$5 = styled.div`
+var Style$6 = styled.div`
   position: relative;
   > .prev,
   > .next {
@@ -35865,7 +36018,7 @@ const Carousel = props => {
   return /*#__PURE__*/React.createElement(Modal, {
     visible: visible,
     onClose: onClose
-  }, /*#__PURE__*/React.createElement(Style$5, {
+  }, /*#__PURE__*/React.createElement(Style$6, {
     actionsVisible: actionsVisible
   }, /*#__PURE__*/React.createElement("div", {
     ref: itemsRef,
@@ -35900,5 +36053,5 @@ const Carousel = props => {
   }))));
 };
 
-export { Carousel, FAIcon, Loader, Map$1 as Map, Modal, Trail, TrailChart, useModal };
+export { Button, Carousel, FAIcon, Loader, Map$1 as Map, Modal, Trail, TrailChart, useModal };
 //# sourceMappingURL=index.js.map
