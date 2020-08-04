@@ -1,5 +1,6 @@
 import FAIcon from "src/components/FAIcon";
 import Button from "src/components/Button";
+import IconButton from "src/components/Buttons/IconButton";
 import Loader from "src/components/Loader";
 import Map from "src/components/Map";
 import Trail from "src/components/Map/Trail";
@@ -19,5 +20,6 @@ export {
   useModal,
   Carousel,
   Button,
+  IconButton,
   createTheme,
 };
