@@ -2617,6 +2617,16 @@ var faCopy = {
   iconName: 'copy',
   icon: [448, 512, [], "f0c5", "M320 448v40c0 13.255-10.745 24-24 24H24c-13.255 0-24-10.745-24-24V120c0-13.255 10.745-24 24-24h72v296c0 30.879 25.121 56 56 56h168zm0-344V0H152c-13.255 0-24 10.745-24 24v368c0 13.255 10.745 24 24 24h272c13.255 0 24-10.745 24-24V128H344c-13.2 0-24-10.8-24-24zm120.971-31.029L375.029 7.029A24 24 0 0 0 358.059 0H352v96h96v-6.059a24 24 0 0 0-7.029-16.97z"]
 };
+var faMinus = {
+  prefix: 'fas',
+  iconName: 'minus',
+  icon: [448, 512, [], "f068", "M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"]
+};
+var faPlus = {
+  prefix: 'fas',
+  iconName: 'plus',
+  icon: [448, 512, [], "f067", "M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"]
+};
 var faSearch = {
   prefix: 'fas',
   iconName: 'search',
@@ -2664,6 +2674,8 @@ library.add(faSpinner);
 library.add(faTimes);
 library.add(faSquare);
 library.add(faCheckSquare);
+library.add(faMinus);
+library.add(faPlus);
 
 const FAIcon = props => {
   const {
