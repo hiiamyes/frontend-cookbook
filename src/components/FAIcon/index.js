@@ -12,12 +12,14 @@ import {
   faTimes,
   faSquare,
   faCheckSquare,
+  faCopy,
 } from "@fortawesome/free-solid-svg-icons";
 import Style from "./style";
 
 library.add(faCog);
 library.add(faAngleDown);
 library.add(faCloudUploadAlt);
+library.add(faCopy);
 library.add(faSearch);
 library.add(faChevronLeft);
 library.add(faChevronRight);
