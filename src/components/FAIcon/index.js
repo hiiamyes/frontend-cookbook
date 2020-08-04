@@ -13,6 +13,8 @@ import {
   faSquare,
   faCheckSquare,
   faCopy,
+  faMinus,
+  faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import Style from "./style";
 
@@ -27,6 +29,8 @@ library.add(faSpinner);
 library.add(faTimes);
 library.add(faSquare);
 library.add(faCheckSquare);
+library.add(faMinus);
+library.add(faPlus);
 
 const FAIcon = (props) => {
   const { size, icon } = props;
