@@ -2612,6 +2612,11 @@ var faCog = {
   iconName: 'cog',
   icon: [512, 512, [], "f013", "M487.4 315.7l-42.6-24.6c4.3-23.2 4.3-47 0-70.2l42.6-24.6c4.9-2.8 7.1-8.6 5.5-14-11.1-35.6-30-67.8-54.7-94.6-3.8-4.1-10-5.1-14.8-2.3L380.8 110c-17.9-15.4-38.5-27.3-60.8-35.1V25.8c0-5.6-3.9-10.5-9.4-11.7-36.7-8.2-74.3-7.8-109.2 0-5.5 1.2-9.4 6.1-9.4 11.7V75c-22.2 7.9-42.8 19.8-60.8 35.1L88.7 85.5c-4.9-2.8-11-1.9-14.8 2.3-24.7 26.7-43.6 58.9-54.7 94.6-1.7 5.4.6 11.2 5.5 14L67.3 221c-4.3 23.2-4.3 47 0 70.2l-42.6 24.6c-4.9 2.8-7.1 8.6-5.5 14 11.1 35.6 30 67.8 54.7 94.6 3.8 4.1 10 5.1 14.8 2.3l42.6-24.6c17.9 15.4 38.5 27.3 60.8 35.1v49.2c0 5.6 3.9 10.5 9.4 11.7 36.7 8.2 74.3 7.8 109.2 0 5.5-1.2 9.4-6.1 9.4-11.7v-49.2c22.2-7.9 42.8-19.8 60.8-35.1l42.6 24.6c4.9 2.8 11 1.9 14.8-2.3 24.7-26.7 43.6-58.9 54.7-94.6 1.5-5.5-.7-11.3-5.6-14.1zM256 336c-44.1 0-80-35.9-80-80s35.9-80 80-80 80 35.9 80 80-35.9 80-80 80z"]
 };
+var faCopy = {
+  prefix: 'fas',
+  iconName: 'copy',
+  icon: [448, 512, [], "f0c5", "M320 448v40c0 13.255-10.745 24-24 24H24c-13.255 0-24-10.745-24-24V120c0-13.255 10.745-24 24-24h72v296c0 30.879 25.121 56 56 56h168zm0-344V0H152c-13.255 0-24 10.745-24 24v368c0 13.255 10.745 24 24 24h272c13.255 0 24-10.745 24-24V128H344c-13.2 0-24-10.8-24-24zm120.971-31.029L375.029 7.029A24 24 0 0 0 358.059 0H352v96h96v-6.059a24 24 0 0 0-7.029-16.97z"]
+};
 var faSearch = {
   prefix: 'fas',
   iconName: 'search',
@@ -2651,6 +2656,7 @@ var Style = styled.div`
 library.add(faCog);
 library.add(faAngleDown);
 library.add(faCloudUploadAlt);
+library.add(faCopy);
 library.add(faSearch);
 library.add(faChevronLeft);
 library.add(faChevronRight);
@@ -2824,7 +2830,113 @@ const Button = props => {
   }, loading ? "loading..." : children);
 };
 
-var Style$2 = styled.div`
+var Style$2 = styled.button`
+  /* normalize */
+  outline: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: none;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  padding: ${props => props.theme.padding};
+
+  /* enable */
+  height: ${props => props.theme.height};
+  border-radius: ${props => props.theme.borderRadius};
+  color: ${props => props.theme.colorText};
+  background: ${props => props.theme.colorEnable};
+
+  /* focused */
+  &.focused {
+    background: ${props => props.theme.colorFocused};
+  }
+
+  /* hover  */
+  &.hover {
+    background: ${props => props.theme.colorHover};
+  }
+
+  /* pressed */
+  &.pressed {
+    background: ${props => props.theme.colorPressed};
+  }
+
+  /* loading */
+  &.loading {
+    cursor: not-allowed;
+  }
+
+  /* disabled */
+  &.disabled {
+    background: ${props => props.theme.colorDisabled};
+    cursor: not-allowed;
+  }
+`;
+
+const IconButton = props => {
+  const {
+    loading,
+    disabled,
+    onClick,
+    icon
+  } = props;
+  const [hover, setHover] = useState(false);
+  const [pressed, setPressed] = useState(false);
+  const [focused, setFocused] = useState(false);
+  const className = classnames({
+    disabled,
+    loading,
+    hover,
+    pressed,
+    focused
+  });
+  const windowMouseUp = useCallback(() => {
+    setPressed(false);
+  }, []);
+  useEffect(() => {
+    window.addEventListener("mouseup", windowMouseUp);
+    return () => {
+      window.removeEventListener("mouseup", windowMouseUp);
+    };
+  }, [windowMouseUp]);
+  return /*#__PURE__*/React.createElement(Style$2, {
+    className: className,
+    onFocus: e => {
+      setFocused(true);
+    },
+    onBlur: e => {
+      setFocused(false);
+    },
+    onMouseEnter: () => {
+      setHover(true);
+    },
+    onMouseLeave: () => {
+      setHover(false);
+    },
+    onMouseDown: () => {
+      setPressed(true);
+    },
+    onMouseUp: () => {
+      setPressed(false);
+    },
+    onTouchStart: e => {
+      setPressed(true);
+    },
+    onTouchEnd: e => {
+      e.preventDefault();
+      setPressed(false);
+    },
+    onClick: e => {
+      !disabled && !loading && onClick && onClick(e);
+    }
+  }, loading ? "loading..." : /*#__PURE__*/React.createElement(FAIcon, {
+    icon: icon
+  }));
+};
+
+var Style$3 = styled.div`
   width: 16px;
   height: 16px;
   display: flex;
@@ -2842,12 +2954,12 @@ var Style$2 = styled.div`
 `;
 
 const Loader = props => {
-  return /*#__PURE__*/React.createElement(Style$2, null, /*#__PURE__*/React.createElement(FAIcon, {
+  return /*#__PURE__*/React.createElement(Style$3, null, /*#__PURE__*/React.createElement(FAIcon, {
     icon: "spinner"
   }));
 };
 
-var Style$3 = styled.div`
+var Style$4 = styled.div`
   width: 100%;
   height: 100%;
   .marker {
@@ -2878,7 +2990,7 @@ const Map$1 = props => {
     }).addTo(map);
     setMap(map);
   }, []);
-  return /*#__PURE__*/React.createElement(Style$3, {
+  return /*#__PURE__*/React.createElement(Style$4, {
     ref: mapRef
   }, map && React.Children.map(children, child => /*#__PURE__*/React.cloneElement(child, {
     map
@@ -3982,7 +4094,7 @@ var _baseConvert = baseConvert;
 var _ = lodash_min.runInContext();
 var fp = _baseConvert(_, _);
 
-var Style$4 = styled.div`
+var Style$5 = styled.div`
   .line {
     fill: none;
   }
@@ -8056,7 +8168,7 @@ const TrailChart = props => {
       window.removeEventListener("resize", onResize);
     };
   }, [chartRef, trails]);
-  return /*#__PURE__*/React.createElement(Style$4, {
+  return /*#__PURE__*/React.createElement(Style$5, {
     className: "chart",
     ref: chartRef
   });
@@ -35741,7 +35853,7 @@ CSSTransition.propTypes = process.env.NODE_ENV !== "production" ? _extends({}, T
 }) : {};
 
 const duration = "200ms";
-var Style$5 = styled.div`
+var Style$6 = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -35850,7 +35962,7 @@ const Modal = props => {
     timeout: 300,
     classNames: "modal",
     unmountOnExit: true
-  }, /*#__PURE__*/React.createElement(Style$5, null, /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement(Style$6, null, /*#__PURE__*/React.createElement("div", {
     className: "mask"
   }), /*#__PURE__*/React.createElement("button", {
     className: "close",
@@ -35880,7 +35992,7 @@ const useModal = () => {
   };
 };
 
-var Style$6 = styled.div`
+var Style$7 = styled.div`
   position: relative;
   > .prev,
   > .next {
@@ -36018,7 +36130,7 @@ const Carousel = props => {
   return /*#__PURE__*/React.createElement(Modal, {
     visible: visible,
     onClose: onClose
-  }, /*#__PURE__*/React.createElement(Style$6, {
+  }, /*#__PURE__*/React.createElement(Style$7, {
     actionsVisible: actionsVisible
   }, /*#__PURE__*/React.createElement("div", {
     ref: itemsRef,
@@ -36123,5 +36235,5 @@ const createTheme = theme => {
   };
 };
 
-export { Button, Carousel, FAIcon, Loader, Map$1 as Map, Modal, Trail, TrailChart, createTheme, useModal };
+export { Button, Carousel, FAIcon, IconButton, Loader, Map$1 as Map, Modal, Trail, TrailChart, createTheme, useModal };
 //# sourceMappingURL=index.js.map
