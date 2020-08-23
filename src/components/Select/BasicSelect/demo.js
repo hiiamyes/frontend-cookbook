@@ -3,12 +3,12 @@ import BasicSelect from "./index";
 
 const options = [
   {
-    value: "a",
-    label: "A",
+    value: 13,
+    label: "九九山莊",
   },
   {
-    value: "b",
-    label: "B",
+    value: 223,
+    label: "三六九山莊",
   },
 ];
 
