@@ -36177,6 +36177,218 @@ const Carousel = props => {
   }))));
 };
 
+var Style$8 = styled.div`
+  > .thead {
+    > .tr {
+      display: grid;
+      border-bottom: 1px solid ${props => props.theme.colorSecondary};
+      &:hover {
+        background: ${props => props.theme.colorSecondary};
+      }
+    }
+  }
+  > .tbody {
+    > .tr {
+      display: grid;
+      border-bottom: 1px solid ${props => props.theme.colorSecondary};
+      &:hover {
+        background: ${props => props.theme.colorSecondary};
+      }
+    }
+  }
+`;
+
+const Table = props => {
+  const {
+    rows,
+    columns
+  } = props;
+  return /*#__PURE__*/React.createElement(Style$8, {
+    className: "table"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "thead"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "tr",
+    style: {
+      grid: `1fr / ${columns.map(({
+        grid
+      }) => grid).join(" ")}`
+    }
+  }, columns.map((column, columnIndex) => {
+    return /*#__PURE__*/React.createElement("div", {
+      key: columnIndex,
+      className: "th"
+    }, column.header);
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "tbody"
+  }, rows.map((row, rowIndex) => {
+    return /*#__PURE__*/React.createElement("div", {
+      className: "tr",
+      style: {
+        grid: `1fr / ${columns.map(({
+          grid
+        }) => grid).join(" ")}`
+      }
+    }, columns.map((column, columnIndex) => {
+      return /*#__PURE__*/React.createElement("div", {
+        className: "td"
+      }, row[column.key]);
+    }));
+  })));
+};
+
+const selectInputHeight = "32px";
+const selectOptionHeight = "32px";
+var Style$9 = styled.div`
+  position: relative;
+  border-radius: ${props => props.theme.borderRadius};
+  border: 1px solid ${props => props.theme.colorBorderDefault};
+  display: grid;
+  grid: 1fr / 1fr 32px;
+  align-items: center;
+  &:hover {
+    border: 1px solid ${props => props.theme.colorBorderHover};
+  }
+  &.focus {
+    border: 1px solid ${props => props.theme.colorBorderFocus};
+  }
+  > input {
+    border-radius: ${props => props.theme.borderRadius};
+    height: ${selectInputHeight};
+    padding: 0 5px;
+    outline: none;
+    border: none;
+  }
+  .options {
+    position: absolute;
+    overflow-y: scroll;
+    width: 100%;
+    height: calc(10 * ${selectOptionHeight});
+    left: 0;
+    top: calc(5px + ${selectOptionHeight});
+    border-radius: ${props => props.theme.borderRadius};
+    border: 1px solid ${props => props.theme.colorBorderDefault};
+    background: white;
+    z-index: 100;
+
+    .option {
+      overflow-x: hidden;
+      text-overflow: ellipsis;
+      padding: 5px;
+      height: ${selectOptionHeight};
+      cursor: default;
+      &.select {
+        background: rgba(0, 150, 136, 0.5);
+      }
+      &:hover,
+      &.hover {
+        background: rgba(0, 150, 136, 0.2);
+      }
+    }
+  }
+`;
+
+const BasicSelect = props => {
+  const [focus, setFocus] = useState(false);
+  const [optionsVisible, setOptionsVisible] = useState(false);
+  const [inputValue, setInputValue] = useState("");
+  const [inputFocus, setInputFocus] = useState(false);
+  const [hoveredOptionValue, setHoveredOptionValue] = useState(props.options[0]);
+  const {
+    value,
+    options,
+    onChange
+  } = props;
+  useEffect(() => {
+    setInputValue(value);
+  }, [value]);
+  useEffect(() => {
+    const keyDownListener = e => {
+      const os = options.filter(option => new RegExp(inputValue, "gi").test(option.label));
+      const index = os.indexOf(hoveredOptionValue);
+
+      switch (e.keyCode) {
+        case 38:
+          if (index !== 0) {
+            setHoveredOptionValue(os[index - 1]);
+          }
+
+          break;
+
+        case 40:
+          if (index !== os.length - 1) {
+            setHoveredOptionValue(os[index + 1]);
+          }
+
+          break;
+
+        case 27:
+          // esc
+          setOptionsVisible(false);
+          break;
+
+        case 13:
+          // enter
+          if (optionsVisible) {
+            onChange(hoveredOptionValue);
+            setOptionsVisible(false);
+          } else {
+            setInputValue("");
+            setOptionsVisible(true);
+          }
+
+          break;
+      }
+    };
+
+    window.addEventListener("keydown", keyDownListener);
+    return () => {
+      window.removeEventListener("keydown", keyDownListener);
+    };
+  }, [hoveredOptionValue, optionsVisible]);
+  return /*#__PURE__*/React.createElement(Style$9, {
+    className: classnames("select", {
+      focus
+    }),
+    onClick: e => {
+      setFocus(true);
+      setOptionsVisible(true);
+      setInputFocus(true);
+      setInputValue("");
+    }
+  }, /*#__PURE__*/React.createElement("input", {
+    value: inputValue,
+    placeholder: "Select",
+    onChange: e => setInputValue(e.target.value),
+    onFocus: e => {
+      setOptionsVisible(true);
+      setFocus(true);
+      setInputValue("");
+    },
+    onBlur: e => {
+      setOptionsVisible(false);
+      setFocus(false);
+    }
+  }), /*#__PURE__*/React.createElement(FAIcon, {
+    icon: "angle-down"
+  }), optionsVisible && /*#__PURE__*/React.createElement("div", {
+    className: "options"
+  }, options.map((option, optionIndex) => /*#__PURE__*/React.createElement("div", {
+    className: classnames("option", {
+      hover: option.value === hoveredOptionValue,
+      select: option.value === value
+    }),
+    key: option.value,
+    value: option.value,
+    style: {
+      display: new RegExp(inputValue, "gi").test(option.value) ? "block" : "none"
+    },
+    onMouseDown: e => {
+      onChange(option.value);
+    }
+  }, option.label))));
+};
+
 const teal500 = "#009688";
 const teal700 = "#00796b";
 const teal900 = "#004d40";
@@ -36191,6 +36403,10 @@ const baseTheme = {
   colorPressed: teal900,
   colorFocused: teal500,
   colorDisabled: gray600,
+  //
+  colorBorderDefault: "rgb(204, 204, 204)",
+  colorBorderHover: "rgb(179, 179, 179)",
+  colorBorderFocus: "rgb(70, 146, 245)",
   //
   colorMainBlue: "#4357ef",
   colorPrimary: "#07072d",
@@ -36247,5 +36463,5 @@ const createTheme = theme => {
   };
 };
 
-export { Button, Carousel, FAIcon, IconButton, Loader, Map$1 as Map, Modal, Trail, TrailChart, createTheme, useModal };
+export { BasicSelect, Button, Carousel, FAIcon, IconButton, Loader, Map$1 as Map, Modal, Table, Trail, TrailChart, createTheme, useModal };
 //# sourceMappingURL=index.js.map
