@@ -36300,52 +36300,52 @@ const BasicSelect = props => {
     onChange
   } = props;
   useEffect(() => {
-    setInputValue(value);
-  }, [value]);
-  useEffect(() => {
-    const keyDownListener = e => {
-      const os = options.filter(option => new RegExp(inputValue, "gi").test(option.label));
-      const index = os.indexOf(hoveredOptionValue);
+    const option = options.find(option => option.value === value);
 
-      switch (e.keyCode) {
-        case 38:
-          if (index !== 0) {
-            setHoveredOptionValue(os[index - 1]);
-          }
+    if (option) {
+      setInputValue(option.label);
+    } else {
+      setInputValue("");
+    }
+  }, [value, options]); // useEffect(() => {
+  //   const keyDownListener = (e) => {
+  //     const os = options.filter((option) =>
+  //       new RegExp(inputValue, "gi").test(option.value),
+  //     );
+  //     const index = os.indexOf(hoveredOptionValue);
+  //     switch (e.keyCode) {
+  //       case 38:
+  //         if (index !== 0) {
+  //           setHoveredOptionValue(os[index - 1]);
+  //         }
+  //         break;
+  //       case 40:
+  //         if (index !== os.length - 1) {
+  //           setHoveredOptionValue(os[index + 1]);
+  //         }
+  //         break;
+  //       case 27: // esc
+  //         setOptionsVisible(false);
+  //         break;
+  //       case 13: // enter
+  //         if (optionsVisible) {
+  //           onChange(hoveredOptionValue);
+  //           setOptionsVisible(false);
+  //         } else {
+  //           setInputValue("");
+  //           setOptionsVisible(true);
+  //         }
+  //         break;
+  //       default:
+  //         break;
+  //     }
+  //   };
+  //   window.addEventListener("keydown", keyDownListener);
+  //   return () => {
+  //     window.removeEventListener("keydown", keyDownListener);
+  //   };
+  // }, [hoveredOptionValue, optionsVisible]);
 
-          break;
-
-        case 40:
-          if (index !== os.length - 1) {
-            setHoveredOptionValue(os[index + 1]);
-          }
-
-          break;
-
-        case 27:
-          // esc
-          setOptionsVisible(false);
-          break;
-
-        case 13:
-          // enter
-          if (optionsVisible) {
-            onChange(hoveredOptionValue);
-            setOptionsVisible(false);
-          } else {
-            setInputValue("");
-            setOptionsVisible(true);
-          }
-
-          break;
-      }
-    };
-
-    window.addEventListener("keydown", keyDownListener);
-    return () => {
-      window.removeEventListener("keydown", keyDownListener);
-    };
-  }, [hoveredOptionValue, optionsVisible]);
   return /*#__PURE__*/React.createElement(Style$9, {
     className: classnames("select", {
       focus
@@ -36381,7 +36381,7 @@ const BasicSelect = props => {
     key: option.value,
     value: option.value,
     style: {
-      display: new RegExp(inputValue, "gi").test(option.value) ? "block" : "none"
+      display: new RegExp(inputValue, "gi").test(option.label) ? "block" : "none"
     },
     onMouseDown: e => {
       onChange(option.value);
