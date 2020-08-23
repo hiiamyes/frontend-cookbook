@@ -15,6 +15,11 @@ const baseTheme = {
   colorDisabled: gray600,
 
   //
+  colorBorderDefault: "rgb(204, 204, 204)",
+  colorBorderHover: "rgb(179, 179, 179)",
+  colorBorderFocus: "rgb(70, 146, 245)",
+
+  //
   colorMainBlue: "#4357ef",
   colorPrimary: "#07072d",
   colorSecondary: "#545b64",

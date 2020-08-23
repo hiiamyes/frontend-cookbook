@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import classnames from "classnames";
 import FAIcon from "src/components/FAIcon";
 import Style from "./style";
 
@@ -20,7 +21,7 @@ const BasicSelect = (props) => {
   useEffect(() => {
     const keyDownListener = (e) => {
       const os = options.filter((option) =>
-        new RegExp(inputValue, "gi").test(option),
+        new RegExp(inputValue, "gi").test(option.label),
       );
       const index = os.indexOf(hoveredOptionValue);
       switch (e.keyCode) {
@@ -58,7 +59,7 @@ const BasicSelect = (props) => {
 
   return (
     <Style
-      className={`select ${focus ? "focus" : ""}`}
+      className={classnames("select", { focus })}
       onClick={(e) => {
         setFocus(true);
         setOptionsVisible(true);
@@ -83,23 +84,24 @@ const BasicSelect = (props) => {
       <FAIcon icon="angle-down" />
       {optionsVisible && (
         <div className="options">
-          {options.map((name, optionIndex) => (
+          {options.map((option, optionIndex) => (
             <div
-              className={`option ${
-                name === hoveredOptionValue ? "hover" : ""
-              } ${name === value ? "select" : ""}`}
-              key={name}
-              value={name}
+              className={classnames("option", {
+                hover: option.value === hoveredOptionValue,
+                select: option.value === value,
+              })}
+              key={option.value}
+              value={option.value}
               style={{
-                display: new RegExp(inputValue, "gi").test(name)
+                display: new RegExp(inputValue, "gi").test(option.value)
                   ? "block"
                   : "none",
               }}
               onMouseDown={(e) => {
-                onChange(name);
+                onChange(option.value);
               }}
             >
-              {name}
+              {option.label}
             </div>
           ))}
         </div>

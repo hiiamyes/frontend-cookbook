@@ -9,6 +9,7 @@ import Modal from "src/components/Modal";
 import useModal from "src/components/Modal/useModal";
 import Carousel from "src/components/Carousel";
 import Table from "src/components/Table";
+import Select from "src/components/Select";
 
 import createTheme from "src/theme/createTheme";
 
@@ -25,4 +26,5 @@ export {
   IconButton,
   createTheme,
   Table,
+  Select,
 };
