@@ -52,7 +52,7 @@ const TextButton = (props) => {
         setPressed(true);
       }}
       onTouchEnd={(e) => {
-        e.preventDefault();
+        // e.preventDefault();
         setPressed(false);
       }}
       onClick={(e) => {
