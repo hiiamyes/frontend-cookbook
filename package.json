@@ -6,7 +6,7 @@
     "email": "joshuayes@gmail.com",
     "url": "https://yeslee.me"
   },
-  "version": "1.0.14",
+  "version": "1.0.15",
   "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
