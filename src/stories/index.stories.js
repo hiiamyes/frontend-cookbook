@@ -73,8 +73,6 @@ storiesOf("Button", module).add("Button", () => (
   </Layout>
 ));
 
-storiesOf("Icon", module).add("FontAwesomeIcon", () => <FAIcon icon="cog" />);
-
 storiesOf("Select", module)
   .add("BasicSelect", () => {
     return (
@@ -94,7 +92,6 @@ storiesOf("Select", module)
     </Layout>
   ));
 
-storiesOf("Icon", module).add("FontAwesomeIcon", () => <FAIcon icon="cog" />);
 storiesOf("Chart", module)
   .add("LineChart", () => (
     <Layout>
