@@ -10,6 +10,7 @@ import useModal from "src/components/Modal/useModal";
 import Carousel from "src/components/Carousel";
 import Table from "src/components/Table";
 import BasicSelect from "src/components/Select/BasicSelect";
+import TimePicker from "src/components/TimePicker";
 
 import createTheme from "src/theme/createTheme";
 
@@ -27,4 +28,5 @@ export {
   createTheme,
   Table,
   BasicSelect,
+  TimePicker,
 };
