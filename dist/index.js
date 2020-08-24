@@ -3079,7 +3079,7 @@ const OutlineButton = props => {
       setPressed(true);
     },
     onTouchEnd: e => {
-      e.preventDefault();
+      // e.preventDefault();
       setPressed(false);
     },
     onClick: e => {
@@ -3183,7 +3183,7 @@ const TextButton = props => {
       setPressed(true);
     },
     onTouchEnd: e => {
-      e.preventDefault();
+      // e.preventDefault();
       setPressed(false);
     },
     onClick: e => {
