@@ -2,8 +2,8 @@ import React, { useState, useEffect, useCallback } from "react";
 import classnames from "classnames";
 import Style from "./style";
 
-const Button = (props) => {
-  const { children, loading, disabled, onClick } = props;
+const OutlineButton = (props) => {
+  const { loading, disabled, onClick, children } = props;
   const [hover, setHover] = useState(false);
   const [pressed, setPressed] = useState(false);
   const [focused, setFocused] = useState(false);
@@ -52,7 +52,7 @@ const Button = (props) => {
         setPressed(true);
       }}
       onTouchEnd={(e) => {
-        // e.preventDefault();
+        e.preventDefault();
         setPressed(false);
       }}
       onClick={(e) => {
@@ -64,4 +64,4 @@ const Button = (props) => {
   );
 };
 
-export default Button;
+export default OutlineButton;

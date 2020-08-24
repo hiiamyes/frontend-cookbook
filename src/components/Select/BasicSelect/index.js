@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import classnames from "classnames";
 import FAIcon from "src/components/FAIcon";
 import Style from "./style";
 
@@ -14,51 +15,56 @@ const BasicSelect = (props) => {
 
   const { value, options, onChange } = props;
   useEffect(() => {
-    setInputValue(value);
-  }, [value]);
+    const option = options.find((option) => option.value === value);
+    if (option) {
+      setInputValue(option.label);
+    } else {
+      setInputValue("");
+    }
+  }, [value, options]);
 
-  useEffect(() => {
-    const keyDownListener = (e) => {
-      const os = options.filter((option) =>
-        new RegExp(inputValue, "gi").test(option),
-      );
-      const index = os.indexOf(hoveredOptionValue);
-      switch (e.keyCode) {
-        case 38:
-          if (index !== 0) {
-            setHoveredOptionValue(os[index - 1]);
-          }
-          break;
-        case 40:
-          if (index !== os.length - 1) {
-            setHoveredOptionValue(os[index + 1]);
-          }
-          break;
-        case 27: // esc
-          setOptionsVisible(false);
-          break;
-        case 13: // enter
-          if (optionsVisible) {
-            onChange(hoveredOptionValue);
-            setOptionsVisible(false);
-          } else {
-            setInputValue("");
-            setOptionsVisible(true);
-          }
-          break;
-        default:
-          break;
-      }
-    };
-    window.addEventListener("keydown", keyDownListener);
-    return () => {
-      window.removeEventListener("keydown", keyDownListener);
-    };
-  }, [hoveredOptionValue, optionsVisible]);
+  // useEffect(() => {
+  //   const keyDownListener = (e) => {
+  //     const os = options.filter((option) =>
+  //       new RegExp(inputValue, "gi").test(option.value),
+  //     );
+  //     const index = os.indexOf(hoveredOptionValue);
+  //     switch (e.keyCode) {
+  //       case 38:
+  //         if (index !== 0) {
+  //           setHoveredOptionValue(os[index - 1]);
+  //         }
+  //         break;
+  //       case 40:
+  //         if (index !== os.length - 1) {
+  //           setHoveredOptionValue(os[index + 1]);
+  //         }
+  //         break;
+  //       case 27: // esc
+  //         setOptionsVisible(false);
+  //         break;
+  //       case 13: // enter
+  //         if (optionsVisible) {
+  //           onChange(hoveredOptionValue);
+  //           setOptionsVisible(false);
+  //         } else {
+  //           setInputValue("");
+  //           setOptionsVisible(true);
+  //         }
+  //         break;
+  //       default:
+  //         break;
+  //     }
+  //   };
+  //   window.addEventListener("keydown", keyDownListener);
+  //   return () => {
+  //     window.removeEventListener("keydown", keyDownListener);
+  //   };
+  // }, [hoveredOptionValue, optionsVisible]);
 
   return (
     <Style
-      className={`select ${focus ? "focus" : ""}`}
+      className={classnames("select", { focus })}
       onClick={(e) => {
         setFocus(true);
         setOptionsVisible(true);
@@ -83,23 +89,24 @@ const BasicSelect = (props) => {
       <FAIcon icon="angle-down" />
       {optionsVisible && (
         <div className="options">
-          {options.map((name, optionIndex) => (
+          {options.map((option, optionIndex) => (
             <div
-              className={`option ${
-                name === hoveredOptionValue ? "hover" : ""
-              } ${name === value ? "select" : ""}`}
-              key={name}
-              value={name}
+              className={classnames("option", {
+                hover: option.value === hoveredOptionValue,
+                select: option.value === value,
+              })}
+              key={option.value}
+              value={option.value}
               style={{
-                display: new RegExp(inputValue, "gi").test(name)
+                display: new RegExp(inputValue, "gi").test(option.label)
                   ? "block"
                   : "none",
               }}
               onMouseDown={(e) => {
-                onChange(name);
+                onChange(option.value);
               }}
             >
-              {name}
+              {option.label}
             </div>
           ))}
         </div>

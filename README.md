@@ -33,3 +33,8 @@ yarn add https://github.com/hiiamyes/frontend-cookbook.git#release
 yarn add https://github.com/hiiamyes/frontend-cookbook.git#1.0.5
 ```
 
+```
+import createTheme from "src/theme/createTheme";
+
+<ThemeProvider theme={createTheme()}>...</ThemeProvider>
+```

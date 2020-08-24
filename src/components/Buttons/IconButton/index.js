@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
 import classnames from "classnames";
+import FAIcon from "src/components/FAIcon";
 import Style from "./style";
 
-const Button = (props) => {
-  const { children, loading, disabled, onClick } = props;
+const IconButton = (props) => {
+  const { loading, disabled, onClick, icon } = props;
   const [hover, setHover] = useState(false);
   const [pressed, setPressed] = useState(false);
   const [focused, setFocused] = useState(false);
@@ -52,16 +53,16 @@ const Button = (props) => {
         setPressed(true);
       }}
       onTouchEnd={(e) => {
-        // e.preventDefault();
+        e.preventDefault();
         setPressed(false);
       }}
       onClick={(e) => {
         !disabled && !loading && onClick && onClick(e);
       }}
     >
-      {loading ? "loading..." : children}
+      {loading ? "loading..." : <FAIcon icon={icon} />}
     </Style>
   );
 };
 
-export default Button;
+export default IconButton;

@@ -1,29 +1,23 @@
 import styled from "styled-components";
-import { borderRadius } from "../../../styles/border";
-import {
-  colorBorderDefault,
-  colorBorderHover,
-  colorBorderFocus,
-} from "../../../styles/color";
 
 const selectInputHeight = "32px";
 const selectOptionHeight = "32px";
 
 export default styled.div`
   position: relative;
-  border-radius: ${borderRadius};
-  border: 1px solid ${colorBorderDefault};
+  border-radius: ${(props) => props.theme.borderRadius};
+  border: 1px solid ${(props) => props.theme.colorBorderDefault};
   display: grid;
   grid: 1fr / 1fr 32px;
   align-items: center;
   &:hover {
-    border: 1px solid ${colorBorderHover};
+    border: 1px solid ${(props) => props.theme.colorBorderHover};
   }
   &.focus {
-    border: 1px solid ${colorBorderFocus};
+    border: 1px solid ${(props) => props.theme.colorBorderFocus};
   }
   > input {
-    border-radius: ${borderRadius};
+    border-radius: ${(props) => props.theme.borderRadius};
     height: ${selectInputHeight};
     padding: 0 5px;
     outline: none;
@@ -36,8 +30,8 @@ export default styled.div`
     height: calc(10 * ${selectOptionHeight});
     left: 0;
     top: calc(5px + ${selectOptionHeight});
-    border-radius: ${borderRadius};
-    border: 1px solid ${colorBorderDefault};
+    border-radius: ${(props) => props.theme.borderRadius};
+    border: 1px solid ${(props) => props.theme.colorBorderDefault};
     background: white;
     z-index: 100;
 

@@ -12,12 +12,22 @@ import {
   faTimes,
   faSquare,
   faCheckSquare,
+  faCopy,
+  faMinus,
+  faPlus,
+  faRoute,
+  faArrowDown,
+  faMapMarkerAlt,
+  faHiking,
+  faLongArrowAltDown,
+  faMugHot,
 } from "@fortawesome/free-solid-svg-icons";
 import Style from "./style";
 
 library.add(faCog);
 library.add(faAngleDown);
 library.add(faCloudUploadAlt);
+library.add(faCopy);
 library.add(faSearch);
 library.add(faChevronLeft);
 library.add(faChevronRight);
@@ -25,6 +35,14 @@ library.add(faSpinner);
 library.add(faTimes);
 library.add(faSquare);
 library.add(faCheckSquare);
+library.add(faMinus);
+library.add(faPlus);
+library.add(faRoute);
+library.add(faArrowDown);
+library.add(faMapMarkerAlt);
+library.add(faHiking);
+library.add(faLongArrowAltDown);
+library.add(faMugHot);
 
 const FAIcon = (props) => {
   const { size, icon } = props;
