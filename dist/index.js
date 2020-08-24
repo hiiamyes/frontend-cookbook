@@ -2612,6 +2612,11 @@ var faChevronRight = {
   iconName: 'chevron-right',
   icon: [320, 512, [], "f054", "M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"]
 };
+var faClock = {
+  prefix: 'fas',
+  iconName: 'clock',
+  icon: [512, 512, [], "f017", "M256,8C119,8,8,119,8,256S119,504,256,504,504,393,504,256,393,8,256,8Zm92.49,313h0l-20,25a16,16,0,0,1-22.49,2.5h0l-67-49.72a40,40,0,0,1-15-31.23V112a16,16,0,0,1,16-16h32a16,16,0,0,1,16,16V256l58,42.5A16,16,0,0,1,348.49,321Z"]
+};
 var faCloudUploadAlt = {
   prefix: 'fas',
   iconName: 'cloud-upload-alt',
@@ -2718,6 +2723,7 @@ library.add(faHiking);
 library.add(faLongArrowAltDown);
 library.add(faMugHot);
 library.add(faAngleDoubleRight);
+library.add(faClock);
 
 const FAIcon = props => {
   const {
