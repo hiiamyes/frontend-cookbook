@@ -38169,7 +38169,30 @@ const BasicSelect = props => {
   }, option.label))));
 };
 
-var Style$a = styled.div`
+var Style$a = styled.div``;
+
+const NumberSelect = props => {
+  const {
+    min,
+    max,
+    value,
+    onChange
+  } = props;
+  return /*#__PURE__*/React.createElement(Style$a, null, /*#__PURE__*/React.createElement("select", {
+    value: value,
+    onChange: e => {
+      onChange(e.target.value);
+    }
+  }, [...new Array(max - min + 1)].map((_, i) => {
+    const value = `${min + i}`;
+    return /*#__PURE__*/React.createElement("option", {
+      key: i,
+      value: value
+    }, value);
+  })));
+};
+
+var Style$b = styled.div`
   display: grid;
   grid: 1fr / repeat(3, max-content);
   grid-gap: 2px;
@@ -38181,7 +38204,7 @@ const TimePicker = props => {
     onChange
   } = props;
   const [hour, minute] = value.split(":");
-  return /*#__PURE__*/React.createElement(Style$a, null, /*#__PURE__*/React.createElement("select", {
+  return /*#__PURE__*/React.createElement(Style$b, null, /*#__PURE__*/React.createElement("select", {
     value: hour,
     onChange: e => {
       onChange(e.target.value + ":" + minute);
@@ -38280,5 +38303,5 @@ const createTheme = theme => {
   };
 };
 
-export { BasicSelect, Button, Carousel, FAIcon, IconButton, Loader, Map$1 as Map, Modal, Table, TimePicker, Trail, TrailChart, createTheme, useModal };
+export { BasicSelect, Button, Carousel, FAIcon, IconButton, Loader, Map$1 as Map, Modal, NumberSelect, Table, TimePicker, Trail, TrailChart, createTheme, useModal };
 //# sourceMappingURL=index.js.map
