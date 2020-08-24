@@ -31,6 +31,7 @@ const icons = [
   "long-arrow-alt-down",
   "mug-hot",
   "angle-double-right",
+  "clock",
 ];
 
 export const Icons = () => {

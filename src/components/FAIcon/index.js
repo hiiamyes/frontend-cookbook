@@ -22,6 +22,7 @@ import {
   faLongArrowAltDown,
   faMugHot,
   faAngleDoubleRight,
+  faClock,
 } from "@fortawesome/free-solid-svg-icons";
 import Style from "./style";
 
@@ -45,6 +46,7 @@ library.add(faHiking);
 library.add(faLongArrowAltDown);
 library.add(faMugHot);
 library.add(faAngleDoubleRight);
+library.add(faClock);
 
 const FAIcon = (props) => {
   const { size, icon } = props;
