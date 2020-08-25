@@ -3,7 +3,6 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import styled from "styled-components";
 
-import FAIcon from "src/components/FAIcon";
 
 import BasicSelectDemo from "src/components/Select/BasicSelect/demo";
 import TimezoneNameSelect from "src/components/Select/TimezoneNameSelect";
@@ -16,7 +15,6 @@ import FilePickerDemo from "src/components/FilePicker/demo";
 import BasicUploaderDemo from "src/components/Uploader/demo";
 
 import CarouselDemo from "src/components/Carousel/demo";
-import LoaderDemo from "src/components/Loader/demo";
 import TableDemo from "src/components/Table/demo";
 import ModalDemo from "src/components/Modal/demo";
 import ButtonDemo from "src/components/Button/demo";
@@ -119,12 +117,6 @@ storiesOf("Uploader", module).add("BasicUploader", () => (
 storiesOf("Carousel", module).add("Carousel", () => (
   <Layout>
     <CarouselDemo />
-  </Layout>
-));
-
-storiesOf("Loader", module).add("Loader", () => (
-  <Layout>
-    <LoaderDemo />
   </Layout>
 ));
 
