@@ -3274,6 +3274,24 @@ const Map$1 = props => {
   })));
 };
 
+const Marker = props => {
+  const {
+    map,
+    lat,
+    lng
+  } = props;
+  useEffect(() => {
+    const marker = Leaflet.marker([lat, lng], {
+      icon: Leaflet.divIcon({
+        iconSize: new Leaflet.Point(16, 16),
+        className: "marker"
+      })
+    });
+    marker.addTo(map);
+  }, []);
+  return null;
+};
+
 const Trail = props => {
   const {
     map,
@@ -38574,5 +38592,5 @@ const createTheme = theme => {
   };
 };
 
-export { BasicSelect, Button, Carousel, FAIcon, IconButton, Loader, Map$1 as Map, Modal, NumberSelect, OutlineButton, Table, TextButton, TimePicker, Trail, TrailChart, createTheme, useModal };
+export { BasicSelect, Button, Carousel, FAIcon, IconButton, Loader, Map$1 as Map, Marker, Modal, NumberSelect, OutlineButton, Table, TextButton, TimePicker, Trail, TrailChart, createTheme, useModal };
 //# sourceMappingURL=index.js.map
