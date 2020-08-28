@@ -5,7 +5,7 @@ import OutlineButton from "src/components/Buttons/OutlineButton";
 import TextButton from "src/components/Buttons/TextButton";
 import Loader from "src/components/Loader";
 import Map from "src/components/Map";
-import Marker from "src/components/Map/Mariker";
+import Marker from "src/components/Map/Marker";
 import Trail from "src/components/Map/Trail";
 import TrailChart from "src/components/Chart/TrailChart";
 import Modal from "src/components/Modal";
