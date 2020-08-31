@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export default styled.button`
   /* normalize */
+  position: relative;
   outline: none;
   background: none;
   border: none;

@@ -4,7 +4,7 @@ import FAIcon from "src/components/FAIcon";
 import Style from "./style";
 
 const IconButton = (props) => {
-  const { loading, disabled, onClick, icon } = props;
+  const { loading, disabled, onClick, icon, children, ...rest } = props;
   const [hover, setHover] = useState(false);
   const [pressed, setPressed] = useState(false);
   const [focused, setFocused] = useState(false);
@@ -53,14 +53,22 @@ const IconButton = (props) => {
         setPressed(true);
       }}
       onTouchEnd={(e) => {
-        e.preventDefault();
+        // e.preventDefault();
         setPressed(false);
       }}
       onClick={(e) => {
         !disabled && !loading && onClick && onClick(e);
       }}
+      {...rest}
     >
-      {loading ? "loading..." : <FAIcon icon={icon} />}
+      {loading ? (
+        "loading..."
+      ) : (
+        <>
+          {children}
+          <FAIcon icon={icon} />
+        </>
+      )}
     </Style>
   );
 };

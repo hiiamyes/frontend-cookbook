@@ -1,5 +1,5 @@
 import FAIcon from "src/components/FAIcon";
-import Button from "src/components/Button";
+import Button from "src/components/Buttons/Button";
 import IconButton from "src/components/Buttons/IconButton";
 import OutlineButton from "src/components/Buttons/OutlineButton";
 import TextButton from "src/components/Buttons/TextButton";
@@ -15,6 +15,7 @@ import Table from "src/components/Table";
 import BasicSelect from "src/components/Select/BasicSelect";
 import NumberSelect from "src/components/Select/NumberSelect";
 import TimePicker from "src/components/TimePicker";
+import Pagination from "src/components/Pagination";
 
 import createTheme from "src/theme/createTheme";
 
@@ -37,4 +38,5 @@ export {
   BasicSelect,
   TimePicker,
   NumberSelect,
+  Pagination,
 };
