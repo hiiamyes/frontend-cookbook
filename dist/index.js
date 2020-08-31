@@ -39493,6 +39493,13 @@ const Pagination = ({
   })));
 };
 
+const DEFAULT_PAGE = 1;
+
+const getPage = () => {
+  const page = +new URLSearchParams(window.location.search).get("page") || DEFAULT_PAGE;
+  return page;
+};
+
 const teal500 = "#009688";
 const teal700 = "#00796b";
 const teal900 = "#004d40";
@@ -39567,5 +39574,5 @@ const createTheme = theme => {
   };
 };
 
-export { BasicSelect, Button, Carousel, FAIcon, IconButton, Loader, Map$1 as Map, Marker, Modal, NumberSelect, OutlineButton, Pagination, Table, TextButton, TimePicker, Trail, TrailChart, createTheme, useModal };
+export { BasicSelect, Button, Carousel, FAIcon, IconButton, Loader, Map$1 as Map, Marker, Modal, NumberSelect, OutlineButton, Pagination, Table, TextButton, TimePicker, Trail, TrailChart, createTheme, getPage, useModal };
 //# sourceMappingURL=index.js.map
