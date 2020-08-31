@@ -80,5 +80,6 @@
     "typescript": "^3.9.5",
     "world-countries": "^4.0.0",
     "yup": "^0.29.1"
-  }
+  },
+  "version": "0.0.1"
 }
