@@ -24,6 +24,7 @@
     "react-router-dom": "^5.2.0"
   },
   "dependencies": {
+    "react-router-dom": "^5.2.0",
     "svg-country-flags": "^1.2.7"
   },
   "devDependencies": {
