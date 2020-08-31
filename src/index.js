@@ -40,5 +40,5 @@ export {
   TimePicker,
   NumberSelect,
   Pagination,
-  getPage
+  getPage,
 };
