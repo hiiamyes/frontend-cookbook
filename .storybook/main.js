@@ -3,7 +3,10 @@
 const path = require("path");
 
 module.exports = {
-  stories: ["../src/stories/**/*.stories.js"],
+  stories: [
+    "../src/stories/**/*.stories.js",
+    "../src/components/**/*.stories.js",
+  ],
   addons: [
     "@storybook/addon-actions/register",
     "@storybook/addon-links/register",

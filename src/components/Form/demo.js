@@ -4,7 +4,7 @@ import * as yup from "yup";
 import Form from "src/components/Form/Form";
 import Field from "src/components/Form/Field";
 import BasicInput from "src/components/Input/BasicInput";
-import Button from "src/components/Button";
+import Button from "src/components/Buttons/Button";
 
 const validationSchema = yup.object().shape({
   firstName: yup.string().required(),

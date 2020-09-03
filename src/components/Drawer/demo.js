@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { action } from "@storybook/addon-actions";
-import Button from "src/components/Button";
+import Button from "src/components/Buttons/Button";
 import FAIcon from "src/components/FAIcon";
 import Drawer from "./index";
 

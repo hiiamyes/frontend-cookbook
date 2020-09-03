@@ -17,9 +17,7 @@ import BasicUploaderDemo from "src/components/Uploader/demo";
 import CarouselDemo from "src/components/Carousel/demo";
 import TableDemo from "src/components/Table/demo";
 import ModalDemo from "src/components/Modal/demo";
-import ButtonDemo from "src/components/Button/demo";
 import DrawerDemo from "src/components/Drawer/demo";
-import MapDemo from "src/components/Map/demo";
 import TagDemo from "src/components/Tag/demo";
 import CollapseDemo from "src/components/Collapse/demo";
 import ScrollbarDemo from "src/components/Scrollbar/demo";
@@ -53,21 +51,9 @@ storiesOf("Tag", module).add("Tag", () => (
   </Layout>
 ));
 
-storiesOf("Map", module).add("Map", () => (
-  <Layout>
-    <MapDemo />
-  </Layout>
-));
-
 storiesOf("Drawer", module).add("Drawer", () => (
   <Layout>
     <DrawerDemo />
-  </Layout>
-));
-
-storiesOf("Button", module).add("Button", () => (
-  <Layout>
-    <ButtonDemo />
   </Layout>
 ));
 
