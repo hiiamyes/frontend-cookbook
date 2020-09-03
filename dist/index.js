@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect, createRef, Component } from 'react';
+import React, { useState, useCallback, useEffect, forwardRef as forwardRef$2, createRef, Component } from 'react';
 import styled from 'styled-components';
 import Leaflet from 'leaflet';
 
@@ -3267,14 +3267,46 @@ var Style$6 = styled.div`
   }
 `;
 
-const Map$1 = props => {
-  const [map, setMap] = useState(null);
+const Map$1 = /*#__PURE__*/forwardRef$2((props, ref) => {
+  // const [map, setMap] = useState(null);
   const {
-    children,
+    map,
     tileLayerUrl,
     center = [24.3834142, 121.2317653],
-    zoom = 15
-  } = props;
+    zoom = 15,
+    children
+  } = props; // const mapRef = createRef();
+  // useEffect(() => {
+  // const map = Leaflet.map(mapRef.current, {
+  //   center,
+  //   zoom,
+  //   zoomControl: true,
+  // });
+  // Leaflet.tileLayer(tileLayerUrl, {
+  //   maxZoom: 19,
+  //   attribution:
+  //     '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  // }).addTo(map);
+  // setMap(map);
+  // }, []);
+
+  return (
+    /*#__PURE__*/
+    // <Style ref={mapRef}>
+    React.createElement(Style$6, {
+      ref: ref
+    }, map && React.Children.map(children, child => /*#__PURE__*/React.cloneElement(child, {
+      map
+    })))
+  );
+});
+
+const useMap = ({
+  tileLayerUrl,
+  center = [24.3834142, 121.2317653],
+  zoom = 15
+}) => {
+  const [map, setMap] = useState(false);
   const mapRef = /*#__PURE__*/createRef();
   useEffect(() => {
     const map = Leaflet.map(mapRef.current, {
@@ -3288,11 +3320,10 @@ const Map$1 = props => {
     }).addTo(map);
     setMap(map);
   }, []);
-  return /*#__PURE__*/React.createElement(Style$6, {
-    ref: mapRef
-  }, map && React.Children.map(children, child => /*#__PURE__*/React.cloneElement(child, {
-    map
-  })));
+  return {
+    map,
+    mapRef
+  };
 };
 
 const Marker = props => {
@@ -39574,5 +39605,5 @@ const createTheme = theme => {
   };
 };
 
-export { BasicSelect, Button, Carousel, FAIcon, IconButton, Loader, Map$1 as Map, Marker, Modal, NumberSelect, OutlineButton, Pagination, Table, TextButton, TimePicker, Trail, TrailChart, createTheme, getPage, useModal };
+export { BasicSelect, Button, Carousel, FAIcon, IconButton, Loader, Map$1 as Map, Marker, Modal, NumberSelect, OutlineButton, Pagination, Table, TextButton, TimePicker, Trail, TrailChart, createTheme, getPage, useMap, useModal };
 //# sourceMappingURL=index.js.map
