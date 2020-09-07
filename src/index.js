@@ -17,6 +17,7 @@ import BasicSelect from "src/components/Select/BasicSelect";
 import NumberSelect from "src/components/Select/NumberSelect";
 import TimePicker from "src/components/TimePicker";
 import Pagination from "src/components/Pagination";
+import Form from "src/components/Form";
 import getPage from "src/components/Pagination/getPage";
 
 import createTheme from "src/theme/createTheme";
@@ -42,5 +43,6 @@ export {
   TimePicker,
   NumberSelect,
   Pagination,
+  Form,
   getPage,
 };

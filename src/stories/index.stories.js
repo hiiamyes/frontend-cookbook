@@ -1,8 +1,6 @@
 import React from "react";
-
 import { storiesOf } from "@storybook/react";
 import styled from "styled-components";
-
 
 import BasicSelectDemo from "src/components/Select/BasicSelect/demo";
 import TimezoneNameSelect from "src/components/Select/TimezoneNameSelect";
@@ -21,17 +19,10 @@ import DrawerDemo from "src/components/Drawer/demo";
 import TagDemo from "src/components/Tag/demo";
 import CollapseDemo from "src/components/Collapse/demo";
 import ScrollbarDemo from "src/components/Scrollbar/demo";
-import FormDemo from "src/components/Form/demo";
 
 const Layout = styled.div`
   padding: 15px;
 `;
-
-storiesOf("Form", module).add("Form", () => (
-  <Layout>
-    <FormDemo />
-  </Layout>
-));
 
 storiesOf("Scrollbar", module).add("Scrollbar", () => (
   <Layout>
