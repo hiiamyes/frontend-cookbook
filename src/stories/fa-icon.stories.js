@@ -33,6 +33,7 @@ const icons = [
   "angle-double-right",
   "clock",
   "mountain",
+  "ellipsis-h",
 ];
 
 export const Icons = () => {
