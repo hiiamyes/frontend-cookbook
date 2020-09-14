@@ -25,6 +25,7 @@ import {
   faClock,
   faMountain,
   faEllipsisH,
+  faBars,
 } from "@fortawesome/free-solid-svg-icons";
 import Style from "./style";
 
@@ -51,6 +52,7 @@ library.add(faAngleDoubleRight);
 library.add(faClock);
 library.add(faMountain);
 library.add(faEllipsisH);
+library.add(faBars);
 
 const FAIcon = (props) => {
   const { size, icon } = props;

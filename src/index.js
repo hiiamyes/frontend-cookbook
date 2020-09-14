@@ -19,6 +19,7 @@ import TimePicker from "src/components/TimePicker";
 import Pagination from "src/components/Pagination";
 import Form from "src/components/Form";
 import getPage from "src/components/Pagination/getPage";
+import Drawer from "src/components/Drawer";
 
 import createTheme from "src/theme/createTheme";
 
@@ -45,4 +46,5 @@ export {
   Pagination,
   Form,
   getPage,
+  Drawer,
 };

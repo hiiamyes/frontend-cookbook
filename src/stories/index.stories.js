@@ -15,7 +15,6 @@ import BasicUploaderDemo from "src/components/Uploader/demo";
 import CarouselDemo from "src/components/Carousel/demo";
 import TableDemo from "src/components/Table/demo";
 import ModalDemo from "src/components/Modal/demo";
-import DrawerDemo from "src/components/Drawer/demo";
 import TagDemo from "src/components/Tag/demo";
 import CollapseDemo from "src/components/Collapse/demo";
 import ScrollbarDemo from "src/components/Scrollbar/demo";
@@ -39,12 +38,6 @@ storiesOf("Collapse", module).add("Collapse", () => (
 storiesOf("Tag", module).add("Tag", () => (
   <Layout>
     <TagDemo />
-  </Layout>
-));
-
-storiesOf("Drawer", module).add("Drawer", () => (
-  <Layout>
-    <DrawerDemo />
   </Layout>
 ));
 

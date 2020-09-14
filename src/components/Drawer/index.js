@@ -1,17 +1,6 @@
-import React from "react";
-import Style from "./style";
+import Drawer from "./Drawer";
+import useDrawer from "./useDrawer";
 
-const Drawer = props => {
-  let { visible, onClose } = props;
-  return (
-    <Style visible={visible}>
-      <div className="background" role="button" onClick={onClose} />
-      <ul className="menu">
-        <li>Items</li>
-        <li>Packs</li>
-      </ul>
-    </Style>
-  );
-};
+Drawer.useDrawer = useDrawer;
 
 export default Drawer;
