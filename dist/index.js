@@ -2597,6 +2597,11 @@ var faArrowDown = {
   iconName: 'arrow-down',
   icon: [448, 512, [], "f063", "M413.1 222.5l22.2 22.2c9.4 9.4 9.4 24.6 0 33.9L241 473c-9.4 9.4-24.6 9.4-33.9 0L12.7 278.6c-9.4-9.4-9.4-24.6 0-33.9l22.2-22.2c9.5-9.5 25-9.3 34.3.4L184 343.4V56c0-13.3 10.7-24 24-24h32c13.3 0 24 10.7 24 24v287.4l114.8-120.5c9.3-9.8 24.8-10 34.3-.4z"]
 };
+var faBars = {
+  prefix: 'fas',
+  iconName: 'bars',
+  icon: [448, 512, [], "f0c9", "M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"]
+};
 var faCheckSquare = {
   prefix: 'fas',
   iconName: 'check-square',
@@ -2736,6 +2741,7 @@ library.add(faAngleDoubleRight);
 library.add(faClock);
 library.add(faMountain);
 library.add(faEllipsisH);
+library.add(faBars);
 
 const FAIcon = props => {
   const {
@@ -38070,6 +38076,78 @@ const getPage = () => {
   return page;
 };
 
+const contentWidth = "240px";
+var Style$i = styled.div`
+  position: fixed;
+  top: 48px;
+  left: 0;
+  height: 100%;
+  z-index: 1200;
+  .background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    outline: none;
+    opacity: ${props => props.visible ? 1 : 0};
+    width: ${props => props.visible ? "100vw" : 0};
+  }
+  .content {
+    width: ${contentWidth};
+    background: white;
+    height: 100%;
+    position: fixed;
+    z-index: 1200;
+    top: 0;
+    left: 0;
+    box-shadow: 0px 8px 10px -5px rgba(0, 0, 0, 0.2),
+      0px 16px 24px 2px rgba(0, 0, 0, 0.14),
+      0px 6px 30px 5px rgba(0, 0, 0, 0.12);
+    transition: 225ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+    visibility: ${props => props.visible ? "visible" : "hidden"};
+    transform: ${props => props.visible ? "translate3d(0px, 0px, 0px)" : `translatex(-${contentWidth})`};
+  }
+`;
+
+const Drawer = props => {
+  let {
+    visible,
+    onClose,
+    children,
+    ...rest
+  } = props;
+  return /*#__PURE__*/React.createElement(Style$i, _extends({
+    visible: visible
+  }, rest), /*#__PURE__*/React.createElement("div", {
+    className: "background",
+    role: "button",
+    onClick: onClose
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "content"
+  }, children));
+};
+
+const useDrawer = () => {
+  const [visible, setVisible] = useState(false);
+
+  const openDrawer = () => {
+    setVisible(true);
+  };
+
+  const closeDrawer = () => {
+    setVisible(false);
+  };
+
+  return {
+    visible,
+    openDrawer,
+    closeDrawer
+  };
+};
+
+Drawer.useDrawer = useDrawer;
+
 const teal500 = "#009688";
 const teal700 = "#00796b";
 const teal900 = "#004d40";
@@ -38144,5 +38222,5 @@ const createTheme = theme => {
   };
 };
 
-export { BasicSelect, Button, Carousel, FAIcon, Form, IconButton, Loader, Map$1 as Map, Marker, Modal, NumberSelect, OutlineButton, Pagination, Table, TextButton, TimePicker, Trail, TrailChart, createTheme, getPage, useMap, useModal };
+export { BasicSelect, Button, Carousel, Drawer, FAIcon, Form, IconButton, Loader, Map$1 as Map, Marker, Modal, NumberSelect, OutlineButton, Pagination, Table, TextButton, TimePicker, Trail, TrailChart, createTheme, getPage, useMap, useModal };
 //# sourceMappingURL=index.js.map
