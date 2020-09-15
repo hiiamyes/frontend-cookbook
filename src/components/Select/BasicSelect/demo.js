@@ -18,7 +18,7 @@ const BasicSelectDemo = () => {
 
   return (
     <div>
-      <div style={{ width: "250px" }}>
+      <div style={{ width: "250px", height: "200px", overflowY: "scroll" }}>
         <BasicSelect
           value={value}
           options={options}
