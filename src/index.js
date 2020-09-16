@@ -14,6 +14,7 @@ import useModal from "src/components/Modal/useModal";
 import Carousel from "src/components/Carousel";
 import Table from "src/components/Table";
 import BasicSelect from "src/components/Select/BasicSelect";
+import NativeSelect from "src/components/Select/NativeSelect";
 import NumberSelect from "src/components/Select/NumberSelect";
 import TimePicker from "src/components/TimePicker";
 import Pagination from "src/components/Pagination";
@@ -47,4 +48,5 @@ export {
   Form,
   getPage,
   Drawer,
+  NativeSelect,
 };

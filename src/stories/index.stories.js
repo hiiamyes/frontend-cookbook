@@ -2,10 +2,6 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import styled from "styled-components";
 
-import BasicSelectDemo from "src/components/Select/BasicSelect/demo";
-import TimezoneNameSelect from "src/components/Select/TimezoneNameSelect";
-import LanguagePickerDemo from "src/components/Select/LanguagePicker/demo";
-
 import LineChartDemo from "src/components/Chart/LineChart/demo";
 import BarChartDemo from "src/components/Chart/BarChart/demo";
 
@@ -40,25 +36,6 @@ storiesOf("Tag", module).add("Tag", () => (
     <TagDemo />
   </Layout>
 ));
-
-storiesOf("Select", module)
-  .add("BasicSelect", () => {
-    return (
-      <Layout>
-        <BasicSelectDemo />
-      </Layout>
-    );
-  })
-  .add("TimezoneNameSelect", () => (
-    <Layout>
-      <TimezoneNameSelect />
-    </Layout>
-  ))
-  .add("LanguagePicker", () => (
-    <Layout>
-      <LanguagePickerDemo />
-    </Layout>
-  ));
 
 storiesOf("Chart", module)
   .add("LineChart", () => (

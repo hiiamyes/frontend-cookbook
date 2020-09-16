@@ -35,6 +35,7 @@ const icons = [
   "mountain",
   "ellipsis-h",
   "bars",
+  "language",
 ];
 
 export const Icons = () => {
