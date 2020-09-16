@@ -2647,6 +2647,11 @@ var faHiking = {
   iconName: 'hiking',
   icon: [384, 512, [], "f6ec", "M80.95 472.23c-4.28 17.16 6.14 34.53 23.28 38.81 2.61.66 5.22.95 7.8.95 14.33 0 27.37-9.7 31.02-24.23l25.24-100.97-52.78-52.78-34.56 138.22zm14.89-196.12L137 117c2.19-8.42-3.14-16.95-11.92-19.06-43.88-10.52-88.35 15.07-99.32 57.17L.49 253.24c-2.19 8.42 3.14 16.95 11.92 19.06l63.56 15.25c8.79 2.1 17.68-3.02 19.87-11.44zM368 160h-16c-8.84 0-16 7.16-16 16v16h-34.75l-46.78-46.78C243.38 134.11 228.61 128 212.91 128c-27.02 0-50.47 18.3-57.03 44.52l-26.92 107.72a32.012 32.012 0 0 0 8.42 30.39L224 397.25V480c0 17.67 14.33 32 32 32s32-14.33 32-32v-82.75c0-17.09-6.66-33.16-18.75-45.25l-46.82-46.82c.15-.5.49-.89.62-1.41l19.89-79.57 22.43 22.43c6 6 14.14 9.38 22.62 9.38h48v240c0 8.84 7.16 16 16 16h16c8.84 0 16-7.16 16-16V176c.01-8.84-7.15-16-15.99-16zM240 96c26.51 0 48-21.49 48-48S266.51 0 240 0s-48 21.49-48 48 21.49 48 48 48z"]
 };
+var faLanguage = {
+  prefix: 'fas',
+  iconName: 'language',
+  icon: [640, 512, [], "f1ab", "M152.1 236.2c-3.5-12.1-7.8-33.2-7.8-33.2h-.5s-4.3 21.1-7.8 33.2l-11.1 37.5H163zM616 96H336v320h280c13.3 0 24-10.7 24-24V120c0-13.3-10.7-24-24-24zm-24 120c0 6.6-5.4 12-12 12h-11.4c-6.9 23.6-21.7 47.4-42.7 69.9 8.4 6.4 17.1 12.5 26.1 18 5.5 3.4 7.3 10.5 4.1 16.2l-7.9 13.9c-3.4 5.9-10.9 7.8-16.7 4.3-12.6-7.8-24.5-16.1-35.4-24.9-10.9 8.7-22.7 17.1-35.4 24.9-5.8 3.5-13.3 1.6-16.7-4.3l-7.9-13.9c-3.2-5.6-1.4-12.8 4.2-16.2 9.3-5.7 18-11.7 26.1-18-7.9-8.4-14.9-17-21-25.7-4-5.7-2.2-13.6 3.7-17.1l6.5-3.9 7.3-4.3c5.4-3.2 12.4-1.7 16 3.4 5 7 10.8 14 17.4 20.9 13.5-14.2 23.8-28.9 30-43.2H412c-6.6 0-12-5.4-12-12v-16c0-6.6 5.4-12 12-12h64v-16c0-6.6 5.4-12 12-12h16c6.6 0 12 5.4 12 12v16h64c6.6 0 12 5.4 12 12zM0 120v272c0 13.3 10.7 24 24 24h280V96H24c-13.3 0-24 10.7-24 24zm58.9 216.1L116.4 167c1.7-4.9 6.2-8.1 11.4-8.1h32.5c5.1 0 9.7 3.3 11.4 8.1l57.5 169.1c2.6 7.8-3.1 15.9-11.4 15.9h-22.9a12 12 0 0 1-11.5-8.6l-9.4-31.9h-60.2l-9.1 31.8c-1.5 5.1-6.2 8.7-11.5 8.7H70.3c-8.2 0-14-8.1-11.4-15.9z"]
+};
 var faLongArrowAltDown = {
   prefix: 'fas',
   iconName: 'long-arrow-alt-down',
@@ -2742,6 +2747,7 @@ library.add(faClock);
 library.add(faMountain);
 library.add(faEllipsisH);
 library.add(faBars);
+library.add(faLanguage);
 
 const FAIcon = props => {
   const {
@@ -36742,7 +36748,38 @@ const BasicSelect = props => {
   }, option.label))));
 };
 
-var Style$c = styled.div``;
+var Style$c = styled.div`
+  position: relative;
+  > select {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+`;
+
+const NativeSelect = props => {
+  const {
+    className,
+    value,
+    options,
+    children,
+    ...rest
+  } = props;
+  return /*#__PURE__*/React.createElement(Style$c, _extends({
+    className: classnames(className)
+  }, rest), /*#__PURE__*/React.createElement("div", null, children), /*#__PURE__*/React.createElement("select", {
+    value: value
+  }, options.map((option, optionIndex) => /*#__PURE__*/React.createElement("option", {
+    key: option.value,
+    value: option.value
+  }, option.label))));
+};
+
+var Style$d = styled.div``;
 
 const NumberSelect = props => {
   const {
@@ -36751,7 +36788,7 @@ const NumberSelect = props => {
     value,
     onChange
   } = props;
-  return /*#__PURE__*/React.createElement(Style$c, null, /*#__PURE__*/React.createElement("select", {
+  return /*#__PURE__*/React.createElement(Style$d, null, /*#__PURE__*/React.createElement("select", {
     value: value,
     onChange: e => {
       onChange(e.target.value);
@@ -36765,7 +36802,7 @@ const NumberSelect = props => {
   })));
 };
 
-var Style$d = styled.div`
+var Style$e = styled.div`
   display: grid;
   grid: 1fr / repeat(3, max-content);
   grid-gap: 2px;
@@ -36777,7 +36814,7 @@ const TimePicker = props => {
     onChange
   } = props;
   const [hour, minute] = value.split(":");
-  return /*#__PURE__*/React.createElement(Style$d, null, /*#__PURE__*/React.createElement("select", {
+  return /*#__PURE__*/React.createElement(Style$e, null, /*#__PURE__*/React.createElement("select", {
     value: hour,
     onChange: e => {
       onChange(e.target.value + ":" + minute);
@@ -36802,7 +36839,7 @@ const TimePicker = props => {
   })));
 };
 
-var Style$e = styled.div`
+var Style$f = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -36838,7 +36875,7 @@ const Pagination = ({
   const prePageSearch = "?" + searchParams.toString();
   searchParams.set("page", page + 1);
   const nextPageSearch = "?" + searchParams.toString();
-  return /*#__PURE__*/React.createElement(Style$e, {
+  return /*#__PURE__*/React.createElement(Style$f, {
     className: className
   }, /*#__PURE__*/React.createElement(IconButton, {
     icon: "chevron-left",
@@ -36867,7 +36904,7 @@ const Pagination = ({
   })));
 };
 
-var Style$f = styled.form`
+var Style$g = styled.form`
   display: grid;
 `;
 
@@ -36884,7 +36921,7 @@ const Form = props => {
     value: {
       formik
     }
-  }, /*#__PURE__*/React.createElement(Style$f, {
+  }, /*#__PURE__*/React.createElement(Style$g, {
     onSubmit: formik.handleSubmit
   }, children));
 };
@@ -37972,7 +38009,7 @@ function get$2(object, path, defaultValue) {
   return result === undefined ? defaultValue : result;
 }
 
-var Style$g = styled.div`
+var Style$h = styled.div`
   height: ${props => props.theme.lineHeightH5};
   color: ${props => props.theme.colorRed};
   font-size: ${props => props.theme.fontSizeH5};
@@ -37983,7 +38020,7 @@ const Error$1 = props => {
   const {
     children
   } = props;
-  return /*#__PURE__*/React.createElement(Style$g, null, children);
+  return /*#__PURE__*/React.createElement(Style$h, null, children);
 };
 
 const Space = props => {
@@ -38005,7 +38042,7 @@ const Space = props => {
 
 var Space$1 = /*#__PURE__*/memo(Space);
 
-var Style$h = styled.div`
+var Style$i = styled.div`
   > .label {
     font-size: ${props => props.theme.fontSizeH5};
     line-height: ${props => props.theme.lineHeightH5};
@@ -38039,7 +38076,7 @@ const Field = props => {
       handleChange(e);
     }
   }, [setFieldValue, handleChange, name]);
-  return /*#__PURE__*/React.createElement(Style$h, null, label && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement(Style$i, null, label && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "label"
   }, label), /*#__PURE__*/React.createElement(Space$1, {
     height: 5,
@@ -38077,7 +38114,7 @@ const getPage = () => {
 };
 
 const contentWidth = "240px";
-var Style$i = styled.div`
+var Style$j = styled.div`
   position: fixed;
   top: 48px;
   left: 0;
@@ -38117,7 +38154,7 @@ const Drawer = props => {
     children,
     ...rest
   } = props;
-  return /*#__PURE__*/React.createElement(Style$i, _extends({
+  return /*#__PURE__*/React.createElement(Style$j, _extends({
     visible: visible
   }, rest), /*#__PURE__*/React.createElement("div", {
     className: "background",
@@ -38222,5 +38259,5 @@ const createTheme = theme => {
   };
 };
 
-export { BasicSelect, Button, Carousel, Drawer, FAIcon, Form, IconButton, Loader, Map$1 as Map, Marker, Modal, NumberSelect, OutlineButton, Pagination, Table, TextButton, TimePicker, Trail, TrailChart, createTheme, getPage, useMap, useModal };
+export { BasicSelect, Button, Carousel, Drawer, FAIcon, Form, IconButton, Loader, Map$1 as Map, Marker, Modal, NativeSelect, NumberSelect, OutlineButton, Pagination, Table, TextButton, TimePicker, Trail, TrailChart, createTheme, getPage, useMap, useModal };
 //# sourceMappingURL=index.js.map
