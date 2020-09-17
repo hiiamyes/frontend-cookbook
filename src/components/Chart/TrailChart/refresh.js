@@ -54,7 +54,8 @@ const refresh = ({
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  showAxis && drawAxis({ svg, xScale, yScale, height, xMax, yMin, yMax });
+  showAxis &&
+    drawAxis({ svg, xScale, yScale, width, height, xMax, yMin, yMax });
   for (let i = 0; i < trails.length; i++) {
     const trail = trails[i];
     const color = colors[i];

@@ -21,7 +21,7 @@ const baseTheme = {
 
   //
   colorMainBlue: "#4357ef",
-  colorPrimary: "#07072d",
+  colorPrimary: teal700,
   colorSecondary: "#545b64",
   colorTertiary: "#a9b0b7",
   colorPrimaryAlt: "#232658",
