@@ -4463,6 +4463,22 @@ var Style$7 = styled.div`
   .line {
     fill: none;
   }
+  .x.axis {
+    path {
+      stroke-width: 0;
+    }
+    line {
+      stroke-dasharray: 4;
+    }
+  }
+  .y.axis {
+    path {
+      stroke-width: 0;
+    }
+    line {
+      stroke-dasharray: 4;
+    }
+  }
 `;
 
 function ascending(a, b) {
@@ -8336,13 +8352,18 @@ const drawAxis = ({
   svg,
   xScale,
   yScale,
+  width,
   height,
   xMax,
   yMin,
   yMax
 }) => {
-  svg.append("g").attr("class", "x axis").attr("transform", "translate(0," + height + ")").call(axisBottom(xScale).tickValues([0, xMax]).tickFormat(d => `${(d / 1000).toFixed(1)}k`)).selectAll("text");
-  svg.append("g").attr("class", "y axis").call(axisLeft(yScale).tickValues([yMin, yMax]).tickFormat(d => `${d.toFixed(0)}m`));
+  const xAxisTickValueInterval = 1000;
+  const xAxisTickValues = [...[...new Array(Math.floor(xMax / xAxisTickValueInterval))].map((_, i) => i * xAxisTickValueInterval), xMax];
+  svg.append("g").attr("class", "x axis").attr("transform", "translate(0," + height + ")").call(axisBottom(xScale).tickValues(xAxisTickValues).tickSize(-height).tickFormat(d => `${(d / 1000).toFixed(1)}k`)).selectAll("text").attr("y", "10px");
+  const yAxisTickValueInterval = 500;
+  const yAxisTickValues = yMax - yMin > yAxisTickValueInterval ? [yMin, ...[...new Array(Math.ceil(yMax / yAxisTickValueInterval) - Math.ceil(yMin / yAxisTickValueInterval))].map((_, i) => (Math.ceil(yMin / yAxisTickValueInterval) + i) * yAxisTickValueInterval), yMax] : [yMin, yMax];
+  svg.append("g").attr("class", "y axis").call(axisLeft(yScale).tickValues(yAxisTickValues).tickSize(-width).tickFormat(d => `${d.toFixed(0)}m`)).selectAll("text").attr("x", "-10px");
 };
 
 const drawLine = ({
@@ -8451,6 +8472,7 @@ const refresh = ({
     svg,
     xScale,
     yScale,
+    width,
     height,
     xMax,
     yMin,
@@ -38205,7 +38227,7 @@ const baseTheme = {
   colorBorderFocus: "rgb(70, 146, 245)",
   //
   colorMainBlue: "#4357ef",
-  colorPrimary: "#07072d",
+  colorPrimary: teal700,
   colorSecondary: "#545b64",
   colorTertiary: "#a9b0b7",
   colorPrimaryAlt: "#232658",
