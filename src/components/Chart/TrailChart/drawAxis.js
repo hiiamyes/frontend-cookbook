@@ -17,7 +17,21 @@ const drawAxis = ({ svg, xScale, yScale, width, height, xMax, yMin, yMax }) => {
     .call(
       d3
         .axisBottom(xScale)
-        .tickValues(xAxisTickValues)
+        .ticks(5)
+        // .tickValues(xAxisTickValues)
+        .tickSize(-height)
+        .tickFormat((d) => `${(d / 1000).toFixed(1)}k`),
+    )
+    .selectAll("text")
+    .attr("y", "10px");
+  svg
+    .append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(
+      d3
+        .axisBottom(xScale)
+        .tickValues([xMax])
         .tickSize(-height)
         .tickFormat((d) => `${(d / 1000).toFixed(1)}k`),
     )
@@ -48,7 +62,20 @@ const drawAxis = ({ svg, xScale, yScale, width, height, xMax, yMin, yMax }) => {
     .call(
       d3
         .axisLeft(yScale)
-        .tickValues(yAxisTickValues)
+        .ticks(4)
+        // .tickValues(yAxisTickValues)
+        .tickSize(-width)
+        .tickFormat((d) => `${d.toFixed(0)}m`),
+    )
+    .selectAll("text")
+    .attr("x", "-10px");
+  svg
+    .append("g")
+    .attr("class", "y axis")
+    .call(
+      d3
+        .axisLeft(yScale)
+        .tickValues([yMin, yMax])
         .tickSize(-width)
         .tickFormat((d) => `${d.toFixed(0)}m`),
     )

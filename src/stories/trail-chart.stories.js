@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import TrailChart from "src/components/Chart/TrailChart";
 import taoShanKelaye from "src/components/Chart/TrailChart/trails/tao-shan-kelaye.json";
@@ -41,12 +41,18 @@ export const Basic = () => {
 };
 
 export const Axis = () => {
+  const [showArea, setShowArew] = useState(true);
   return (
     <Layout>
+      <input
+        type="checkbox"
+        value={showArea}
+        onChange={() => setShowArea(!showArea)}
+      ></input>
       <div style={{ width: "100vw", height: 480 }}>
         <TrailChart
           showAxis
-          showArea
+          showArea={showArea}
           trails={[taoShanKelaye]}
           colors={colors}
         />
