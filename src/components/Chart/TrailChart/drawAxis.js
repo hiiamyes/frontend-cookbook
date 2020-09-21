@@ -36,7 +36,7 @@ const drawAxis = ({ svg, xScale, yScale, width, height, xMax, yMin, yMax }) => {
         .tickFormat((d) => `${(d / 1000).toFixed(1)}k`),
     )
     .selectAll("text")
-    .attr("y", "10px");
+    .attr("y", "20px");
 
   const yAxisTickValueInterval = 500;
   const yAxisTickValues =
