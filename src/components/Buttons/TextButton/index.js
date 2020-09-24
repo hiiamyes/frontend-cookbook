@@ -3,12 +3,12 @@ import classnames from "classnames";
 import Style from "./style";
 
 const TextButton = (props) => {
-  const { loading, disabled, onClick, children } = props;
+  const { className, loading, disabled, onClick, children, ...rest } = props;
   const [hover, setHover] = useState(false);
   const [pressed, setPressed] = useState(false);
   const [focused, setFocused] = useState(false);
 
-  const className = classnames({
+  const className = classnames(className, {
     disabled,
     loading,
     hover,
@@ -29,6 +29,7 @@ const TextButton = (props) => {
 
   return (
     <Style
+      {...rest}
       className={className}
       onFocus={(e) => {
         setFocused(true);
