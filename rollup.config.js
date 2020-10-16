@@ -3,6 +3,7 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import babel from "@rollup/plugin-babel";
 import alias from "@rollup/plugin-alias";
+import { terser } from "rollup-plugin-terser";
 import pkg from "./package.json";
 
 export default {
@@ -12,9 +13,19 @@ export default {
       file: pkg.main,
       format: "es",
       sourcemap: true,
+      compact: true,
     },
   ],
-  external: ["react", "react-com", "styled-components", "leaflet", "lodash"],
+  external: [
+    "react",
+    "react-com",
+    "styled-components",
+    "leaflet",
+    "lodash",
+    "d3",
+    "react-router-dom",
+    "classnames",
+  ],
   plugins: [
     resolve(),
     commonjs({
@@ -28,5 +39,6 @@ export default {
         { find: "src", replacement: path.resolve(__dirname, "./src/") },
       ],
     }),
+    terser(),
   ],
 };
