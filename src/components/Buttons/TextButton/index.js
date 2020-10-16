@@ -8,14 +8,6 @@ const TextButton = (props) => {
   const [pressed, setPressed] = useState(false);
   const [focused, setFocused] = useState(false);
 
-  const className = classnames(className, {
-    disabled,
-    loading,
-    hover,
-    pressed,
-    focused,
-  });
-
   const windowMouseUp = useCallback(() => {
     setPressed(false);
   }, []);
@@ -30,7 +22,13 @@ const TextButton = (props) => {
   return (
     <Style
       {...rest}
-      className={className}
+      className={classnames(className, {
+        disabled,
+        loading,
+        hover,
+        pressed,
+        focused,
+      })}
       onFocus={(e) => {
         setFocused(true);
       }}
