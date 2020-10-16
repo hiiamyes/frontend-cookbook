@@ -3192,21 +3192,16 @@ var Style$4 = styled.button`
 
 const TextButton = props => {
   const {
+    className,
     loading,
     disabled,
     onClick,
-    children
+    children,
+    ...rest
   } = props;
   const [hover, setHover] = useState(false);
   const [pressed, setPressed] = useState(false);
   const [focused, setFocused] = useState(false);
-  const className = classnames({
-    disabled,
-    loading,
-    hover,
-    pressed,
-    focused
-  });
   const windowMouseUp = useCallback(() => {
     setPressed(false);
   }, []);
@@ -3216,8 +3211,14 @@ const TextButton = props => {
       window.removeEventListener("mouseup", windowMouseUp);
     };
   }, [windowMouseUp]);
-  return /*#__PURE__*/React.createElement(Style$4, {
-    className: className,
+  return /*#__PURE__*/React.createElement(Style$4, _extends({}, rest, {
+    className: classnames(className, {
+      disabled,
+      loading,
+      hover,
+      pressed,
+      focused
+    }),
     onFocus: e => {
       setFocused(true);
     },
@@ -3246,7 +3247,7 @@ const TextButton = props => {
     onClick: e => {
       !disabled && !loading && onClick && onClick(e);
     }
-  }, loading ? "loading..." : children);
+  }), loading ? "loading..." : children);
 };
 
 var Style$5 = styled.div`
