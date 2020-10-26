@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { ThemeContext } from "styled-components";
 import classnames from "classnames";
 import FAIcon from "src/components/FAIcon";
 import Style from "./style";
 
 const BasicSelect = (props) => {
+  const theme = useContext(ThemeContext);
   const textInput = React.createRef();
   const [focus, setFocus] = useState(false);
   const [optionsVisible, setOptionsVisible] = useState(false);
@@ -86,7 +88,7 @@ const BasicSelect = (props) => {
           setFocus(false);
         }}
       />
-      <FAIcon icon="angle-down" color="red" />
+      <FAIcon icon="angle-down" color={theme.colorEnable} />
       <div
         className="options"
         style={{ visibility: optionsVisible ? "visible" : "hidden" }}

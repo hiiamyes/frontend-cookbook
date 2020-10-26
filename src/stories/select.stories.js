@@ -12,10 +12,13 @@ export default {
 
 const Layout = styled.div`
   padding: 15px;
+  display: grid;
+  grid-gap: 5px;
 `;
 
 export const Basic = () => {
   const [value, setValue] = useState("");
+  const [value30Optinos, setValue30Options] = useState("");
   const [value2, setValue2] = useState("");
   const options = [
     {
@@ -29,7 +32,8 @@ export const Basic = () => {
   ];
   return (
     <Layout>
-      <div style={{ width: "250px", height: "200px", overflowY: "scroll" }}>
+      <h3>2 options</h3>
+      <div style={{ width: "250px" }}>
         <BasicSelect
           value={value}
           options={options}
@@ -38,13 +42,22 @@ export const Basic = () => {
           }}
         />
       </div>
-      <br />
       <div style={{ width: "500px" }}>
         <BasicSelect
           value={value2}
           options={options}
           onChange={(value2) => {
             setValue2(value2);
+          }}
+        />
+      </div>
+      <h3>30 options</h3>
+      <div style={{ width: "250px" }}>
+        <BasicSelect
+          value={value30Optinos}
+          options={[...new Array(30)].map((_, i) => ({ value: i, label: i }))}
+          onChange={(value) => {
+            setValue30Options(value);
           }}
         />
       </div>
