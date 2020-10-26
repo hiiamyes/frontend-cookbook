@@ -26,7 +26,19 @@ export default styled.div`
     outline: none;
     border: none;
   }
-  .options {
+  >.no-option {
+    position: absolute;
+    width: calc(100% + 2px);
+    left: -1px;
+    top: calc(5px + ${selectOptionHeight});
+    border-radius: ${(props) => props.theme.borderRadius};
+    border: 1px solid ${(props) => props.theme.colorEnable};
+    padding: 5px;
+    height: ${selectOptionHeight};
+    background: white;
+    z-index: 100;
+  }
+  >.options {
     position: absolute;
     overflow-y: scroll;
     width: calc(100% + 2px);

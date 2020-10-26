@@ -63,7 +63,9 @@ const BasicSelect = (props) => {
   //     window.removeEventListener("keydown", keyDownListener);
   //   };
   // }, [hoveredOptionValue, optionsVisible]);
-
+  const noOption = !options.find((option) =>
+    new RegExp(inputValue, "gi").test(option.label),
+  );
   return (
     <Style
       className={classnames("select", { focus })}
@@ -90,8 +92,18 @@ const BasicSelect = (props) => {
       />
       <FAIcon icon="angle-down" color={theme.colorEnable} />
       <div
+        className="no-option"
+        style={{
+          visibility: noOption ? "visible" : "hidden",
+        }}
+      >
+        No result
+      </div>
+      <div
         className="options"
-        style={{ visibility: optionsVisible ? "visible" : "hidden" }}
+        style={{
+          visibility: !noOption && optionsVisible ? "visible" : "hidden",
+        }}
       >
         {options.map((option, optionIndex) => (
           <div
