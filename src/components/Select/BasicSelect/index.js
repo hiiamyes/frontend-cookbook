@@ -86,31 +86,32 @@ const BasicSelect = (props) => {
           setFocus(false);
         }}
       />
-      <FAIcon icon="angle-down" />
-      {optionsVisible && (
-        <div className="options">
-          {options.map((option, optionIndex) => (
-            <div
-              className={classnames("option", {
-                hover: option.value === hoveredOptionValue,
-                select: option.value === value,
-              })}
-              key={option.value}
-              value={option.value}
-              style={{
-                display: new RegExp(inputValue, "gi").test(option.label)
-                  ? "block"
-                  : "none",
-              }}
-              onMouseDown={(e) => {
-                onChange(option.value);
-              }}
-            >
-              {option.label}
-            </div>
-          ))}
-        </div>
-      )}
+      <FAIcon icon="angle-down" color="red" />
+      <div
+        className="options"
+        style={{ visibility: optionsVisible ? "visible" : "hidden" }}
+      >
+        {options.map((option, optionIndex) => (
+          <div
+            className={classnames("option", {
+              hover: option.value === hoveredOptionValue,
+              select: option.value === value,
+            })}
+            key={option.value}
+            value={option.value}
+            style={{
+              display: new RegExp(inputValue, "gi").test(option.label)
+                ? "block"
+                : "none",
+            }}
+            onMouseDown={(e) => {
+              onChange(option.value);
+            }}
+          >
+            {option.label}
+          </div>
+        ))}
+      </div>
     </Style>
   );
 };

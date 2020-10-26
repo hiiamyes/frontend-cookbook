@@ -10,6 +10,7 @@ export default styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  color: ${(props) => props.color};
   > svg {
     width: ${(props) => sizes[props.size] || sizes["default"]} !important;
     height: ${(props) => sizes[props.size] || sizes["default"]} !important;
