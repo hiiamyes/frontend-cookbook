@@ -119,7 +119,10 @@ const BasicSelect = (props) => {
                 : "none",
             }}
             onMouseDown={(e) => {
-              onChange(option.value);
+              const customEvent = new CustomEvent("select", {
+                detail: { value: option.value },
+              });
+              onChange(customEvent);
             }}
           >
             {option.label}

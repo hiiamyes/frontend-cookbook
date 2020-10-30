@@ -37,8 +37,8 @@ export const Basic = () => {
         <BasicSelect
           value={value}
           options={options}
-          onChange={(value) => {
-            setValue(value);
+          onChange={(e) => {
+            setValue(e.detail.value);
           }}
         />
       </div>
@@ -46,8 +46,8 @@ export const Basic = () => {
         <BasicSelect
           value={value2}
           options={options}
-          onChange={(value2) => {
-            setValue2(value2);
+          onChange={(e) => {
+            setValue2(e.detail.value);
           }}
         />
       </div>
@@ -56,8 +56,8 @@ export const Basic = () => {
         <BasicSelect
           value={value30Optinos}
           options={[...new Array(30)].map((_, i) => ({ value: i, label: i }))}
-          onChange={(value) => {
-            setValue30Options(value);
+          onChange={(e) => {
+            setValue30Options(e.detail.value);
           }}
         />
       </div>
@@ -82,8 +82,8 @@ export const Native = () => {
       <NativeSelect
         value={value}
         options={options}
-        onChange={(value) => {
-          setValue(value);
+        onChange={(e) => {
+          setValue(e.detail.value);
         }}
       >
         <FAIcon icon="language"></FAIcon>
