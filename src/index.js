@@ -22,6 +22,8 @@ import Form from "src/components/Form";
 import getPage from "src/components/Pagination/getPage";
 import Drawer from "src/components/Drawer";
 
+import BasicInput from "src/components/Input/BasicInput";
+
 import createTheme from "src/theme/createTheme";
 
 export {
@@ -49,4 +51,5 @@ export {
   getPage,
   Drawer,
   NativeSelect,
+  BasicInput,
 };
