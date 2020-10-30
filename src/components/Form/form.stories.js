@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import Space from "src/components/Space";
 import Form from "src/components/Form";
 import Button from "src/components/Buttons/Button";
-
+import BasicSelect from "src/components/Select/BasicSelect";
 import validationSchema from "./validationSchema";
 
 export default {
@@ -47,6 +47,20 @@ export const Default = () => {
         <Form.Field name="email" label="Email" input={<input autoFocus />} />
         <Space height={5} unit="px" />
         <Form.Field name="password" label="Password" input={<input />} />
+        <Space height={5} unit="px" />
+        <Form.Field
+          name="password"
+          label="Password"
+          input={
+            <BasicSelect
+              value={value}
+              options={[
+                { value: 13, label: "九九山莊" },
+                { value: 223, label: "三六九山莊" },
+              ]}
+            />
+          }
+        />
         <Space height={5} unit="px" />
         <Button htmlType="submit" loading={isSubmitting}>
           Submit
