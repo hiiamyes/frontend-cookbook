@@ -1,3 +1,5 @@
+import { rgba } from "polished";
+
 const teal500 = "#009688";
 const teal700 = "#00796b";
 const teal900 = "#004d40";
@@ -9,12 +11,11 @@ const baseTheme = {
   padding: "0 16px",
   colorText: "white",
   colorEnable: teal700,
+  colorTableHover: rgba(teal700, 0.3),
   colorHover: teal500,
   colorPressed: teal900,
   colorFocused: teal500,
   colorDisabled: gray600,
-  colorEnable: teal700,
-  colorHover: teal500,
   colorPress: teal900,
   colorFocus: teal500,
   colorDisable: gray600,

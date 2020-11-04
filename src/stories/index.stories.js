@@ -9,7 +9,6 @@ import FilePickerDemo from "src/components/FilePicker/demo";
 import BasicUploaderDemo from "src/components/Uploader/demo";
 
 import CarouselDemo from "src/components/Carousel/demo";
-import TableDemo from "src/components/Table/demo";
 import ModalDemo from "src/components/Modal/demo";
 import TagDemo from "src/components/Tag/demo";
 import CollapseDemo from "src/components/Collapse/demo";
@@ -64,12 +63,6 @@ storiesOf("Uploader", module).add("BasicUploader", () => (
 storiesOf("Carousel", module).add("Carousel", () => (
   <Layout>
     <CarouselDemo />
-  </Layout>
-));
-
-storiesOf("Table", module).add("BasicTable", () => (
-  <Layout>
-    <TableDemo />
   </Layout>
 ));
 
