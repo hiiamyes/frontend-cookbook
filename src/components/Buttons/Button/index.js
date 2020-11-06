@@ -3,7 +3,7 @@ import classnames from "classnames";
 import Style from "./style";
 
 const Button = (props) => {
-  const { children, loading, disabled, onClick } = props;
+  const { children, loading, disabled, onClick, ...rest } = props;
   const [hover, setHover] = useState(false);
   const [pressed, setPressed] = useState(false);
   const [focused, setFocused] = useState(false);
@@ -58,6 +58,7 @@ const Button = (props) => {
       onClick={(e) => {
         !disabled && !loading && onClick && onClick(e);
       }}
+      {...rest}
     >
       {loading ? "loading..." : children}
     </Style>
