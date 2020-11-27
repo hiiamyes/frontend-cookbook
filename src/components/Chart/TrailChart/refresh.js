@@ -51,6 +51,10 @@ const refresh = ({
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
+    .on("mousemove", (d, i) => {
+      console.log(new Date());
+    })
+    // https://www.d3-graph-gallery.com/graph/line_cursor.html
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
