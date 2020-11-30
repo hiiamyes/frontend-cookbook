@@ -51,12 +51,46 @@ const refresh = ({
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
-    .on("mousemove", (d, i) => {
-      console.log(new Date());
-    })
-    // https://www.d3-graph-gallery.com/graph/line_cursor.html
+    // .on("mousemove", (d, i) => {
+    //   console.log(new Date());
+    // })
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  // draw mousemove rect
+  // https://github.com/d3/d3-selection/blob/v2.0.0/README.md#pointer
+  // https://www.d3-graph-gallery.com/graph/line_cursor.html
+  // d3.pointer((qqq) => {
+  //   console.log(qqq);
+  // }, qq);
+  // var bisect = d3.bisector(function (d) {
+  //   return d.x;
+  // }).left;
+  const mousemove = (e) => {
+    console.log(e);
+    console.log(d3.pointer(e));
+    //   console.log(d3.mouse(this));
+    //   var x0 = xScale.invert(d3.mouse(this)[0]);
+    //   console.log("x0: ", x0);
+    //   // var i = bisect(, x0, 1);
+    //   // console.log("i : ", i);
+    //   // selectedData = data[i];
+    //   // focus.attr("cx", x(selectedData.x)).attr("cy", y(selectedData.y));
+    //   // focusText
+    //   //   .html("x:" + selectedData.x + "  -  " + "y:" + selectedData.y)
+    //   //   .attr("x", x(selectedData.x) + 15)
+    //   //   .attr("y", y(selectedData.y));
+  };
+
+  const qq = svg
+    .append("rect")
+    .style("fill", "none")
+    .style("pointer-events", "all")
+    .attr("width", width)
+    .attr("height", height)
+    // .on("mouseover", mouseover);
+    .on("mousemove", mousemove);
+  // .on('mouseout', mouseout);
 
   showAxis &&
     drawAxis({ svg, xScale, yScale, width, height, xMax, yMin, yMax });
