@@ -58,28 +58,23 @@ const refresh = ({
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   // draw mousemove rect
-  // https://github.com/d3/d3-selection/blob/v2.0.0/README.md#pointer
   // https://www.d3-graph-gallery.com/graph/line_cursor.html
-  // d3.pointer((qqq) => {
-  //   console.log(qqq);
-  // }, qq);
-  // var bisect = d3.bisector(function (d) {
-  //   return d.x;
-  // }).left;
+  const focus = svg
+    .append("circle")
+    .style("fill", "none")
+    .attr("stroke", "black")
+    .attr("r", 8.5)
+    .style("opacity", 1);
   const mousemove = (e) => {
     console.log(e);
     console.log(d3.pointer(e));
-    //   console.log(d3.mouse(this));
-    //   var x0 = xScale.invert(d3.mouse(this)[0]);
-    //   console.log("x0: ", x0);
-    //   // var i = bisect(, x0, 1);
-    //   // console.log("i : ", i);
-    //   // selectedData = data[i];
-    //   // focus.attr("cx", x(selectedData.x)).attr("cy", y(selectedData.y));
-    //   // focusText
-    //   //   .html("x:" + selectedData.x + "  -  " + "y:" + selectedData.y)
-    //   //   .attr("x", x(selectedData.x) + 15)
-    //   //   .attr("y", y(selectedData.y));
+    // https://github.com/d3/d3-selection/blob/master/README.md#pointer
+    const [x, _] = d3.pointer(e);
+    // https://github.com/d3/d3-array/blob/master/README.md#bisect
+    const i = d3.bisect(trails[0].paths, x0, 1);
+    y = yScale(trails[0][i].paths.y);
+    focus.attr("cx", x).attr("cy", y);
+    // focus.attr("cx", x(selectedData.x)).attr("cy", y(selectedData.y));
   };
 
   const qq = svg
