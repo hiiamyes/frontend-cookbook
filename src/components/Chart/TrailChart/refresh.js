@@ -73,7 +73,7 @@ const refresh = ({
     console.log("xData: ", xData);
     // Get dataIndex form xData
     // https://github.com/d3/d3-array/blob/master/README.md#bisect
-    const bisect = d3.bisector((d) => d.x).left;
+    const bisect = d3.bisector((d) => d.x).center;
     const dataIndex = bisect(trails[0].paths, xData);
     console.log("dataIndex: ", dataIndex);
     // Get y from dataIndex
