@@ -1,8 +1,9 @@
 import styled from "styled-components";
 export default styled.div`
   .focus {
-    stroke: red;
-    stroke-width: 5px;
+    stroke: white;
+    stroke-width: 2px;
+    fill: #00796b;
   }
   .line {
     fill: none;

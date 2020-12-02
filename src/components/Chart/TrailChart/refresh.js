@@ -54,15 +54,6 @@ const refresh = ({
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  // draw mousemove rect
-  // https://www.d3-graph-gallery.com/graph/line_cursor.html
-  const focus = svg
-    .append("circle")
-    .style("fill", "#00796b")
-    .attr("class", "focus")
-    .attr("stroke", "#ffffff")
-    .attr("r", 8.5)
-    .style("opacity", 1);
   const mousemove = (e) => {
     // Get x from mouse event
     // https://github.com/d3/d3-selection/blob/master/README.md#pointer
@@ -103,6 +94,13 @@ const refresh = ({
       drawArea({ svg, xScale, height, yScale, trail, gradientId, mousemove });
     showPOI && drawPOIs({ svg, xScale, yScale, trail });
   }
+  // draw mousemove rect
+  // https://www.d3-graph-gallery.com/graph/line_cursor.html
+  const focus = svg
+    .append("circle")
+    .attr("class", "focus")
+    .attr("r", 8)
+    .style("opacity", 1);
 };
 
 export default refresh;
