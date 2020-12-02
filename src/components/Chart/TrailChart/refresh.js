@@ -51,9 +51,6 @@ const refresh = ({
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
-    // .on("mousemove", (d, i) => {
-    //   console.log(new Date());
-    // })
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -61,20 +58,28 @@ const refresh = ({
   // https://www.d3-graph-gallery.com/graph/line_cursor.html
   const focus = svg
     .append("circle")
-    .style("fill", "none")
-    .attr("stroke", "black")
+    .style("fill", "#00796b")
+    .attr("class", "focus")
+    .attr("stroke", "#ffffff")
     .attr("r", 8.5)
     .style("opacity", 1);
   const mousemove = (e) => {
-    console.log(e);
-    console.log(d3.pointer(e));
+    // Get x from mouse event
     // https://github.com/d3/d3-selection/blob/master/README.md#pointer
-    const [x, _] = d3.pointer(e);
+    const [x, _y] = d3.pointer(e);
+    console.log("x: ", x);
+    // Get xData from x
+    const xData = xScale.invert(x);
+    console.log("xData: ", xData);
+    // Get dataIndex form xData
     // https://github.com/d3/d3-array/blob/master/README.md#bisect
-    const i = d3.bisect(trails[0].paths, x0, 1);
-    y = yScale(trails[0][i].paths.y);
+    const bisect = d3.bisector((d) => d.x).left;
+    const dataIndex = bisect(trails[0].paths, xData);
+    console.log("dataIndex: ", dataIndex);
+    // Get y from dataIndex
+    const y = yScale(trails[0].paths[dataIndex].y);
+    // Update focus point
     focus.attr("cx", x).attr("cy", y);
-    // focus.attr("cx", x(selectedData.x)).attr("cy", y(selectedData.y));
   };
 
   const qq = svg

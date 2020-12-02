@@ -1,5 +1,9 @@
 import styled from "styled-components";
 export default styled.div`
+  .focus {
+    stroke: red;
+    stroke-width: 5px;
+  }
   .line {
     fill: none;
   }
