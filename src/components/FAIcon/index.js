@@ -21,6 +21,12 @@ import {
   faHiking,
   faLongArrowAltDown,
   faMugHot,
+  faAngleDoubleRight,
+  faClock,
+  faMountain,
+  faEllipsisH,
+  faBars,
+  faLanguage,
 } from "@fortawesome/free-solid-svg-icons";
 import Style from "./style";
 
@@ -43,11 +49,17 @@ library.add(faMapMarkerAlt);
 library.add(faHiking);
 library.add(faLongArrowAltDown);
 library.add(faMugHot);
+library.add(faAngleDoubleRight);
+library.add(faClock);
+library.add(faMountain);
+library.add(faEllipsisH);
+library.add(faBars);
+library.add(faLanguage);
 
 const FAIcon = (props) => {
-  const { size, icon } = props;
+  const { size, icon, color = "#000000" } = props;
   return (
-    <Style size={size}>
+    <Style size={size} color={color}>
       <FontAwesomeIcon icon={icon} />
     </Style>
   );

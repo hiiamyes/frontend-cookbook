@@ -5,7 +5,7 @@ import photo1 from "./photos/benjamin-voros-phIFdC6lA4E-unsplash.jpg";
 import photo2 from "./photos/jerry-zhang-ePpaQC2c1xA-unsplash.jpg";
 import photo3 from "./photos/john-rodenn-castillo-eluzJSfkNCk-unsplash.jpg";
 import photo4 from "./photos/kalen-emsley-Bkci_8qcdvQ-unsplash.jpg";
-import Button from "src/components/Button";
+import Button from "src/components/Buttons/Button";
 import useModal from "src/components/Modal/useModal";
 
 const Photo = styled.div`

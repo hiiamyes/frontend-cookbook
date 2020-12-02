@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-const menuWidth = "240px";
+// const menuWidth = "240px";
+const contentWidth = "240px";
 
 export default styled.div`
   position: fixed;
@@ -15,16 +16,13 @@ export default styled.div`
     height: 100%;
     transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     outline: none;
-    opacity: ${props => (props.visible ? 1 : 0)};
-    width: ${props => (props.visible ? "100vw" : 0)};
+    opacity: ${(props) => (props.visible ? 1 : 0)};
+    width: ${(props) => (props.visible ? "100vw" : 0)};
   }
-  .menu {
-    display: flex;
-    flex-direction: column;
+  .content {
+    width: ${contentWidth};
     background: white;
     height: 100%;
-    padding: 20px;
-    width: ${menuWidth};
     position: fixed;
     z-index: 1200;
     top: 0;
@@ -33,16 +31,10 @@ export default styled.div`
       0px 16px 24px 2px rgba(0, 0, 0, 0.14),
       0px 6px 30px 5px rgba(0, 0, 0, 0.12);
     transition: 225ms cubic-bezier(0, 0, 0.2, 1) 0ms;
-    visibility: ${props => (props.visible ? "visible" : "hidden")};
-    transform: ${props =>
+    visibility: ${(props) => (props.visible ? "visible" : "hidden")};
+    transform: ${(props) =>
       props.visible
         ? "translate3d(0px, 0px, 0px)"
-        : `translatex(-${menuWidth})`};
-
-    > a {
-      padding: 5px 0;
-      font-size: 1.5rem;
-      text-decoration: none;
-    }
+        : `translatex(-${contentWidth})`};
   }
 `;

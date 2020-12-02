@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { ThemeContext } from "styled-components";
 import classnames from "classnames";
 import FAIcon from "src/components/FAIcon";
 import Style from "./style";
 
 const BasicSelect = (props) => {
+  const theme = useContext(ThemeContext);
   const textInput = React.createRef();
   const [focus, setFocus] = useState(false);
   const [optionsVisible, setOptionsVisible] = useState(false);
@@ -61,7 +63,9 @@ const BasicSelect = (props) => {
   //     window.removeEventListener("keydown", keyDownListener);
   //   };
   // }, [hoveredOptionValue, optionsVisible]);
-
+  const noOption = !options.find((option) =>
+    new RegExp(inputValue, "gi").test(option.label),
+  );
   return (
     <Style
       className={classnames("select", { focus })}
@@ -86,31 +90,45 @@ const BasicSelect = (props) => {
           setFocus(false);
         }}
       />
-      <FAIcon icon="angle-down" />
-      {optionsVisible && (
-        <div className="options">
-          {options.map((option, optionIndex) => (
-            <div
-              className={classnames("option", {
-                hover: option.value === hoveredOptionValue,
-                select: option.value === value,
-              })}
-              key={option.value}
-              value={option.value}
-              style={{
-                display: new RegExp(inputValue, "gi").test(option.label)
-                  ? "block"
-                  : "none",
-              }}
-              onMouseDown={(e) => {
-                onChange(option.value);
-              }}
-            >
-              {option.label}
-            </div>
-          ))}
-        </div>
-      )}
+      <FAIcon icon="angle-down" color={theme.colorEnable} />
+      <div
+        className="no-option"
+        style={{
+          visibility: noOption ? "visible" : "hidden",
+        }}
+      >
+        No result
+      </div>
+      <div
+        className="options"
+        style={{
+          visibility: !noOption && optionsVisible ? "visible" : "hidden",
+        }}
+      >
+        {options.map((option, optionIndex) => (
+          <div
+            className={classnames("option", {
+              hover: option.value === hoveredOptionValue,
+              select: option.value === value,
+            })}
+            key={option.value}
+            value={option.value}
+            style={{
+              display: new RegExp(inputValue, "gi").test(option.label)
+                ? "block"
+                : "none",
+            }}
+            onMouseDown={(e) => {
+              const customEvent = new CustomEvent("select", {
+                detail: { value: option.value },
+              });
+              onChange(customEvent);
+            }}
+          >
+            {option.label}
+          </div>
+        ))}
+      </div>
     </Style>
   );
 };

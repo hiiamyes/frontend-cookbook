@@ -6,7 +6,7 @@ export default styled.div`
       display: grid;
       border-bottom: 1px solid ${(props) => props.theme.colorSecondary};
       &:hover {
-        background: ${(props) => props.theme.colorSecondary};
+        background: ${(props) => props.theme.colorTableHover};
       }
     }
   }
@@ -15,7 +15,7 @@ export default styled.div`
       display: grid;
       border-bottom: 1px solid ${(props) => props.theme.colorSecondary};
       &:hover {
-        background: ${(props) => props.theme.colorSecondary};
+        background: ${(props) => props.theme.colorTableHover};
       }
     }
   }

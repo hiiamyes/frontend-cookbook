@@ -31,7 +31,11 @@ const Table = (props) => {
               }}
             >
               {columns.map((column, columnIndex) => {
-                return <div className="td">{row[column.key]}</div>;
+                return (
+                  <div className="td" key={columnIndex}>
+                    {column.render({ rows, row, rowIndex, columnIndex })}
+                  </div>
+                );
               })}
             </div>
           );

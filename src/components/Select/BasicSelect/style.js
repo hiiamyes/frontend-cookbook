@@ -6,15 +6,18 @@ const selectOptionHeight = "32px";
 export default styled.div`
   position: relative;
   border-radius: ${(props) => props.theme.borderRadius};
-  border: 1px solid ${(props) => props.theme.colorBorderDefault};
+  /* border: 1px solid ${(props) => props.theme.colorBorderDefault}; */
+  border: 1px solid ${(props) => props.theme.colorEnable};
   display: grid;
   grid: 1fr / 1fr 32px;
   align-items: center;
   &:hover {
-    border: 1px solid ${(props) => props.theme.colorBorderHover};
+    /* border: 1px solid ${(props) => props.theme.colorBorderHover}; */
+    border: 1px solid ${(props) => props.theme.colorHover};
   }
   &.focus {
-    border: 1px solid ${(props) => props.theme.colorBorderFocus};
+    /* border: 1px solid ${(props) => props.theme.colorBorderFocus}; */
+    border: 1px solid ${(props) => props.theme.colorFocus};
   }
   > input {
     border-radius: ${(props) => props.theme.borderRadius};
@@ -23,15 +26,27 @@ export default styled.div`
     outline: none;
     border: none;
   }
-  .options {
+  >.no-option {
     position: absolute;
-    overflow-y: scroll;
-    width: 100%;
-    height: calc(10 * ${selectOptionHeight});
-    left: 0;
+    width: calc(100% + 2px);
+    left: -1px;
     top: calc(5px + ${selectOptionHeight});
     border-radius: ${(props) => props.theme.borderRadius};
-    border: 1px solid ${(props) => props.theme.colorBorderDefault};
+    border: 1px solid ${(props) => props.theme.colorEnable};
+    padding: 5px;
+    height: ${selectOptionHeight};
+    background: white;
+    z-index: 100;
+  }
+  >.options {
+    position: absolute;
+    overflow-y: scroll;
+    width: calc(100% + 2px);
+    max-height: calc(10 * ${selectOptionHeight});
+    left: -1px;
+    top: calc(5px + ${selectOptionHeight});
+    border-radius: ${(props) => props.theme.borderRadius};
+    border: 1px solid ${(props) => props.theme.colorEnable};
     background: white;
     z-index: 100;
 

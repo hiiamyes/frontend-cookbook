@@ -1,3 +1,5 @@
+import { rgba } from "polished";
+
 const teal500 = "#009688";
 const teal700 = "#00796b";
 const teal900 = "#004d40";
@@ -9,10 +11,14 @@ const baseTheme = {
   padding: "0 16px",
   colorText: "white",
   colorEnable: teal700,
+  colorTableHover: rgba(teal700, 0.3),
   colorHover: teal500,
   colorPressed: teal900,
   colorFocused: teal500,
   colorDisabled: gray600,
+  colorPress: teal900,
+  colorFocus: teal500,
+  colorDisable: gray600,
 
   //
   colorBorderDefault: "rgb(204, 204, 204)",
@@ -21,7 +27,7 @@ const baseTheme = {
 
   //
   colorMainBlue: "#4357ef",
-  colorPrimary: "#07072d",
+  colorPrimary: teal700,
   colorSecondary: "#545b64",
   colorTertiary: "#a9b0b7",
   colorPrimaryAlt: "#232658",

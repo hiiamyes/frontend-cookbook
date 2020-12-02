@@ -30,6 +30,12 @@ const icons = [
   "hiking",
   "long-arrow-alt-down",
   "mug-hot",
+  "angle-double-right",
+  "clock",
+  "mountain",
+  "ellipsis-h",
+  "bars",
+  "language",
 ];
 
 export const Icons = () => {

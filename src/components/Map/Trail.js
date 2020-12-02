@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Leaflet from "leaflet";
 
-const Trail = props => {
+const Trail = (props) => {
   const { map, paths } = props;
   useEffect(() => {
     const qq = paths.map(({ lat, lng }) => [lng, lat]);
@@ -9,17 +9,17 @@ const Trail = props => {
       [
         {
           type: "LineString",
-          coordinates: qq
-        }
+          coordinates: qq,
+        },
       ],
       {
         style: () => ({
-          className: "trail"
-        })
-      }
+          className: "trail",
+        }),
+      },
     );
     leafletPath.addTo(map);
-  }, []);
+  }, [paths]);
 
   return null;
 };

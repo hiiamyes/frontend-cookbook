@@ -1,15 +1,14 @@
 import React from "react";
 import Style from "./style";
+import FormContext from "./FormContext";
 
-const Form2 = (props) => {
+const Form = props => {
   const { formik, children } = props;
   return (
-    <Style onSubmit={formik.handleSubmit}>
-      {React.Children.map(children, (child) =>
-        React.cloneElement(child, { formik }),
-      )}
-    </Style>
+    <FormContext.Provider value={{ formik }}>
+      <Style onSubmit={formik.handleSubmit}>{children}</Style>
+    </FormContext.Provider>
   );
 };
 
-export default Form2;
+export default Form;

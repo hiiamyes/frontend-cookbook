@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import TrailChart from "src/components/Chart/TrailChart";
 import taoShanKelaye from "src/components/Chart/TrailChart/trails/tao-shan-kelaye.json";
@@ -15,9 +15,16 @@ const Layout = styled.div`
   padding: 15px;
 `;
 
-const colors = ["#E65100", "#F57C00", "#FBC02D", "#388E3C", "#1976D2"];
+const colors = [
+  "#00796b",
+  "#E65100",
+  "#F57C00",
+  "#FBC02D",
+  "#388E3C",
+  "#1976D2",
+];
 
-export const TrailChartBasic = () => {
+export const Basic = () => {
   return (
     <Layout>
       <div style={{ width: "100vw", height: 480 }}>
@@ -33,7 +40,31 @@ export const TrailChartBasic = () => {
   );
 };
 
-export const TrailChartCustomStrokeWidth = () => {
+export const Axis = () => {
+  const [showArea, setShowArew] = useState(true);
+  return (
+    <Layout>
+      <input
+        type="checkbox"
+        value={showArea}
+        onChange={() => setShowArea(!showArea)}
+      ></input>
+      <div style={{ width: "100vw", height: 480 }}>
+        <TrailChart
+          showAxis
+          showArea={showArea}
+          trails={[taoShanKelaye]}
+          colors={colors}
+        />
+      </div>
+      <div style={{ width: "100vw", height: 480 }}>
+        <TrailChart showArea trails={[taoShanKelaye]} colors={colors} />
+      </div>
+    </Layout>
+  );
+};
+
+export const CustomStrokeWidth = () => {
   return (
     <Layout>
       <div style={{ width: "100vw", height: 480 }}>
@@ -50,7 +81,7 @@ export const TrailChartCustomStrokeWidth = () => {
   );
 };
 
-export const TrailWithoutAxis = () => {
+export const NoAxis = () => {
   return (
     <Layout>
       <div style={{ width: "100vw", height: 480 }}>
@@ -60,7 +91,7 @@ export const TrailWithoutAxis = () => {
   );
 };
 
-export const TrailChartWithoutPOI = () => {
+export const POI = () => {
   return (
     <div style={{ width: "100vw", height: 480 }}>
       <TrailChart
@@ -73,7 +104,7 @@ export const TrailChartWithoutPOI = () => {
   );
 };
 
-export const MultiTrailsChart = () => {
+export const Multi = () => {
   return (
     <Layout>
       <div style={{ width: "100vw", height: 480 }}>

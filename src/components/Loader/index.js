@@ -1,12 +1,12 @@
 import React from "react";
 import FAIcon from "src/components/FAIcon";
-// import FAIcon from "../FAIcon";
 import Style from "./style";
 
 const Loader = (props) => {
+  const { icon = "spinner" } = props;
   return (
     <Style>
-      <FAIcon icon="spinner"></FAIcon>
+      <FAIcon icon={icon}></FAIcon>
     </Style>
   );
 };

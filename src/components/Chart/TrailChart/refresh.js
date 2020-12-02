@@ -54,15 +54,53 @@ const refresh = ({
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  showAxis && drawAxis({ svg, xScale, yScale, height, xMax, yMin, yMax });
+  const mousemove = (e) => {
+    // Get x from mouse event
+    // https://github.com/d3/d3-selection/blob/master/README.md#pointer
+    const [x, _y] = d3.pointer(e);
+    console.log("x: ", x);
+    // Get xData from x
+    const xData = xScale.invert(x);
+    console.log("xData: ", xData);
+    // Get dataIndex form xData
+    // https://github.com/d3/d3-array/blob/master/README.md#bisect
+    const bisect = d3.bisector((d) => d.x).center;
+    const dataIndex = bisect(trails[0].paths, xData);
+    console.log("dataIndex: ", dataIndex);
+    // Get y from dataIndex
+    const y = yScale(trails[0].paths[dataIndex].y);
+    // Update focus point
+    focus.attr("cx", x).attr("cy", y);
+  };
+
+  const qq = svg
+    .append("rect")
+    .style("fill", "none")
+    .style("pointer-events", "all")
+    .attr("width", width)
+    .attr("height", height)
+    // .on("mouseover", mouseover);
+    .on("mousemove", mousemove);
+  // .on('mouseout', mouseout);
+
+  showAxis &&
+    drawAxis({ svg, xScale, yScale, width, height, xMax, yMin, yMax });
   for (let i = 0; i < trails.length; i++) {
     const trail = trails[i];
     const color = colors[i];
     const gradientId = createGradient({ svg, color, index: i });
-    drawLine({ svg, xScale, yScale, trail, color, strokeWidth });
-    showArea && drawArea({ svg, xScale, height, yScale, trail, gradientId });
+    drawLine({ svg, xScale, yScale, trail, color, strokeWidth, mousemove });
+    showArea &&
+      drawArea({ svg, xScale, height, yScale, trail, gradientId, mousemove });
     showPOI && drawPOIs({ svg, xScale, yScale, trail });
   }
+  // draw mousemove rect
+  // https://www.d3-graph-gallery.com/graph/line_cursor.html
+  const focus = svg
+    .append("circle")
+    .attr("class", "focus")
+    .attr("r", 8)
+    .style("opacity", 1);
 };
 
 export default refresh;
