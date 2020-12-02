@@ -1,6 +1,14 @@
 import * as d3 from "d3";
 
-const drawArea = ({ svg, xScale, height, yScale, trail, gradientId }) => {
+const drawArea = ({
+  svg,
+  xScale,
+  height,
+  yScale,
+  trail,
+  gradientId,
+  mousemove,
+}) => {
   const area = d3
     .area()
     .x(({ x }) => xScale(x))
@@ -11,7 +19,8 @@ const drawArea = ({ svg, xScale, height, yScale, trail, gradientId }) => {
     .datum(trail.paths)
     .attr("class", "area")
     .attr("d", area)
-    .attr("fill", `url(#${gradientId})`);
+    .attr("fill", `url(#${gradientId})`)
+    .on("mousemove", mousemove);
 };
 
 export default drawArea;
