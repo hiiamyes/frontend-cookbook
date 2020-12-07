@@ -69,3 +69,23 @@ export const MapTrail = () => {
     </Layout>
   );
 };
+
+export const MapTrailAndMarker = () => {
+  const { map, mapRef } = useMap({
+    tileLayerUrl,
+    center: [24.1125952, 121.3252793],
+    zoom: 13,
+  });
+  return (
+    <Layout>
+      <div style={{ width: 640, height: 480 }}>
+        <Map map={map} ref={mapRef}>
+          <>
+            <Marker lat={24.118343} lng={121.3345488} />
+            <Trail paths={paths} />
+          </>
+        </Map>
+      </div>
+    </Layout>
+  );
+};
