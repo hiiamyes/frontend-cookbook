@@ -38,3 +38,11 @@ import createTheme from "src/theme/createTheme";
 
 <ThemeProvider theme={createTheme()}>...</ThemeProvider>
 ```
+
+## Deploy
+
+```
+./scripts/deploy.sh
+```
+
+Onto https://frontend-cookbook.yeslee.me/

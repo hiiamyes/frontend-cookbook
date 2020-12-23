@@ -1,4 +1,5 @@
 import React from "react";
+import classnames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -57,9 +58,10 @@ library.add(faBars);
 library.add(faLanguage);
 
 const FAIcon = (props) => {
-  const { size, icon, color = "#000000" } = props;
+  const { className, size, icon, color = "#000000" } = props;
+
   return (
-    <Style size={size} color={color}>
+    <Style className={classnames("icon", className)} size={size} color={color}>
       <FontAwesomeIcon icon={icon} />
     </Style>
   );

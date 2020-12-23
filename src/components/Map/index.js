@@ -25,15 +25,22 @@ const Map = forwardRef((props, ref) => {
   // }).addTo(map);
   // setMap(map);
   // }, []);
+  const mapChildren = [];
 
+  map &&
+    React.Children.forEach(children, (child) => {
+      if (child.type === React.Fragment) {
+        React.Children.forEach(child.props.children, (child) => {
+          mapChildren.push(React.cloneElement(child, { map }));
+        });
+      } else {
+        mapChildren.push(React.cloneElement(child, { map }));
+      }
+    });
+  console.log(mapChildren);
   return (
     // <Style ref={mapRef}>
-    <Style ref={ref}>
-      {map &&
-        React.Children.map(children, (child) =>
-          React.cloneElement(child, { map }),
-        )}
-    </Style>
+    <Style ref={ref}>{map && mapChildren}</Style>
   );
 });
 
