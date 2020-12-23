@@ -49,6 +49,7 @@ const baseTheme = {
   backgroundColorInput: "#ffffff",
   backgroundColorTd: "#ffffff",
 
+  paddingLeft: "14px",
   paddingInput: "0 14px",
   paddingButton: "10px 0",
   paddingButtonLarge: "21px 0",
