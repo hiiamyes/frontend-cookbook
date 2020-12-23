@@ -40,21 +40,4 @@ const BasicInput = (props) => {
   );
 };
 
-const BasicInputDemo = () => {
-  const [value, setValue] = useState(null);
-  const onChange = (e) => {
-    setValue(e.target.value);
-  };
-  return (
-    <div>
-      <BasicInput value={value} onChange={onChange} />
-      <br />
-      <BasicInput disabled />
-      <br />
-      <BasicInput loading />
-    </div>
-  );
-};
-
 export default BasicInput;
-export { BasicInputDemo };
