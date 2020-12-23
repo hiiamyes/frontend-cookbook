@@ -31,7 +31,7 @@ export const BasicInputDemo = () => {
   };
   return (
     <Layout>
-      <BasicInput icon="search" value={value} onChange={onChange} />
+      <BasicInput icon="search" defaultValue="default" onChange={onChange} />
       <div>{value}</div>
       <br />
       <BasicInput />
