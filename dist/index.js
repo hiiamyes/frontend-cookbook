@@ -153,7 +153,7 @@ import e,{useState as t,useCallback as n,useEffect as r,forwardRef as a,createRe
     border-color: ${e=>e.theme.colorDisabled};
     cursor: not-allowed;
   }
-`;const It=a=>{const{loading:o,disabled:i,onClick:l,children:u}=a,[c,f]=t(!1),[d,p]=t(!1),[h,m]=t(!1),g=s({disabled:i,loading:o,hover:c,pressed:d,focused:h}),v=n((()=>{p(!1)}),[]);return r((()=>(window.addEventListener("mouseup",v),()=>{window.removeEventListener("mouseup",v)})),[v]),e.createElement(zt,{className:g,onFocus:e=>{m(!0)},onBlur:e=>{m(!1)},onMouseEnter:()=>{f(!0)},onMouseLeave:()=>{f(!1)},onMouseDown:()=>{p(!0)},onMouseUp:()=>{p(!1)},onTouchStart:e=>{p(!0)},onTouchEnd:e=>{p(!1)},onClick:e=>{!i&&!o&&l&&l(e)}},o?"loading...":u)};var Lt=c.button`
+`;const It=a=>{const{loading:o,disabled:i,onClick:l,children:u,...c}=a,[f,d]=t(!1),[p,h]=t(!1),[m,g]=t(!1),v=s({disabled:i,loading:o,hover:f,pressed:p,focused:m}),y=n((()=>{h(!1)}),[]);return r((()=>(window.addEventListener("mouseup",y),()=>{window.removeEventListener("mouseup",y)})),[y]),e.createElement(zt,Tt({className:v,onFocus:e=>{g(!0)},onBlur:e=>{g(!1)},onMouseEnter:()=>{d(!0)},onMouseLeave:()=>{d(!1)},onMouseDown:()=>{h(!0)},onMouseUp:()=>{h(!1)},onTouchStart:e=>{h(!0)},onTouchEnd:e=>{h(!1)},onClick:e=>{!i&&!o&&l&&l(e)}},c),o?"loading...":u)};var Lt=c.button`
   /* normalize */
   outline: none;
   background: none;
