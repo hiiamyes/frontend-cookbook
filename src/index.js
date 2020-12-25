@@ -1,4 +1,4 @@
-import FAIcon from "src/components/FAIcon";
+import FAIcon from "./components/Input/DebouncedInput/DebouncedInput/node_modules/src/components/FAIcon";
 import Button from "src/components/Buttons/Button";
 import IconButton from "src/components/Buttons/IconButton";
 import OutlineButton from "src/components/Buttons/OutlineButton";
@@ -23,6 +23,7 @@ import getPage from "src/components/Pagination/getPage";
 import Drawer from "src/components/Drawer";
 
 import BasicInput from "src/components/Input/BasicInput";
+import DebouncedInput from "src/components/Input/DebouncedInput";
 
 import createTheme from "src/theme/createTheme";
 
@@ -52,4 +53,5 @@ export {
   Drawer,
   NativeSelect,
   BasicInput,
+  DebouncedInput,
 };

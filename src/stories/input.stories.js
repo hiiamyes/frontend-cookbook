@@ -4,6 +4,7 @@ import Checkbox from "src/components/Input/Checkbox";
 import SearchInputDemo from "src/components/Input/SearchInput/demo";
 import FormInputDemo from "src/components/Input/FormInput/demo";
 import BasicInput from "src/components/Input/BasicInput";
+import DebouncedInput from "src/components/Input/DebouncedInput";
 import { MoneyInputDemo } from "src/components/Input/MoneyInput";
 import { TwoFAInputDemo } from "src/components/Input/TwoFAInput";
 import NumberInputDemo from "src/components/Input/NumberInput/demo";
@@ -31,7 +32,12 @@ export const BasicInputDemo = () => {
   };
   return (
     <Layout>
-      <BasicInput icon="search" defaultValue="default" onChange={onChange} />
+      <BasicInput
+        icon="search"
+        value={value}
+        defaultValue="default"
+        onChange={onChange}
+      />
       <div>{value}</div>
       <br />
       <BasicInput />
@@ -39,6 +45,23 @@ export const BasicInputDemo = () => {
       <BasicInput disabled />
       <br />
       <BasicInput loading />
+    </Layout>
+  );
+};
+
+export const DebouncedInputDemo = () => {
+  const [value, setValue] = useState(null);
+  const onChange = (e) => {
+    setValue(e.target.value);
+  };
+  return (
+    <Layout>
+      <DebouncedInput
+        icon="search"
+        defaultValue="default"
+        onChange={onChange}
+      />
+      <div>{value}</div>
     </Layout>
   );
 };
