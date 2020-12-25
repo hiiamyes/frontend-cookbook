@@ -3,7 +3,7 @@ import classnames from "classnames";
 import Style from "./style";
 
 const OutlineButton = (props) => {
-  const { loading, disabled, onClick, children } = props;
+  const { loading, disabled, onClick, children, ...rest } = props;
   const [hover, setHover] = useState(false);
   const [pressed, setPressed] = useState(false);
   const [focused, setFocused] = useState(false);
@@ -58,6 +58,7 @@ const OutlineButton = (props) => {
       onClick={(e) => {
         !disabled && !loading && onClick && onClick(e);
       }}
+      {...rest}
     >
       {loading ? "loading..." : children}
     </Style>
