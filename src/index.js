@@ -1,4 +1,4 @@
-import FAIcon from "./components/Input/DebouncedInput/DebouncedInput/node_modules/src/components/FAIcon";
+import FAIcon from "src/components/FAIcon";
 import Button from "src/components/Buttons/Button";
 import IconButton from "src/components/Buttons/IconButton";
 import OutlineButton from "src/components/Buttons/OutlineButton";
