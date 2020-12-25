@@ -37,7 +37,6 @@ const Map = forwardRef((props, ref) => {
         mapChildren.push(React.cloneElement(child, { map }));
       }
     });
-  console.log(mapChildren);
   return (
     // <Style ref={mapRef}>
     <Style ref={ref}>{map && mapChildren}</Style>

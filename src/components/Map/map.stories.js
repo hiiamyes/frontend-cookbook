@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Button from "src/components/Buttons/Button";
 import Map from "./index";
@@ -89,6 +89,38 @@ export const MapTrailAndMarker = () => {
               return <Marker lat={lat} lng={lng} />;
             })}
             <Marker lat={24.118343} lng={121.3345488} />
+            <Trail paths={paths} />
+          </>
+        </Map>
+      </div>
+    </Layout>
+  );
+};
+
+export const MapTrailAndMarkerAsync = () => {
+  const [nodes, setNodes] = useState([]);
+  const { map, mapRef } = useMap({
+    tileLayerUrl,
+    center: [24.1125952, 121.3252793],
+    zoom: 13,
+  });
+  useEffect(() => {
+    setTimeout(() => {
+      setNodes([
+        [23.4700025, 120.9572707],
+        [24.118343, 121.3345488],
+      ]);
+    }, 2000);
+  }, []);
+  return (
+    <Layout>
+      <div style={{ width: 640, height: 480 }}>
+        <Map map={map} ref={mapRef}>
+          <>
+            {nodes.map((node) => {
+              const [lat, lng] = node;
+              return <Marker lat={lat} lng={lng} />;
+            })}
             <Trail paths={paths} />
           </>
         </Map>
