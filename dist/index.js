@@ -438,7 +438,9 @@ function mn(e){for(var t="https://reactjs.org/docs/error-decoder.html?invariant=
     }
   }
   > .thead {
-    display: none;
+    &.mobile {
+      display: none;
+    }
     @media (min-width: 768px) {
       display: block;
     }
@@ -451,7 +453,9 @@ function mn(e){for(var t="https://reactjs.org/docs/error-decoder.html?invariant=
     }
   }
   > .tbody {
-    display: none;
+    &.mobile {
+      display: none;
+    }
     @media (min-width: 768px) {
       display: block;
     }
@@ -463,7 +467,7 @@ function mn(e){for(var t="https://reactjs.org/docs/error-decoder.html?invariant=
       }
     }
   }
-`;const Ud=t=>{const{rows:n,columns:r,mobile:a}=t;return e.createElement(Wd,{className:"table"},e.createElement("div",{className:"mobile"},n.map(((e,t)=>a.render({rows:n,row:e,rowIndex:t})))),e.createElement("div",{className:"thead"},e.createElement("div",{className:"tr",style:{grid:"1fr / "+r.map((({grid:e})=>e)).join(" ")}},r.map(((t,n)=>e.createElement("div",{key:n,className:"th"},t.header))))),e.createElement("div",{className:"tbody"},n.map(((t,a)=>e.createElement("div",{className:"tr",style:{grid:"1fr / "+r.map((({grid:e})=>e)).join(" ")}},r.map(((r,o)=>e.createElement("div",{className:"td",key:o},r.render({rows:n,row:t,rowIndex:a,columnIndex:o})))))))))};var Bd=c.div`
+`;const Ud=t=>{const{rows:n,columns:r,mobile:a}=t;return e.createElement(Wd,{className:"table"},a&&e.createElement("div",{className:"mobile"},n.map(((e,t)=>a.render({rows:n,row:e,rowIndex:t})))),e.createElement("div",{className:s("thead",{mobile:a})},e.createElement("div",{className:"tr",style:{grid:"1fr / "+r.map((({grid:e})=>e)).join(" ")}},r.map(((t,n)=>e.createElement("div",{key:n,className:"th"},t.header))))),e.createElement("div",{className:s("tbody",{mobile:a})},n.map(((t,a)=>e.createElement("div",{className:"tr",style:{grid:"1fr / "+r.map((({grid:e})=>e)).join(" ")}},r.map(((r,o)=>e.createElement("div",{className:"td",key:o},r.render({rows:n,row:t,rowIndex:a,columnIndex:o})))))))))};var Bd=c.div`
   position: relative;
   border-radius: ${e=>e.theme.borderRadius};
   /* border: 1px solid ${e=>e.theme.colorBorderDefault}; */
