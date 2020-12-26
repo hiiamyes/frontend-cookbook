@@ -1,16 +1,19 @@
 import React from "react";
+import classnames from "classnames";
 import Style from "./style";
 
 const Table = (props) => {
   const { rows, columns, mobile } = props;
   return (
     <Style className="table">
-      <div className="mobile">
-        {rows.map((row, rowIndex) => {
-          return mobile.render({ rows, row, rowIndex });
-        })}
-      </div>
-      <div className="thead">
+      {mobile && (
+        <div className="mobile">
+          {rows.map((row, rowIndex) => {
+            return mobile.render({ rows, row, rowIndex });
+          })}
+        </div>
+      )}
+      <div className={classnames("thead", { mobile })}>
         <div
           className="tr"
           style={{
@@ -26,7 +29,7 @@ const Table = (props) => {
           })}
         </div>
       </div>
-      <div className="tbody">
+      <div className={classnames("tbody", { mobile })}>
         {rows.map((row, rowIndex) => {
           return (
             <div

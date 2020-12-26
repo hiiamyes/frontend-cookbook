@@ -76,7 +76,7 @@ export const MobileTable = () => {
   };
 
   return (
-    <Layout style={{ width: "320px" }}>
+    <Layout>
       <Table
         rows={rows}
         columns={columns()}

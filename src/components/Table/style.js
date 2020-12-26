@@ -8,7 +8,9 @@ export default styled.div`
     }
   }
   > .thead {
-    display: none;
+    &.mobile {
+      display: none;
+    }
     @media (min-width: 768px) {
       display: block;
     }
@@ -21,7 +23,9 @@ export default styled.div`
     }
   }
   > .tbody {
-    display: none;
+    &.mobile {
+      display: none;
+    }
     @media (min-width: 768px) {
       display: block;
     }
