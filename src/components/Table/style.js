@@ -12,7 +12,9 @@ export default styled.div`
       display: none;
     }
     @media (min-width: 768px) {
-      display: block;
+      &.mobile {
+        display: block;
+      }
     }
     > .tr {
       display: grid;
@@ -27,7 +29,9 @@ export default styled.div`
       display: none;
     }
     @media (min-width: 768px) {
-      display: block;
+      &.mobile {
+        display: block;
+      }
     }
     > .tr {
       display: grid;
