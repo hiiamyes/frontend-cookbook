@@ -442,7 +442,9 @@ function mn(e){for(var t="https://reactjs.org/docs/error-decoder.html?invariant=
       display: none;
     }
     @media (min-width: 768px) {
-      display: block;
+      &.mobile {
+        display: block;
+      }
     }
     > .tr {
       display: grid;
@@ -457,7 +459,9 @@ function mn(e){for(var t="https://reactjs.org/docs/error-decoder.html?invariant=
       display: none;
     }
     @media (min-width: 768px) {
-      display: block;
+      &.mobile {
+        display: block;
+      }
     }
     > .tr {
       display: grid;
