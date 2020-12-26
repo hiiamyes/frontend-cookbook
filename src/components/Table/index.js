@@ -2,9 +2,14 @@ import React from "react";
 import Style from "./style";
 
 const Table = (props) => {
-  const { rows, columns } = props;
+  const { rows, columns, mobile } = props;
   return (
     <Style className="table">
+      <div className="mobile">
+        {rows.map((row, rowIndex) => {
+          return mobile.render({ rows, row, rowIndex });
+        })}
+      </div>
       <div className="thead">
         <div
           className="tr"
