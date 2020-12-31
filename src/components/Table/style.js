@@ -1,7 +1,21 @@
 import styled from "styled-components";
 
 export default styled.div`
+  > .mobile {
+    display: block;
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
   > .thead {
+    &.mobile {
+      display: none;
+    }
+    @media (min-width: 768px) {
+      &.mobile {
+        display: block;
+      }
+    }
     > .tr {
       display: grid;
       border-bottom: 1px solid ${(props) => props.theme.colorSecondary};
@@ -11,6 +25,14 @@ export default styled.div`
     }
   }
   > .tbody {
+    &.mobile {
+      display: none;
+    }
+    @media (min-width: 768px) {
+      &.mobile {
+        display: block;
+      }
+    }
     > .tr {
       display: grid;
       border-bottom: 1px solid ${(props) => props.theme.colorSecondary};

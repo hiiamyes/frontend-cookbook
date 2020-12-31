@@ -23,6 +23,7 @@ import getPage from "src/components/Pagination/getPage";
 import Drawer from "src/components/Drawer";
 
 import BasicInput from "src/components/Input/BasicInput";
+import DebouncedInput from "src/components/Input/DebouncedInput";
 
 import createTheme from "src/theme/createTheme";
 
@@ -52,4 +53,5 @@ export {
   Drawer,
   NativeSelect,
   BasicInput,
+  DebouncedInput,
 };
