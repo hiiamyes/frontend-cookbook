@@ -25,6 +25,9 @@ export default {
     "d3",
     "react-router-dom",
     "classnames",
+    "@fortawesome/fontawesome-svg-core",
+    "@fortawesome/free-solid-svg-icons",
+    "@fortawesome/react-fontawesome",
   ],
   plugins: [
     resolve(),
