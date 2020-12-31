@@ -28,6 +28,22 @@ import {
   faEllipsisH,
   faBars,
   faLanguage,
+  faCog,
+  faTimes,
+  faCloudUploadAlt,
+  faPlus,
+  faBars,
+  faCheck,
+  faEye,
+  faEdit,
+  faPlaneDeparture,
+  faArrowLeft,
+  faTrash,
+  faSearch,
+  faCertificate,
+  faCube,
+  faTag,
+  faShapes,
 } from "@fortawesome/free-solid-svg-icons";
 import Style from "./style";
 
@@ -56,6 +72,22 @@ library.add(faMountain);
 library.add(faEllipsisH);
 library.add(faBars);
 library.add(faLanguage);
+library.add(faCog);
+library.add(faTimes);
+library.add(faCloudUploadAlt);
+library.add(faPlus);
+library.add(faBars);
+library.add(faCheck);
+library.add(faEye);
+library.add(faEdit);
+library.add(faPlaneDeparture);
+library.add(faArrowLeft);
+library.add(faTrash);
+library.add(faSearch);
+library.add(faCertificate);
+library.add(faCube);
+library.add(faTag);
+library.add(faShapes);
 
 const FAIcon = (props) => {
   const { className, size, icon, color = "#000000" } = props;
