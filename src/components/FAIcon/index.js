@@ -3,91 +3,77 @@ import classnames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
-  faCog,
+  faAngleDoubleRight,
   faAngleDown,
-  faCloudUploadAlt,
-  faSearch,
+  faArrowLeft,
+  faBars,
+  faCertificate,
+  faCheck,
+  faCheckSquare,
   faChevronLeft,
   faChevronRight,
-  faSpinner,
-  faTimes,
-  faSquare,
-  faCheckSquare,
+  faClock,
+  faCloudUploadAlt,
+  faCog,
   faCopy,
+  faCube,
+  faEdit,
+  faEllipsisH,
+  faEye,
+  faHiking,
+  faLanguage,
+  faLongArrowAltDown,
+  faMapMarkerAlt,
   faMinus,
+  faMountain,
+  faMugHot,
+  faPlaneDeparture,
   faPlus,
   faRoute,
-  faArrowDown,
-  faMapMarkerAlt,
-  faHiking,
-  faLongArrowAltDown,
-  faMugHot,
-  faAngleDoubleRight,
-  faClock,
-  faMountain,
-  faEllipsisH,
-  faBars,
-  faLanguage,
-  faCog,
-  faTimes,
-  faCloudUploadAlt,
-  faPlus,
-  faBars,
-  faCheck,
-  faEye,
-  faEdit,
-  faPlaneDeparture,
-  faArrowLeft,
-  faTrash,
   faSearch,
-  faCertificate,
-  faCube,
-  faTag,
   faShapes,
+  faSpinner,
+  faSquare,
+  faTag,
+  faTimes,
+  faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import Style from "./style";
 
-library.add(faCog);
+library.add(faAngleDoubleRight);
 library.add(faAngleDown);
-library.add(faCloudUploadAlt);
-library.add(faCopy);
-library.add(faSearch);
+library.add(faArrowLeft);
+library.add(faBars);
+library.add(faCertificate);
+library.add(faCheck);
+library.add(faCheckSquare);
 library.add(faChevronLeft);
 library.add(faChevronRight);
-library.add(faSpinner);
-library.add(faTimes);
-library.add(faSquare);
-library.add(faCheckSquare);
+library.add(faClock);
+library.add(faCloudUploadAlt);
+library.add(faCog);
+library.add(faCopy);
+library.add(faCube);
+library.add(faEdit);
+library.add(faEllipsisH);
+library.add(faEye);
+library.add(faHiking);
+library.add(faLanguage);
+library.add(faLongArrowAltDown);
+library.add(faMapMarkerAlt);
 library.add(faMinus);
+library.add(faMountain);
+library.add(faMugHot);
+library.add(faPlaneDeparture);
 library.add(faPlus);
 library.add(faRoute);
-library.add(faArrowDown);
-library.add(faMapMarkerAlt);
-library.add(faHiking);
-library.add(faLongArrowAltDown);
-library.add(faMugHot);
-library.add(faAngleDoubleRight);
-library.add(faClock);
-library.add(faMountain);
-library.add(faEllipsisH);
-library.add(faBars);
-library.add(faLanguage);
-library.add(faCog);
-library.add(faTimes);
-library.add(faCloudUploadAlt);
-library.add(faPlus);
-library.add(faBars);
-library.add(faCheck);
-library.add(faEye);
-library.add(faEdit);
-library.add(faPlaneDeparture);
-library.add(faArrowLeft);
-library.add(faTrash);
 library.add(faSearch);
-library.add(faCertificate);
-library.add(faCube);
-library.add(faTag);
 library.add(faShapes);
+library.add(faSpinner);
+library.add(faSquare);
+library.add(faTag);
+library.add(faTimes);
+library.add(faTrash);
 
 const FAIcon = (props) => {
   const { className, size, icon, color = "#000000" } = props;
