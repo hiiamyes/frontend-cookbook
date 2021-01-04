@@ -58,15 +58,15 @@ const refresh = ({
     // Get x from mouse event
     // https://github.com/d3/d3-selection/blob/master/README.md#pointer
     const [x, _y] = d3.pointer(e);
-    console.log("x: ", x);
+    // console.log("x: ", x);
     // Get xData from x
     const xData = xScale.invert(x);
-    console.log("xData: ", xData);
+    // console.log("xData: ", xData);
     // Get dataIndex form xData
     // https://github.com/d3/d3-array/blob/master/README.md#bisect
     const bisect = d3.bisector((d) => d.x).center;
     const dataIndex = bisect(trails[0].paths, xData);
-    console.log("dataIndex: ", dataIndex);
+    // console.log("dataIndex: ", dataIndex);
     // Get y from dataIndex
     const y = yScale(trails[0].paths[dataIndex].y);
     // Update focus point
