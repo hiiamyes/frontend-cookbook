@@ -4,6 +4,9 @@ const sizes = {
   small: "8px",
   default: "16px",
   large: "24px",
+  s: "8px",
+  m: "16px",
+  l: "24px",
 };
 
 export default styled.div`
@@ -12,7 +15,7 @@ export default styled.div`
   justify-content: center;
   color: ${(props) => props.color};
   > svg {
-    width: ${(props) => sizes[props.size] || sizes["default"]} !important;
-    height: ${(props) => sizes[props.size] || sizes["default"]} !important;
+    width: ${(props) => sizes[props.size]} !important;
+    height: ${(props) => sizes[props.size]} !important;
   }
 `;
