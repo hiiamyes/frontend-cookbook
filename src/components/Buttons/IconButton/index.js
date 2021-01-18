@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, forwardRef } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 import Loader from "src/components/Loader";
 import FAIcon from "src/components/FAIcon";
 import Style from "./style";
 
-const IconButton = (props) => {
+const IconButton = forwardRef((props, ref) => {
   const {
     loading,
     disabled,
@@ -14,6 +14,8 @@ const IconButton = (props) => {
     children,
     withBackground,
     size,
+    onMouseEnter,
+    onMouseLeave,
     ...rest
   } = props;
   const [hover, setHover] = useState(false);
@@ -42,6 +44,7 @@ const IconButton = (props) => {
 
   return (
     <Style
+      ref={ref}
       className={className}
       onFocus={(e) => {
         setFocused(true);
@@ -49,11 +52,13 @@ const IconButton = (props) => {
       onBlur={(e) => {
         setFocused(false);
       }}
-      onMouseEnter={() => {
+      onMouseEnter={(e) => {
         setHover(true);
+        onMouseEnter && onMouseEnter(e);
       }}
-      onMouseLeave={() => {
+      onMouseLeave={(e) => {
         setHover(false);
+        onMouseLeave && onMouseLeave(e);
       }}
       onMouseDown={() => {
         setPressed(true);
@@ -76,7 +81,7 @@ const IconButton = (props) => {
       {loading ? <Loader size={size} /> : <FAIcon icon={icon} size={size} />}
     </Style>
   );
-};
+});
 
 IconButton.propTypes = {
   size: PropTypes.oneOf(["s", "m", "l"]),

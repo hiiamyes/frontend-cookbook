@@ -3,7 +3,7 @@ import classnames from "classnames";
 import Style from "./style";
 
 const Button = (props) => {
-  const { children, loading, disabled, onClick, ...rest } = props;
+  const { children, loading, disabled, onClick, onMouseEnter, ...rest } = props;
   const [hover, setHover] = useState(false);
   const [pressed, setPressed] = useState(false);
   const [focused, setFocused] = useState(false);
@@ -36,8 +36,9 @@ const Button = (props) => {
       onBlur={(e) => {
         setFocused(false);
       }}
-      onMouseEnter={() => {
+      onMouseEnter={(e) => {
         setHover(true);
+        onMouseEnter && onMouseEnter(e);
       }}
       onMouseLeave={() => {
         setHover(false);
