@@ -11,6 +11,7 @@ const baseTheme = {
   padding: "0 16px",
   colorText: "white",
   colorEnable: teal700,
+  colorEnabled: teal700,
   colorTableHover: rgba(teal700, 0.3),
   colorHover: teal500,
   colorPressed: teal900,

@@ -1,10 +1,21 @@
 import React, { useState, useEffect, useCallback } from "react";
+import PropTypes from "prop-types";
 import classnames from "classnames";
+import Loader from "src/components/Loader";
 import FAIcon from "src/components/FAIcon";
 import Style from "./style";
 
 const IconButton = (props) => {
-  const { loading, disabled, onClick, icon, children, ...rest } = props;
+  const {
+    loading,
+    disabled,
+    onClick,
+    icon,
+    children,
+    withBackground,
+    size,
+    ...rest
+  } = props;
   const [hover, setHover] = useState(false);
   const [pressed, setPressed] = useState(false);
   const [focused, setFocused] = useState(false);
@@ -15,6 +26,7 @@ const IconButton = (props) => {
     hover,
     pressed,
     focused,
+    "with-background": withBackground,
   });
 
   const windowMouseUp = useCallback(() => {
@@ -56,21 +68,24 @@ const IconButton = (props) => {
         // e.preventDefault();
         setPressed(false);
       }}
-      onClick={(e) => {
-        !disabled && !loading && onClick && onClick(e);
-      }}
+      onClick={(e) => onClick && onClick(e)}
+      disabled={disabled || loading}
+      size={size}
       {...rest}
     >
-      {loading ? (
-        "loading..."
-      ) : (
-        <>
-          {children}
-          <FAIcon icon={icon} />
-        </>
-      )}
+      {loading ? <Loader size={size} /> : <FAIcon icon={icon} size={size} />}
     </Style>
   );
+};
+
+IconButton.propTypes = {
+  size: PropTypes.oneOf(["s", "m", "l"]),
+  withBackground: PropTypes.bool.isRequired,
+};
+
+IconButton.defaultProps = {
+  size: "m",
+  withBackground: false,
 };
 
 export default IconButton;

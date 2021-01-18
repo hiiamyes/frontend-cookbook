@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+const sizes = {
+  s: "16px",
+  m: "24px",
+  l: "32px",
+};
+
 export default styled.button`
   /* normalize */
   position: relative;
@@ -11,27 +17,59 @@ export default styled.button`
   box-shadow: none;
   -webkit-appearance: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  padding: ${(props) => props.theme.padding};
+  padding: 0;
 
-  /* enable */
-  height: ${(props) => props.theme.height};
+  /* enabled */
+  width: ${(props) => sizes[props.size]};
+  height: ${(props) => sizes[props.size]};
   border-radius: ${(props) => props.theme.borderRadius};
-  color: ${(props) => props.theme.colorText};
-  background: ${(props) => props.theme.colorEnable};
+  .icon {
+    color: ${(props) => props.theme.colorEnabled};
+  }
+  &.with-background {
+    background: ${(props) => props.theme.colorEnabled};
+    .icon {
+      color: white;
+    }
+  }
 
   /* focused */
   &.focused {
-    background: ${(props) => props.theme.colorFocused};
+    .icon {
+      color: ${(props) => props.theme.colorFocused};
+    }
+    &.with-background {
+      .icon {
+        color: white;
+      }
+      background: ${(props) => props.theme.colorFocused};
+    }
   }
 
   /* hover  */
   &.hover {
-    background: ${(props) => props.theme.colorHover};
+    .icon {
+      color: ${(props) => props.theme.colorHover};
+    }
+    &.with-background {
+      .icon {
+        color: white;
+      }
+      background: ${(props) => props.theme.colorHover};
+    }
   }
 
   /* pressed */
   &.pressed {
-    background: ${(props) => props.theme.colorPressed};
+    .icon {
+      color: ${(props) => props.theme.colorPressed};
+    }
+    &.with-background {
+      .icon {
+        color: white;
+      }
+      background: ${(props) => props.theme.colorPressed};
+    }
   }
 
   /* loading */
@@ -41,7 +79,9 @@ export default styled.button`
 
   /* disabled */
   &.disabled {
-    background: ${(props) => props.theme.colorDisabled};
+    &.with-background {
+      background: ${(props) => props.theme.colorDisabled};
+    }
     cursor: not-allowed;
   }
 `;

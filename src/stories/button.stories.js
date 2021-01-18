@@ -10,7 +10,8 @@ export default {
 };
 
 const Layout = styled.div`
-  padding: 15px;
+  display: grid;
+  grid-gap: 10px;
 `;
 
 export const Basic = () => {
@@ -49,7 +50,16 @@ export const Basic = () => {
 export const Icon = () => {
   return (
     <Layout>
+      <IconButton icon="chevron-left" size="s" />
       <IconButton icon="chevron-left" />
+      <IconButton icon="chevron-left" size="l" />
+      <IconButton icon="chevron-left" size="l" loading />
+      <IconButton icon="chevron-left" size="l" disabled />
+      <IconButton icon="chevron-right" size="s" withBackground />
+      <IconButton icon="chevron-right" size="m" withBackground />
+      <IconButton icon="chevron-right" size="l" withBackground />
+      <IconButton icon="chevron-right" size="l" withBackground loading />
+      <IconButton icon="chevron-right" size="l" withBackground disabled />
     </Layout>
   );
 };
