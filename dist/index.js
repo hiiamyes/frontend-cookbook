@@ -58,7 +58,7 @@ import e,{useState as t,useCallback as n,useEffect as r,forwardRef as o,createRe
     background: ${e=>e.theme.colorDisabled};
     cursor: not-allowed;
   }
-`;const Je=o=>{const{children:a,loading:i,disabled:l,onClick:u,...c}=o,[f,d]=t(!1),[p,h]=t(!1),[m,v]=t(!1),g=s({disabled:l,loading:i,hover:f,pressed:p,focused:m}),y=n((()=>{h(!1)}),[]);return r((()=>(window.addEventListener("mouseup",y),()=>{window.removeEventListener("mouseup",y)})),[y]),e.createElement(Ze,Ge({className:g,onFocus:e=>{v(!0)},onBlur:e=>{v(!1)},onMouseEnter:()=>{d(!0)},onMouseLeave:()=>{d(!1)},onMouseDown:()=>{h(!0)},onMouseUp:()=>{h(!1)},onTouchStart:e=>{h(!0)},onTouchEnd:e=>{h(!1)},onClick:e=>{!l&&!i&&u&&u(e)}},c),i?"loading...":a)},et={s:"16px",m:"24px",l:"32px"};var tt=q.div`
+`;const Je=o=>{const{children:a,loading:i,disabled:l,onClick:u,onMouseEnter:c,...f}=o,[d,p]=t(!1),[h,m]=t(!1),[v,g]=t(!1),y=s({disabled:l,loading:i,hover:d,pressed:h,focused:v}),b=n((()=>{m(!1)}),[]);return r((()=>(window.addEventListener("mouseup",b),()=>{window.removeEventListener("mouseup",b)})),[b]),e.createElement(Ze,Ge({className:y,onFocus:e=>{g(!0)},onBlur:e=>{g(!1)},onMouseEnter:e=>{p(!0),c&&c(e)},onMouseLeave:()=>{p(!1)},onMouseDown:()=>{m(!0)},onMouseUp:()=>{m(!1)},onTouchStart:e=>{m(!0)},onTouchEnd:e=>{m(!1)},onClick:e=>{!l&&!i&&u&&u(e)}},f),i?"loading...":a)},et={s:"16px",m:"24px",l:"32px"};var tt=q.div`
   width: ${e=>et[e.size]};
   height: ${e=>et[e.size]};
   display: flex;
@@ -151,7 +151,7 @@ import e,{useState as t,useCallback as n,useEffect as r,forwardRef as o,createRe
     }
     cursor: not-allowed;
   }
-`;const at=o=>{const{loading:a,disabled:i,onClick:l,icon:u,children:c,withBackground:f,size:d,...p}=o,[h,m]=t(!1),[v,g]=t(!1),[y,b]=t(!1),w=s({disabled:i,loading:a,hover:h,pressed:v,focused:y,"with-background":f}),k=n((()=>{g(!1)}),[]);return r((()=>(window.addEventListener("mouseup",k),()=>{window.removeEventListener("mouseup",k)})),[k]),e.createElement(ot,Ge({className:w,onFocus:e=>{b(!0)},onBlur:e=>{b(!1)},onMouseEnter:()=>{m(!0)},onMouseLeave:()=>{m(!1)},onMouseDown:()=>{g(!0)},onMouseUp:()=>{g(!1)},onTouchStart:e=>{g(!0)},onTouchEnd:e=>{g(!1)},onClick:e=>l&&l(e),disabled:i||a,size:d},p),a?e.createElement(nt,{size:d}):e.createElement(Xe,{icon:u,size:d}))};at.propTypes={size:Qe.oneOf(["s","m","l"]),withBackground:Qe.bool.isRequired},at.defaultProps={size:"m",withBackground:!1};var it=q.button`
+`;const at=o(((o,a)=>{const{loading:i,disabled:l,onClick:u,icon:c,children:f,withBackground:d,size:p,onMouseEnter:h,onMouseLeave:m,...v}=o,[g,y]=t(!1),[b,w]=t(!1),[k,x]=t(!1),_=s({disabled:l,loading:i,hover:g,pressed:b,focused:k,"with-background":d}),E=n((()=>{w(!1)}),[]);return r((()=>(window.addEventListener("mouseup",E),()=>{window.removeEventListener("mouseup",E)})),[E]),e.createElement(ot,Ge({ref:a,className:_,onFocus:e=>{x(!0)},onBlur:e=>{x(!1)},onMouseEnter:e=>{y(!0),h&&h(e)},onMouseLeave:e=>{y(!1),m&&m(e)},onMouseDown:()=>{w(!0)},onMouseUp:()=>{w(!1)},onTouchStart:e=>{w(!0)},onTouchEnd:e=>{w(!1)},onClick:e=>u&&u(e),disabled:l||i,size:p},v),i?e.createElement(nt,{size:p}):e.createElement(Xe,{icon:c,size:p}))}));at.propTypes={size:Qe.oneOf(["s","m","l"]),withBackground:Qe.bool.isRequired},at.defaultProps={size:"m",withBackground:!1};var it=q.button`
   /* normalize */
   outline: none;
   background: none;
