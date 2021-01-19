@@ -9,6 +9,7 @@ export default styled.div`
   width: 100vw;
   height: 100vh;
   overflow-y: auto;
+  z-index: ${(props) => props.theme.zIndexModal};
 
   > .mask {
     position: absolute;

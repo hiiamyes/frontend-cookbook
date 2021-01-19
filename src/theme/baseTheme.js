@@ -79,7 +79,7 @@ const baseTheme = {
   // Elevation
   zIndexToast: 101,
   zIndexNavBar: 100,
-  zIndexModal: 99,
+  zIndexModal: 101,
   zIndexModalCloseIndex: 100,
 };
 
