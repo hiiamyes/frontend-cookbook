@@ -77,10 +77,10 @@ const baseTheme = {
   lineHeightH6: "15px",
 
   // Elevation
-  zIndexToast: 1001,
-  zIndexNavBar: 1000,
-  zIndexModal: 1001,
-  zIndexModalCloseIndex: 1000,
+  zIndexToast: 2001,
+  zIndexNavBar: 2000,
+  zIndexModal: 2001,
+  zIndexModalCloseIndex: 2000,
 };
 
 export default baseTheme;
