@@ -63,7 +63,7 @@ const Carousel = (props) => {
       window.removeEventListener("keydown", keydown);
     };
   }, [activeIndex]);
-
+  console.log(children.length);
   return (
     <Modal visible={visible} onClose={onClose}>
       <Style actionsVisible={actionsVisible}>

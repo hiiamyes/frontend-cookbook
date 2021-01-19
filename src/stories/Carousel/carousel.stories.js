@@ -32,11 +32,20 @@ export default {
 };
 
 export const Default = () => {
+  const modal1 = useModal();
   const { visible, openModal, closeModal } = useModal();
-
   return (
     <div>
-      <Button onClick={openModal}>Open Carousel</Button>
+      <Button onClick={modal1.openModal}>Single photo</Button>
+      <Carousel visible={modal1.visible} onClose={modal1.closeModal}>
+        {[photos[0]].map((photo) => {
+          return <Photo copyright={photo.copyright} url={photo.url} />;
+        })}
+        {/* <Photo copyright={photos[0].copyright} url={photos[0].url} />; */}
+      </Carousel>
+      <br />
+      <br />
+      <Button onClick={openModal}>Multiple photos</Button>
       <Carousel visible={visible} onClose={closeModal}>
         {photos.map((photo) => {
           return <Photo copyright={photo.copyright} url={photo.url} />;
