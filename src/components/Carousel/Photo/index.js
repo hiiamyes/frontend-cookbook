@@ -8,8 +8,8 @@ const Photo = (props) => {
 
   return (
     <Style className={classnames("photo", className)} {...rest}>
-      <div className="copyright">{photo.copyright}</div>
-      <img src={photo.url} />
+      <div className="copyright">{copyright}</div>
+      <img src={url} />
     </Style>
   );
 };
