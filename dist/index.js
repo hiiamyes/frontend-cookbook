@@ -472,7 +472,7 @@ function lt(e){for(var t="https://reactjs.org/docs/error-decoder.html?invariant=
     height: 100%;
     object-fit: contain;
   }
-`;const Lf=t=>{const{url:n,copyright:r,className:o,...a}=t;return e.createElement(zf,ye({className:s("photo",o)},a),e.createElement("div",{className:"copyright"},photo.copyright),e.createElement("img",{src:photo.url}))};Lf.propTypes={url:he.string.isRequired,copyright:he.string.isRequired},Lf.defaultProps={copyright:""};var Df=p.div`
+`;const Lf=t=>{const{url:n,copyright:r,className:o,...a}=t;return e.createElement(zf,ye({className:s("photo",o)},a),e.createElement("div",{className:"copyright"},r),e.createElement("img",{src:n}))};Lf.propTypes={url:he.string.isRequired,copyright:he.string.isRequired},Lf.defaultProps={copyright:""};var Df=p.div`
   > .mobile {
     display: block;
     @media (min-width: 768px) {
