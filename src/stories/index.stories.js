@@ -8,7 +8,6 @@ import BarChartDemo from "src/components/Chart/BarChart/demo";
 import FilePickerDemo from "src/components/FilePicker/demo";
 import BasicUploaderDemo from "src/components/Uploader/demo";
 
-import CarouselDemo from "src/components/Carousel/demo";
 import ModalDemo from "src/components/Modal/demo";
 import TagDemo from "src/components/Tag/demo";
 import CollapseDemo from "src/components/Collapse/demo";
@@ -57,12 +56,6 @@ storiesOf("FilePicker", module).add("FilePicker", () => (
 storiesOf("Uploader", module).add("BasicUploader", () => (
   <Layout>
     <BasicUploaderDemo />
-  </Layout>
-));
-
-storiesOf("Carousel", module).add("Carousel", () => (
-  <Layout>
-    <CarouselDemo />
   </Layout>
 ));
 

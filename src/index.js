@@ -12,6 +12,7 @@ import TrailChart from "src/components/Chart/TrailChart";
 import Modal from "src/components/Modal";
 import useModal from "src/components/Modal/useModal";
 import Carousel from "src/components/Carousel";
+import Photo from "src/components/Carousel/Photo";
 import Table from "src/components/Table";
 import BasicSelect from "src/components/Select/BasicSelect";
 import NativeSelect from "src/components/Select/NativeSelect";
@@ -38,6 +39,7 @@ export {
   Modal,
   useModal,
   Carousel,
+  Photo,
   Button,
   IconButton,
   OutlineButton,
