@@ -7,8 +7,14 @@ export default styled.div`
   position: relative;
   display: flex;
   align-items: center;
+  height: ${selectInputHeight};
 
   > input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
     flex: 1;
     border: 1px solid ${(props) => props.theme.colorEnable};
     border-radius: ${(props) => props.theme.borderRadius};
