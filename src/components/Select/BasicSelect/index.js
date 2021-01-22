@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
+import PropTypes from "prop-types";
 import { ThemeContext } from "styled-components";
 import classnames from "classnames";
 import FAIcon from "src/components/FAIcon";
+import IconButton from "src/components/Buttons/IconButton";
 import Style from "./style";
 
 const BasicSelect = (props) => {
@@ -15,7 +17,7 @@ const BasicSelect = (props) => {
     props.options[0],
   );
 
-  const { value, options, onChange } = props;
+  const { value, options, onChange, clearable } = props;
   useEffect(() => {
     const option = options.find((option) => option.value === value);
     if (option) {
@@ -70,10 +72,10 @@ const BasicSelect = (props) => {
     <Style
       className={classnames("select", { focus })}
       onClick={(e) => {
-        setFocus(true);
-        setOptionsVisible(true);
-        setInputFocus(true);
-        setInputValue("");
+        // setFocus(true);
+        // setOptionsVisible(true);
+        // setInputFocus(true);
+        // setInputValue("");
       }}
     >
       <input
@@ -90,7 +92,24 @@ const BasicSelect = (props) => {
           setFocus(false);
         }}
       />
-      <FAIcon icon="angle-down" color={theme.colorEnable} />
+      {clearable && (
+        <IconButton
+          icon="times"
+          color={theme.colorEnable}
+          onClick={() => {
+            console.log("clear");
+          }}
+        />
+      )}
+      <IconButton
+        icon="angle-down"
+        color={theme.colorEnable}
+        onClick={() => {
+          setFocus(true);
+          setOptionsVisible(true);
+          setInputFocus(true);
+        }}
+      />
       <div
         className="no-option"
         style={{
@@ -131,6 +150,17 @@ const BasicSelect = (props) => {
       </div>
     </Style>
   );
+};
+
+BasicSelect.propTypes = {
+  value: PropTypes.object,
+  options: PropTypes.array,
+  onChange: PropTypes.func.isRequired,
+  clearable: PropTypes.bool,
+};
+
+BasicSelect.defaultProps = {
+  clearable: false,
 };
 
 export default BasicSelect;

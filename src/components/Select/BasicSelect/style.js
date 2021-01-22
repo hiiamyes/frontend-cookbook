@@ -5,28 +5,21 @@ const selectOptionHeight = "32px";
 
 export default styled.div`
   position: relative;
-  border-radius: ${(props) => props.theme.borderRadius};
-  /* border: 1px solid ${(props) => props.theme.colorBorderDefault}; */
-  border: 1px solid ${(props) => props.theme.colorEnable};
-  display: grid;
-  grid: 1fr / 1fr 32px;
+  display: flex;
   align-items: center;
-  &:hover {
-    /* border: 1px solid ${(props) => props.theme.colorBorderHover}; */
-    border: 1px solid ${(props) => props.theme.colorHover};
-  }
-  &.focus {
-    /* border: 1px solid ${(props) => props.theme.colorBorderFocus}; */
-    border: 1px solid ${(props) => props.theme.colorFocus};
-  }
+
   > input {
+    flex: 1;
+    border: 1px solid ${(props) => props.theme.colorEnable};
     border-radius: ${(props) => props.theme.borderRadius};
     height: ${selectInputHeight};
     padding: 0 5px;
     outline: none;
-    border: none;
   }
-  >.no-option {
+  > .icon {
+    width: 32px;
+  }
+  > .no-option {
     position: absolute;
     width: calc(100% + 2px);
     left: -1px;
@@ -38,7 +31,7 @@ export default styled.div`
     background: white;
     z-index: 100;
   }
-  >.options {
+  > .options {
     position: absolute;
     overflow-y: scroll;
     width: calc(100% + 2px);

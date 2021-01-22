@@ -42,6 +42,16 @@ export const Basic = () => {
           }}
         />
       </div>
+      <div style={{ width: "250px" }}>
+        <BasicSelect
+          clearable
+          value={value}
+          options={options}
+          onChange={(e) => {
+            setValue(e.detail.value);
+          }}
+        />
+      </div>
       <div style={{ width: "500px" }}>
         <BasicSelect
           value={value2}
