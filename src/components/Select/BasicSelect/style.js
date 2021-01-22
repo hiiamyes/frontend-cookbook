@@ -20,7 +20,19 @@ export default styled.div`
     border-radius: ${(props) => props.theme.borderRadius};
     height: ${selectInputHeight};
     padding: 0 5px;
+    padding-right: ${(props) => `${props.actionsCount * 32}px`};
     outline: none;
+  }
+  > .actions {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    right: 0;
+    top: 0;
+    > * {
+      width: 32px;
+    }
   }
   > .icon {
     width: 32px;

@@ -71,6 +71,7 @@ const BasicSelect = (props) => {
   return (
     <Style
       className={classnames("select", { focus })}
+      actionsCount={clearable ? 2 : 1}
       onClick={(e) => {
         // setFocus(true);
         // setOptionsVisible(true);
@@ -92,24 +93,26 @@ const BasicSelect = (props) => {
           setFocus(false);
         }}
       />
-      {clearable && (
+      <div className="actions">
+        {clearable && (
+          <IconButton
+            icon="times"
+            color={theme.colorEnable}
+            onClick={() => {
+              console.log("clear");
+            }}
+          />
+        )}
         <IconButton
-          icon="times"
+          icon="angle-down"
           color={theme.colorEnable}
           onClick={() => {
-            console.log("clear");
+            setFocus(true);
+            setOptionsVisible(true);
+            setInputFocus(true);
           }}
         />
-      )}
-      <IconButton
-        icon="angle-down"
-        color={theme.colorEnable}
-        onClick={() => {
-          setFocus(true);
-          setOptionsVisible(true);
-          setInputFocus(true);
-        }}
-      />
+      </div>
       <div
         className="no-option"
         style={{
