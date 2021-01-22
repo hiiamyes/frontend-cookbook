@@ -99,7 +99,10 @@ const BasicSelect = (props) => {
             icon="times"
             color={theme.colorEnable}
             onClick={() => {
-              console.log("clear");
+              const customEvent = new CustomEvent("select", {
+                detail: { value: null },
+              });
+              onChange(customEvent);
             }}
           />
         )}
@@ -156,13 +159,14 @@ const BasicSelect = (props) => {
 };
 
 BasicSelect.propTypes = {
-  value: PropTypes.object,
+  value: PropTypes.object.isRequired,
   options: PropTypes.array,
   onChange: PropTypes.func.isRequired,
   clearable: PropTypes.bool,
 };
 
 BasicSelect.defaultProps = {
+  value: null,
   clearable: false,
 };
 
