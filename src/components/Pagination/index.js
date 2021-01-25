@@ -19,13 +19,6 @@ const Pagination = ({ className, disabled, nextDisabled, pre, next, page }) => {
           to: (location) => ({ ...location, search: prePageSearch }),
           alt: "pre-page",
         })}
-        {/* <Link
-          className={classnames("page-link", {
-            disabled: disabled || page === 1,
-          })}
-          to={(location) => ({ ...location, search: prePageSearch })}
-          alt="pre-page"
-        ></Link> */}
       </IconButton>
       <span className="pagination-page">{page}</span>
       <IconButton icon="chevron-right" disabled={disabled || nextDisabled}>
@@ -36,13 +29,6 @@ const Pagination = ({ className, disabled, nextDisabled, pre, next, page }) => {
           to: (location) => ({ ...location, search: nextPageSearch }),
           alt: "next-page",
         })}
-        {/* <Link
-          className={classnames("page-link", {
-            disabled: disabled || nextDisabled,
-          })}
-          to={(location) => ({ ...location, search: nextPageSearch })}
-          alt="next-page"
-        ></Link> */}
       </IconButton>
     </Style>
   );

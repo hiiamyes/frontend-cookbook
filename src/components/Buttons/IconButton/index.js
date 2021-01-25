@@ -78,7 +78,14 @@ const IconButton = forwardRef((props, ref) => {
       size={size}
       {...rest}
     >
-      {loading ? <Loader size={size} /> : <FAIcon icon={icon} size={size} />}
+      {loading ? (
+        <Loader size={size} />
+      ) : (
+        <>
+          {children}
+          <FAIcon icon={icon} size={size} />
+        </>
+      )}
     </Style>
   );
 });
