@@ -25,6 +25,7 @@ import Drawer from "src/components/Drawer";
 
 import BasicInput from "src/components/Input/BasicInput";
 import DebouncedInput from "src/components/Input/DebouncedInput";
+import Dropdown from "src/components/Dropdown";
 
 import createTheme from "src/theme/createTheme";
 
@@ -56,4 +57,5 @@ export {
   NativeSelect,
   BasicInput,
   DebouncedInput,
+  Dropdown,
 };
