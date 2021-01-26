@@ -9,6 +9,11 @@ export default styled.div`
     border: 1px solid ${(props) => props.theme.colorDisabled};
     border-radius: ${(props) => props.theme.borderRadius};
     display: none;
+    background: white;
+    z-index: ${(props) => props.theme.zIndexModal};
+    > button {
+      white-space: nowrap;
+    }
   }
   &.on > .options {
     display: grid;

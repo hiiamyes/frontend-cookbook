@@ -23,7 +23,13 @@ const Dropdown = (props) => {
       <div className="options">
         {options.map(({ value, label }) => {
           return (
-            <TextButton key={value} onClick={() => onOptionClick(value)}>
+            <TextButton
+              key={value}
+              onClick={() => {
+                onOptionClick(value);
+                setOn(false);
+              }}
+            >
               {label}
             </TextButton>
           );

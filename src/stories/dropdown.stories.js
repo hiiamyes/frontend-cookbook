@@ -17,13 +17,6 @@ export const Basic = () => {
     },
   ];
   return (
-    <div>
-      <div style={{ width: "250px" }}>
-        <Dropdown
-          options={options}
-          onOptionClick={(value) => console.log(value)}
-        />
-      </div>
-    </div>
+    <Dropdown options={options} onOptionClick={(value) => console.log(value)} />
   );
 };
