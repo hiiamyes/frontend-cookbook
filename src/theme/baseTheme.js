@@ -20,6 +20,7 @@ const baseTheme = {
   colorPress: teal900,
   colorFocus: teal500,
   colorDisable: gray600,
+  colorPlaceholder: gray600,
 
   //
   colorBorderDefault: "rgb(204, 204, 204)",
