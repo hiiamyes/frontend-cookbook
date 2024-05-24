@@ -22,5 +22,8 @@ workflows:
     jobs:
       - build:
           filters:
+            tags:
+              only: /^react-v.*/
             branches:
-              only: master
+              ignore: /.*/
+
