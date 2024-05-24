@@ -4,18 +4,11 @@
 
 [Live Demo](https://frontend-cookbook.yeslee.me)
 
-## Prerequisite
-
-Install `nvm`
-
-```
-nvm install 12.4.0
-nvm use 12.4.0
-```
-
 ## Getting started
 
 ```
+pnpm i
+pnpm run start
 yarn
 yarn start
 ```
