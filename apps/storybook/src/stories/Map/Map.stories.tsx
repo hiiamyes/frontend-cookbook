@@ -1,38 +1,21 @@
 // import React, { useState, useEffect } from "react";
 // import styled from "styled-components";
 // import Button from "src/components/Buttons/Button";
-// import Map from "./index";
-// import Marker from "./Marker";
+import type { Meta, StoryObj } from "@storybook/react";
+import { fn } from "@storybook/test";
+import Map from "./Map";
+import Marker from "./Marker";
 // import Trail from "./Trail";
 // import { paths } from "./chilai-main-north-peaks.json";
-// import useMap from "./useMap";
+import useMap from "./useMap";
 
 // export default {
 //   title: "Map",
 // };
 
-// const tileLayerUrl = `https://api.mapbox.com/styles/v1/mapbox/outdoors-v10/tiles/256/{z}/{x}/{y}?access_token=${process.env.MAPBOX_ACCESS_TOKEN}`;
-
 // const Layout = styled.div`
 //   padding: 15px;
 // `;
-
-// export const Basic = () => {
-//   const { map, mapRef } = useMap({
-//     tileLayerUrl,
-//     center: [24.3834142, 121.2317653],
-//     zoom: 17,
-//   });
-//   return (
-//     <Layout>
-//       <div style={{ width: 640, height: 480 }}>
-//         <Map map={map} ref={mapRef}>
-//           <Marker lat={24.3834142} lng={121.2317653} />
-//         </Map>
-//       </div>
-//     </Layout>
-//   );
-// };
 
 // export const FlyTo = () => {
 //   const { map, mapRef } = useMap({ tileLayerUrl });
@@ -129,30 +112,36 @@
 //   );
 // };
 
-
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
-import Map from './Map';
-
 const meta = {
-  title: 'Example/Map',
+  title: "Example/Map",
   component: Map,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
-    backgroundColor: { control: 'color' },
+    backgroundColor: { control: "color" },
   },
-  
+
   args: { onClick: fn() },
 } satisfies Meta<typeof Map>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
-  args: {
-    label: 'Map',
+export const Basic: Story = {
+  render: () => {
+    const lat = 24.3834142;
+    const lng = 121.2317653;
+    const { map, mapRef } = useMap({
+      center: [lat, lng],
+    });
+    return (
+      <div className="w-10" style={{ width: 640, height: 480 }}>
+        <Map map={map} ref={mapRef}>
+          <Marker lat={lat} lng={lng} />
+        </Map>
+      </div>
+    );
   },
 };
